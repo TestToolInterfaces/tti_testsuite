@@ -11,8 +11,9 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <file path="/TestSuite/License_lgpl-3.0.txt"/>
         <javaElement handleIdentifier="=Utils/src"/>
+        <file path="/TestSuite/License_lgpl-3.0.txt"/>
         <javaElement handleIdentifier="=TestSuite/src"/>
+        <file path="/TestSuite/TestSuite.manifest"/>
     </selectedElements>
 </jardesc>
