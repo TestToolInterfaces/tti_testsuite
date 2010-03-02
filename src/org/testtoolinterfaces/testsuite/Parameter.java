@@ -12,7 +12,7 @@ public class Parameter
 
 	private DIRECTION myInOut;
 	private String myParameter;
-	private Class myType;
+	private Class<? extends Object> myType;
 	private int myIndex;
 	private Object myValue;
 	
@@ -48,7 +48,7 @@ public class Parameter
 	    return myParameter;
 	}
 
-	public Class getValueType()
+	public Class<? extends Object> getValueType()
 	{
 		Trace.println(Trace.GETTER);
 	    return myType;
