@@ -11,5 +11,5 @@ public interface TestStepFactory
 			int aSequence,
 			String aDescription,
 			String aCommand,
-			ParameterTable aParameters );
+			ParameterArrayList aParameters );
 }

@@ -4,9 +4,9 @@ public class TestScriptImpl implements TestScript
 {
 	private String myExecutionScript;
 	private String myType;
-	private ParameterTable myParameters;
+	private ParameterArrayList myParameters;
 	
-	public TestScriptImpl( String anExecutionScript, String aType, ParameterTable aParameters )
+	public TestScriptImpl( String anExecutionScript, String aType, ParameterArrayList aParameters )
 	{
 		myExecutionScript = anExecutionScript;
 		myType = aType;
@@ -23,7 +23,7 @@ public class TestScriptImpl implements TestScript
 		return myType;
 	}
 
-	public ParameterTable getParameters()
+	public ParameterArrayList getParameters()
 	{
 		return myParameters;
 	}

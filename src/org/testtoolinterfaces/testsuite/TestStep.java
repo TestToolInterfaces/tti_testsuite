@@ -17,7 +17,7 @@ public interface TestStep extends TestEntry
 	/**
 	 * 
 	 */
-	public ParameterTable getParameters();
+	public ParameterArrayList getParameters();
 
 	/**
 	 * @return the Action Type

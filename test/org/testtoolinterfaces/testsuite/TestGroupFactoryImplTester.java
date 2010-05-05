@@ -9,7 +9,7 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.testtoolinterfaces.testsuite.ParameterTable;
+import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestCaseFactory;
 import org.testtoolinterfaces.testsuite.TestCaseFactoryImpl;
 import org.testtoolinterfaces.testsuite.TestEntryArrayList;
@@ -59,13 +59,13 @@ public class TestGroupFactoryImplTester extends junit.framework.TestCase
 		reqs.add("req1");
 
 		TestStepArrayList initSteps = new TestStepArrayList();
-		initSteps.add( new TestStepImpl( TestStep.ActionType.initialize, 1, "Init 1", "cmdInit", new ParameterTable() ) );
+		initSteps.add( new TestStepImpl( TestStep.ActionType.initialize, 1, "Init 1", "cmdInit", new ParameterArrayList() ) );
 
 		TestEntryArrayList execSteps = new TestEntryArrayList();
-		execSteps.add( new TestStepImpl( TestStep.ActionType.action, 1, "Exec 1", "cmdAction", new ParameterTable() ) );
+		execSteps.add( new TestStepImpl( TestStep.ActionType.action, 1, "Exec 1", "cmdAction", new ParameterArrayList() ) );
 
 		TestStepArrayList restoreSteps = new TestStepArrayList();
-		restoreSteps.add( new TestStepImpl( TestStep.ActionType.restore, 1, "Restore 1", "cmdRestore", new ParameterTable() ) );
+		restoreSteps.add( new TestStepImpl( TestStep.ActionType.restore, 1, "Restore 1", "cmdRestore", new ParameterArrayList() ) );
 
 		TestGroup testGroup1 = myTestGroupFactory.create( "tg1",
 														  null,
@@ -74,7 +74,7 @@ public class TestGroupFactoryImplTester extends junit.framework.TestCase
 														  reqs,
 														  initSteps,
 														  execSteps,
-														  new TestScriptImpl( "aScript", "stamdard", new ParameterTable() ),
+														  new TestScriptImpl( "aScript", "stamdard", new ParameterArrayList() ),
 														  restoreSteps );
 		
 		Assert.assertEquals("Incorrect Class", TestGroupLinkImpl.class, testGroup1.getClass());
@@ -84,7 +84,7 @@ public class TestGroupFactoryImplTester extends junit.framework.TestCase
 		Assert.assertEquals("Incorrect Requirements", reqs, testGroup1.getRequirements());
 		Assert.assertEquals("Incorrect initSteps", initSteps, testGroup1.getInitializationSteps());
 		Assert.assertEquals("Incorrect execSteps", new TestEntryArrayList(), testGroup1.getExecutionEntries());
-		Assert.assertEquals("Incorrect File", "aScript", ((TestGroupLink) testGroup1).getTestGroupScript());
+		Assert.assertEquals("Incorrect File", "aScript", ((TestGroupLink) testGroup1).getTestGroupScript().getExecutionScript());
 		Assert.assertEquals("Incorrect restoreSteps", restoreSteps, testGroup1.getRestoreSteps());
 
 		TestGroup testGroup2 = myTestGroupFactory.create( "tg1",

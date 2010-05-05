@@ -6,7 +6,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.ParameterTable;
+import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestCaseImpl;
 import org.testtoolinterfaces.testsuite.TestEntryArrayList;
 import org.testtoolinterfaces.testsuite.TestGroupImpl;
@@ -54,7 +54,7 @@ public class TestEntryArrayListTester extends TestCase
 				3,
 				"description2",
 				"command2",
-				new ParameterTable() );
+				new ParameterArrayList() );
 
 		TestGroupImpl testGroup = new TestGroupImpl( "ID",
 				 4,

@@ -13,7 +13,7 @@ public class TestStepImpl extends TestEntryImpl implements TestStep
 {
 	private ActionType myActionType;
 	private String myCommand;
-	private ParameterTable myParameters;
+	private ParameterArrayList myParameters;
 
 	/**
 	 * @param anActionType one of initialize, action, check, restore
@@ -25,7 +25,7 @@ public class TestStepImpl extends TestEntryImpl implements TestStep
 			 			 int aSequenceNr,
 						 String aDescription,
 						 String aCommand,
-						 ParameterTable aParameters )
+						 ParameterArrayList aParameters )
 	{
 		super("TestStep_" + aSequenceNr, TestEntry.TYPE.Step, aDescription, aSequenceNr);
 		Trace.println( Trace.LEVEL.CONSTRUCTOR,
@@ -51,7 +51,7 @@ public class TestStepImpl extends TestEntryImpl implements TestStep
 	/* (non-Javadoc)
 	 * @see org.testtoolinterfaces.TestSuite.TestStep#getParameters()
 	 */
-	public ParameterTable getParameters()
+	public ParameterArrayList getParameters()
 	{
 		return myParameters;
 	}

@@ -9,7 +9,7 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.testtoolinterfaces.testsuite.ParameterTable;
+import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestCase;
 import org.testtoolinterfaces.testsuite.TestCaseFactory;
 import org.testtoolinterfaces.testsuite.TestCaseFactoryImpl;
@@ -55,15 +55,15 @@ public class TestCaseFactoryImplTester extends junit.framework.TestCase
 		reqs.add("req1");
 
 		TestStepArrayList initSteps = new TestStepArrayList();
-		initSteps.add( new TestStepImpl( TestStep.ActionType.initialize, 1, "Init 1", "cmdInit", new ParameterTable() ) );
+		initSteps.add( new TestStepImpl( TestStep.ActionType.initialize, 1, "Init 1", "cmdInit", new ParameterArrayList() ) );
 
 		TestStepArrayList execSteps = new TestStepArrayList();
-		execSteps.add( new TestStepImpl( TestStep.ActionType.action, 1, "Exec 1", "cmdAction", new ParameterTable() ) );
+		execSteps.add( new TestStepImpl( TestStep.ActionType.action, 1, "Exec 1", "cmdAction", new ParameterArrayList() ) );
 
 		TestStepArrayList restoreSteps = new TestStepArrayList();
-		restoreSteps.add( new TestStepImpl( TestStep.ActionType.restore, 1, "Restore 1", "cmdRestore", new ParameterTable() ) );
+		restoreSteps.add( new TestStepImpl( TestStep.ActionType.restore, 1, "Restore 1", "cmdRestore", new ParameterArrayList() ) );
 
-		TestScript testScript = new TestScriptImpl( "aScript", "stamdard", new ParameterTable() );
+		TestScript testScript = new TestScriptImpl( "aScript", "stamdard", new ParameterArrayList() );
 		TestCase testCase1 = myTestCaseFactory.create( "tc1",
 													   null,
 													   1,
@@ -81,7 +81,7 @@ public class TestCaseFactoryImplTester extends junit.framework.TestCase
 		Assert.assertEquals("Incorrect Requirements", reqs, testCase1.getRequirements());
 		Assert.assertEquals("Incorrect initSteps", initSteps, testCase1.getInitializationSteps());
 		Assert.assertEquals("Incorrect execSteps", new TestStepArrayList(), testCase1.getExecutionSteps());
-		Assert.assertEquals("Incorrect File", "aScript", ((TestCaseLink) testCase1).getTestCaseScript());
+		Assert.assertEquals("Incorrect File", "aScript", ((TestCaseLink) testCase1).getTestCaseScript().getExecutionScript());
 		Assert.assertEquals("Incorrect restoreSteps", restoreSteps, testCase1.getRestoreSteps());
 		
 		TestCase testCase2 = myTestCaseFactory.create( "tc1",

@@ -6,7 +6,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.ParameterTable;
+import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestEntry;
 import org.testtoolinterfaces.testsuite.TestGroupLinkImpl;
 import org.testtoolinterfaces.testsuite.TestScriptImpl;
@@ -34,7 +34,7 @@ public class TestGroupLinkImplTester extends TestCase
 										 8,
 										 new ArrayList<String>(),
 										 new TestStepArrayList(),
-										 new TestScriptImpl( "noName", "stamdard", new ParameterTable()),
+										 new TestScriptImpl( "noName", "stamdard", new ParameterArrayList()),
 										 new TestStepArrayList() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, testGroup.getType());

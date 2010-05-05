@@ -18,7 +18,7 @@ public class TestStepFactoryImpl implements TestStepFactory
 							int aSequence,
 							String aDescription,
 							String aCommand,
-							ParameterTable aParameter )
+							ParameterArrayList aParameter )
 	{
 		TestStep testStep = (TestStep) new TestStepImpl( anActionType,
 														 aSequence,

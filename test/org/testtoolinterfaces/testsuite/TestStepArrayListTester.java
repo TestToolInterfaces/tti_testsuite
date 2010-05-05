@@ -4,7 +4,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.ParameterTable;
+import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestStep;
 import org.testtoolinterfaces.testsuite.TestStepArrayList;
 import org.testtoolinterfaces.testsuite.TestStepImpl;
@@ -37,8 +37,8 @@ public class TestStepArrayListTester extends TestCase
 	 */
 	public void testCase_sort()
 	{
-		TestStepImpl ts1 = new TestStepImpl(TestStep.ActionType.check, 3, "description", "command", new ParameterTable());
-		TestStepImpl ts2 = new TestStepImpl(TestStep.ActionType.check, 2, "description2", "command2", new ParameterTable());
+		TestStepImpl ts1 = new TestStepImpl(TestStep.ActionType.check, 3, "description", "command", new ParameterArrayList());
+		TestStepImpl ts2 = new TestStepImpl(TestStep.ActionType.check, 2, "description2", "command2", new ParameterArrayList());
 		TestStepArrayList tsArray = new TestStepArrayList();
 		tsArray.add(ts1);
 		tsArray.add(ts2);

@@ -7,7 +7,7 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.testtoolinterfaces.testsuite.ParameterTable;
+import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestStep;
 import org.testtoolinterfaces.testsuite.TestStepFactory;
 import org.testtoolinterfaces.testsuite.TestStepFactoryImpl;
@@ -44,10 +44,10 @@ public class TestStepFactoryImplTester extends junit.framework.TestCase
 													  4,
 													  "A description",
 													  "Command 1",
-													  new ParameterTable());
+													  new ParameterArrayList());
 
 		Assert.assertEquals("Incorrect Class", TestStepImpl.class, testStep.getClass());
-		Assert.assertEquals("Incorrect ID", "TestStep4", testStep.getId());
+		Assert.assertEquals("Incorrect ID", "TestStep_4", testStep.getId());
 		Assert.assertEquals("Incorrect Sequence Nr", 4, testStep.getSequenceNr());
 		Assert.assertEquals("Incorrect Description", "A description", testStep.getDescription());
 		Assert.assertEquals("Incorrect Command", "Command 1", testStep.getCommand());

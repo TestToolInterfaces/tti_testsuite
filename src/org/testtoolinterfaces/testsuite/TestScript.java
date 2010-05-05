@@ -15,5 +15,5 @@ public interface TestScript
 	/**
 	 * @return the Parameters
 	 */
-	public ParameterTable getParameters();
+	public ParameterArrayList getParameters();
 }
