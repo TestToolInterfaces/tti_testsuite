@@ -76,4 +76,10 @@ public class TestStepImpl extends TestEntryImpl implements TestStep
 	{
 		return "";
 	}
+
+	@Override
+	public String getDisplayName()
+	{
+		return getCommand();
+	}
 }

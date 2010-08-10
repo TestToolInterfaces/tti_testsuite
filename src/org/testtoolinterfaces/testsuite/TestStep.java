@@ -15,6 +15,11 @@ public interface TestStep extends TestEntry
 	public String getScript();
 
 	/**
+	 * @return the DisplayName
+	 */
+	public String getDisplayName();
+
+	/**
 	 * 
 	 */
 	public ParameterArrayList getParameters();

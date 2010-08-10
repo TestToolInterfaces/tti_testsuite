@@ -81,4 +81,10 @@ public class TestGroupLinkImpl extends TestEntryImpl implements TestGroupLink
 	{
 		return new TestEntryArrayList();
 	}
+	
+	@Override
+	public boolean hasGroupId(String aGroupId)
+	{
+		return true;
+	}
 }

@@ -69,4 +69,27 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	{
 		return myRequirementIds;
 	}
+
+	@Override
+	public boolean hasGroupId(String aGroupId)
+	{
+		if (this.getId().equals(aGroupId))
+		{
+			return true;
+		}
+
+		for (int key = 0; key < myExecutionEntries.size(); key++)
+    	{
+			TestEntry entry = myExecutionEntries.get(key);
+			if ( entry.getType() == TestEntry.TYPE.Group || entry.getType() == TestEntry.TYPE.GroupLink )
+			{
+				if ( ((TestGroup) entry).hasGroupId(aGroupId) )
+				{
+					return true;
+				}
+			}
+    	}
+
+		return false;
+	}
 }
