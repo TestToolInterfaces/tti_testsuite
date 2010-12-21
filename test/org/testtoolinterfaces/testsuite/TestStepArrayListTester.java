@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestStep;
 import org.testtoolinterfaces.testsuite.TestStepArrayList;
-import org.testtoolinterfaces.testsuite.TestStepImpl;
+import org.testtoolinterfaces.testsuite.TestStepSimple;
 
 
 public class TestStepArrayListTester extends TestCase
@@ -37,8 +37,8 @@ public class TestStepArrayListTester extends TestCase
 	 */
 	public void testCase_sort()
 	{
-		TestStepImpl ts1 = new TestStepImpl(TestStep.ActionType.check, 3, "description", "command", new ParameterArrayList());
-		TestStepImpl ts2 = new TestStepImpl(TestStep.ActionType.check, 2, "description2", "command2", new ParameterArrayList());
+		TestStepSimple ts1 = new TestStepCommand(TestStep.StepType.check, 3, "description", "command", "interface1", new ParameterArrayList());
+		TestStepSimple ts2 = new TestStepCommand(TestStep.StepType.check, 2, "description2", "command2", "interface2", new ParameterArrayList());
 		TestStepArrayList tsArray = new TestStepArrayList();
 		tsArray.add(ts1);
 		tsArray.add(ts2);

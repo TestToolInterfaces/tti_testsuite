@@ -1,31 +1,28 @@
 package org.testtoolinterfaces.testsuite;
 
-public interface TestStep extends TestEntry
+public abstract class TestStep
 {
-	public enum ActionType { initialize, action, check, restore };
+	public enum StepType { action, check, set };
 
-	/**
-	 * @return the Command
-	 */
-	public String getCommand();
+	private StepType myActionType;
+	private int mySequenceNr;
 
-	/**
-	 * @return the Script
-	 */
-	public String getScript();
-
-	/**
-	 * @return the DisplayName
-	 */
-	public String getDisplayName();
-
-	/**
-	 * 
-	 */
-	public ParameterArrayList getParameters();
+	public TestStep(StepType aStepType, int aSequenceNr)
+	{
+		myActionType = aStepType;
+		mySequenceNr = aSequenceNr;
+	}
 
 	/**
 	 * @return the Action Type
 	 */
-	public ActionType getActionType();
+	public StepType getStepType()
+	{
+		return myActionType;
+	}
+	
+	public int getSequenceNr()
+	{
+		return mySequenceNr;
+	}
 }

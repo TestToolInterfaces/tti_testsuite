@@ -1,16 +1,12 @@
 package org.testtoolinterfaces.testsuite;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.util.Hashtable;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.ParameterArrayList;
-import org.testtoolinterfaces.testsuite.TestEntry;
-import org.testtoolinterfaces.testsuite.TestGroupLinkImpl;
-import org.testtoolinterfaces.testsuite.TestScriptImpl;
-import org.testtoolinterfaces.testsuite.TestStepArrayList;
 
 
 public class TestGroupLinkImplTester extends TestCase
@@ -30,12 +26,11 @@ public class TestGroupLinkImplTester extends TestCase
 	 */
 	public void testCase_constructor()
 	{
-		TestGroupLinkImpl testGroup = new TestGroupLinkImpl( "ID2",
-										 8,
-										 new ArrayList<String>(),
-										 new TestStepArrayList(),
-										 new TestScriptImpl( "noName", "stamdard", new ParameterArrayList()),
-										 new TestStepArrayList() );
+		TestGroupLink testGroup = new TestGroupLink( "ID2", 
+		                                                     "aType",
+		                                                     8,
+															 new File(""),
+															 new Hashtable<String, String>() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, testGroup.getType());
 		Assert.assertEquals("Incorrect ID", "ID2", testGroup.getId());

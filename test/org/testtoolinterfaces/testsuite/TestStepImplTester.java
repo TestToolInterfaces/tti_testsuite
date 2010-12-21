@@ -7,8 +7,6 @@ import org.junit.Before;
 import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestEntry;
 import org.testtoolinterfaces.testsuite.TestStep;
-import org.testtoolinterfaces.testsuite.TestStepImpl;
-
 
 public class TestStepImplTester extends TestCase
 {
@@ -27,13 +25,16 @@ public class TestStepImplTester extends TestCase
 	 */
 	public void testCase_constructor()
 	{
-		TestStepImpl testStep = new TestStepImpl(
-				TestStep.ActionType.action,
+		TestStepCommand testStep = new TestStepCommand(
+				TestStep.StepType.action,
 				0,
 				"An extensive description",
 				"command string",
+				"interface1",
 				new ParameterArrayList() );
+
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Command", "command string", testStep.getCommand());
+		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface());
 	}
 }
