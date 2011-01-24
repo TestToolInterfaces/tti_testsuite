@@ -28,11 +28,11 @@ public class TestCaseLink extends TestEntryImpl
 		super(aTestCaseId, TestEntry.TYPE.CaseLink, "", aSequenceNr);
 
 		Trace.println( Trace.CONSTRUCTOR,
-					   "TestCaseLinkImpl( " + aTestCaseId + ", " 
-					   						+ aType + ", "
-					   						+ aSequenceNr + ", "
-					   						+ aTestCaseLink.getPath() + ", "
-					   						+ anAnyAttributes.size() + " )",
+					   "TestCaseLink( " + aTestCaseId + ", " 
+					                    + aType + ", "
+					                    + aSequenceNr + ", "
+					                    + aTestCaseLink.getPath() + ", "
+					                    + anAnyAttributes.size() + " )",
 					   true );
 
 		myType = aType;
