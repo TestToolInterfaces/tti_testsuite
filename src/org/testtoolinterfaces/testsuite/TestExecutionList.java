@@ -6,16 +6,16 @@ import org.testtoolinterfaces.utils.Trace;
 import org.testtoolinterfaces.utils.Warning;
 
 
-public class TestStepArrayList extends ArrayList<TestStep>
+public class TestExecutionList extends ArrayList<TestStep>
 {
 	private static final long	serialVersionUID	= 1L;
 
-	public TestStepArrayList()
+	public TestExecutionList()
 	{
 		super();
 	}
 	
-	public TestStepArrayList( int aSize )
+	public TestExecutionList( int aSize )
 	{
 		super( aSize );
 	}
@@ -26,12 +26,12 @@ public class TestStepArrayList extends ArrayList<TestStep>
 	 * 
 	 *  Note: the old ArrayList remains unchanged
 	 */
-	public TestStepArrayList sort()
+	public TestExecutionList sort()
 	{
 		Trace.println(Trace.LEVEL.UTIL);
 		Trace.println(Trace.LEVEL.ALL, "Array size is " + this.size());
 
-		TestStepArrayList newSteps = new TestStepArrayList(this.size());
+		TestExecutionList newSteps = new TestExecutionList(this.size());
 		for (int old_i = 0; old_i < this.size(); old_i++)
 	    {
 			int new_i = 0;
@@ -47,8 +47,8 @@ public class TestStepArrayList extends ArrayList<TestStep>
 					newSteps.get(new_i).getSequenceNr() == newSteps.get(new_i-1).getSequenceNr())
 			{
 				Warning.println("Steps found with same sequence numbers: " +
-						newSteps.get(new_i-1).getStepType() + " and " +
-						newSteps.get(new_i).getStepType() + "\n" +
+						newSteps.get(new_i-1).getSequenceNr() + " and " +
+						newSteps.get(new_i).getSequenceNr() + "\n" +
 						"         Order of execution is undetermined...");
 			}
 	    }

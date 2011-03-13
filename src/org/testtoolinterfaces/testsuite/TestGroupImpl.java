@@ -1,6 +1,7 @@
 package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import org.testtoolinterfaces.utils.Trace;
 
@@ -13,35 +14,41 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	private TestEntryArrayList myExecutionEntries;
     private TestStepArrayList myRestoreSteps;
     
-	public TestGroupImpl(String aTestGroupId, 
-			int aSequenceNr,
-			String aDescription, 
-			ArrayList<String> aRequirementIds, 
-			TestStepArrayList anInitializationSteps, 
-			TestEntryArrayList aTestEntries, 
-			TestStepArrayList aRestoreSteps)
+    private Hashtable<String, String> myAnyAttributes;
+    private Hashtable<String, String> myAnyElements;
+    
+	public TestGroupImpl( String aTestGroupId,
+	                      Hashtable<String, String> anAnyAttributes,
+	                      String aDescription,
+	                      ArrayList<String> aRequirementIds,
+	                      TestStepArrayList aPrepareSteps,
+	                      TestEntryArrayList aTestEntries,
+	                      TestStepArrayList aRestoreSteps,
+	                      Hashtable<String, String> anAnyElements )
 	{
-		super(aTestGroupId, TestEntry.TYPE.Group, aDescription, aSequenceNr);
+		super(aTestGroupId, TestEntry.TYPE.Group, aDescription, 0);
 		Trace.println( Trace.LEVEL.CONSTRUCTOR,
 					   "TestGroupImpl( " + aTestGroupId + ", "
 									 + aDescription + ", "
-									 + aSequenceNr + ", "
 									 + aRequirementIds.hashCode() + ", "
-									 + anInitializationSteps + ", "
+									 + aPrepareSteps + ", "
 									 + aTestEntries + ", "
 									 + aRestoreSteps + " )",
 						true );
 
 		myRequirementIds = aRequirementIds;
-		myInitializationSteps = anInitializationSteps;
+		myInitializationSteps = aPrepareSteps;
 		myExecutionEntries = aTestEntries;
 		myRestoreSteps = aRestoreSteps;
+		
+		myAnyAttributes = anAnyAttributes;
+		myAnyElements = anAnyElements;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.testtoolinterfaces.TestSuite.TestGroup#getInitializationSteps()
 	 */
-	public TestStepArrayList getInitializationSteps()
+	public TestStepArrayList getPrepareSteps()
 	{
 		return myInitializationSteps;
 	}

@@ -4,6 +4,7 @@
 package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import org.testtoolinterfaces.utils.Trace;
 
@@ -15,33 +16,33 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 {
     private ArrayList<String> myRequirementIds;
 
-    private TestStepArrayList myInitializationSteps;
+    private TestStepArrayList myPrepareSteps;
     private TestStepArrayList myExecutionSteps;
     private TestStepArrayList myRestoreSteps;
 
 	public TestCaseImpl(
 			String aTestCaseId,
-			int aSequenceNr,
+            Hashtable<String, String> anAnyAttributes,
 			String aDescription,
 			ArrayList<String> aRequirementIds,
-			TestStepArrayList anInitializationSteps,
+			TestStepArrayList aPrepareSteps,
 			TestStepArrayList anExecutionSteps,
-			TestStepArrayList aRestoreSteps)
+			TestStepArrayList aRestoreSteps,
+			Hashtable<String, String> anAnyElements )
 	{
-		super(aTestCaseId, TestEntry.TYPE.Case, aDescription, aSequenceNr);
+		super(aTestCaseId, TestEntry.TYPE.Case, aDescription, 0);
 		Trace.println( Trace.LEVEL.CONSTRUCTOR,
 					   "TestCaseImpl( " + aTestCaseId + ", "
 									+ aDescription + ", "
-									+ aSequenceNr + ", "
 									+ aRequirementIds.hashCode() + ", "
-									+ anInitializationSteps + ", "
+									+ aPrepareSteps + ", "
 									+ anExecutionSteps + ", "
 									+ aRestoreSteps + " )",
 						true );
 
 		myRequirementIds = aRequirementIds;
 
-		myInitializationSteps = anInitializationSteps;
+		myPrepareSteps = aPrepareSteps;
 		myExecutionSteps = anExecutionSteps;
 		myRestoreSteps = aRestoreSteps;
 	}
@@ -49,9 +50,9 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 	/* (non-Javadoc)
 	 * @see org.testtoolinterfaces.TestSuite.TestCase#getInitializationSteps()
 	 */
-	public TestStepArrayList getInitializationSteps()
+	public TestStepArrayList getPrepareSteps()
 	{
-		return myInitializationSteps;
+		return myPrepareSteps;
 	}
 
 	/* (non-Javadoc)

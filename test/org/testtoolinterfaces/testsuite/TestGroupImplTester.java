@@ -1,6 +1,7 @@
 package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
@@ -30,16 +31,16 @@ public class TestGroupImplTester extends TestCase
 	public void testCase_constructor()
 	{
 		TestGroupImpl testGroup = new TestGroupImpl( "ID",
-										 4,
-										 "A Description",
-										 new ArrayList<String>(),
-										 new TestStepArrayList(),
-										 new TestEntryArrayList(),
-										 new TestStepArrayList() );
+		                                             new Hashtable<String, String>(),
+		                                             "A Description",
+		                                             new ArrayList<String>(),
+		                                             new TestStepArrayList(),
+		                                             new TestEntryArrayList(),
+		                                             new TestStepArrayList(),
+		                                             new Hashtable<String, String>() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
 		Assert.assertEquals("Incorrect ID", "ID", testGroup.getId());
-		Assert.assertEquals("Incorrect Sequence NR", 4, testGroup.getSequenceNr());
 		Assert.assertEquals("Incorrect Description", "A Description", testGroup.getDescription());
 	}
 }

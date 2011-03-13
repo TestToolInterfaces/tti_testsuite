@@ -12,7 +12,7 @@ public interface TestCase extends TestEntry
 	/**
 	 * @return the Initialization Steps
 	 */
-	public TestStepArrayList getInitializationSteps();
+	public TestStepArrayList getPrepareSteps();
 
 	/**
 	 * @return the Execution Steps
