@@ -10,12 +10,6 @@ public class ParameterArrayList extends ArrayList<Parameter>
 {
 	private static final long serialVersionUID = 1L;
 
-//	public void put(Parameter aParameter)
-//	{
-//		Trace.println(Trace.LEVEL.UTIL, "put( " + aParameter.getName() + " )");
-//		this.add(aParameter);
-//	}
-
 	public ParameterArrayList()
 	{
 		super();
@@ -25,7 +19,24 @@ public class ParameterArrayList extends ArrayList<Parameter>
 	{
 		super( aSize );
 	}
-	
+
+	/*
+	 * Returns the parameter with requested Id
+	 * Returns null if the parameter was not found
+	 */
+	public Parameter get( String anId )
+	{
+		for (int i = 0; i < this.size(); i++)
+	    {
+			if ( get(i).getName().equals(anId) )
+			{
+				return get(i);
+			}
+	    }
+		
+		return null;
+	}
+
 	/**
 	 * Sorts the Entries in the ArrayList.
 	 * @return a new sorted TestEntryArrayList
@@ -34,8 +45,8 @@ public class ParameterArrayList extends ArrayList<Parameter>
 	 */
 	public ParameterArrayList sort()
 	{
-		Trace.println(Trace.LEVEL.UTIL);
-		Trace.println(Trace.LEVEL.ALL, "Array size is " + this.size());
+		Trace.println(Trace.UTIL);
+		Trace.println(Trace.ALL, "Array size is " + this.size());
 
 		ParameterArrayList newParams = new ParameterArrayList(this.size());
 		for (int old_i = 0; old_i < this.size(); old_i++)

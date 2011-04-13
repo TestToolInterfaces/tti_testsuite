@@ -63,6 +63,51 @@ public class Parameter
 		return myValue;
 	}
 
+	/**
+	 * @return the value as a <Type> object
+	 *         null if it doesn't exist or is not a <Type>
+	 *         In case of Boolean, false is returned in stead of null. Be carefull to use this for booleans
+	 */
+	@SuppressWarnings("unchecked")
+	public <Type> Type getValueAs(Class<Type> aType)
+	{
+		Type varOfType = null;
+		if ( aType == Boolean.class )
+		{
+			varOfType = (Type) Boolean.FALSE;
+		}
+
+		if ( aType == Integer.class )
+		{
+			varOfType = (Type) new Integer( 0 );
+		}
+
+		Object value = this.getValue();
+		if ( value != null && this.getValueType( ).equals( aType ) )
+		{
+			varOfType = (Type) value;
+		}
+		return varOfType;
+	}
+
+	/**
+	 * @return the value as a String object
+	 *         null if it doesn't exist or is not a String
+	 */
+	public String getValueAsString()
+	{
+		return getValueAs( String.class );
+	}
+
+	/**
+	 * @return the value as a int
+	 *         0 if it doesn't exist or is not a String
+	 */
+	public int getValueAsInt()
+	{
+		return getValueAs( Integer.class ).intValue();
+	}
+
 	public void setValue(Object aValue)
 	{
 		Trace.println(Trace.SETTER, "setValue( " + aValue.toString() + " )", true);

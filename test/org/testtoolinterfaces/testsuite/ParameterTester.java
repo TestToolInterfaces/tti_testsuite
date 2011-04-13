@@ -43,6 +43,30 @@ public class ParameterTester extends TestCase
 	}
 
 	/**
+	 * Test method for {@link org.testtoolinterfaces.testsuite.Parameter#getValueAsString()}.
+	 */
+	@Test
+	public void testGetValueAsString()
+	{
+		Parameter param = new Parameter( "name", "Value" );
+		
+		Assert.assertEquals("Incorrect value", "Value", param.getValueAsString());
+	}
+
+	/**
+	 * Test method for {@link org.testtoolinterfaces.testsuite.Parameter#getValueAsInt()}.
+	 */
+	@Test
+	public void testGetValueAsInt()
+	{
+		Parameter param = new Parameter( "name", 3 );
+		Assert.assertEquals("Incorrect value", 3, param.getValueAsInt());
+
+		Parameter paramString = new Parameter( "name", "five" );
+		Assert.assertEquals("Incorrect value", 0, paramString.getValueAsInt());
+	}
+
+	/**
 	 * Test method for {@link org.testtoolinterfaces.testsuite.Parameter#Parameter(java.lang.String, org.testtoolinterfaces.testsuite.Parameter.DIRECTION, java.lang.Object)}.
 	 */
 	@Test
