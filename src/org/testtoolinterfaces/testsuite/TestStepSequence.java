@@ -15,7 +15,7 @@ public class TestStepSequence
 
 	public ArrayList<TestStep> getSteps()
 	{
-		Trace.println(Trace.LEVEL.GETTER);
+		Trace.println(Trace.GETTER);
 		return mySteps;
 	}
 }

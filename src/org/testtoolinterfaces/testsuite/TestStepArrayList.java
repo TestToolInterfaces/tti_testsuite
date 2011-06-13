@@ -28,8 +28,8 @@ public class TestStepArrayList extends ArrayList<TestStep>
 	 */
 	public TestStepArrayList sort()
 	{
-		Trace.println(Trace.LEVEL.UTIL);
-		Trace.println(Trace.LEVEL.ALL, "Array size is " + this.size());
+		Trace.println(Trace.UTIL);
+		Trace.println(Trace.ALL, "Array size is " + this.size());
 
 		TestStepArrayList newSteps = new TestStepArrayList(this.size());
 		for (int old_i = 0; old_i < this.size(); old_i++)
@@ -40,7 +40,7 @@ public class TestStepArrayList extends ArrayList<TestStep>
 			{
 				new_i++;
 			}
-    		Trace.println(Trace.LEVEL.ALL, "inserting " + this.get(old_i).getStepType() + " at location " + new_i);
+    		Trace.println(Trace.ALL, "inserting " + this.get(old_i).getStepType() + " at location " + new_i);
 			newSteps.add(new_i, this.get(old_i));
 
 			if (new_i>0 && 
@@ -53,7 +53,7 @@ public class TestStepArrayList extends ArrayList<TestStep>
 			}
 	    }
 	    
-		Trace.println(Trace.LEVEL.ALL, "New Array size is " + newSteps.size());
+		Trace.println(Trace.ALL, "New Array size is " + newSteps.size());
 		return newSteps;
 	}
 

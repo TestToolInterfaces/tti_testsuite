@@ -19,13 +19,13 @@ public class TestStepSetCase
 
 	public String getId()
 	{
-		Trace.println(Trace.LEVEL.GETTER);
+		Trace.println(Trace.GETTER);
 		return myId;
 	}
 
 	public String getAfterSetCase()
 	{
-		Trace.println(Trace.LEVEL.GETTER);
+		Trace.println(Trace.GETTER);
 		return myAfter;
 	}
 
@@ -34,7 +34,7 @@ public class TestStepSetCase
 	 */
 	public TestStep getCheck()
 	{
-		Trace.println(Trace.LEVEL.GETTER);
+		Trace.println(Trace.GETTER);
 		return myCheck;
 	}
 
@@ -43,7 +43,7 @@ public class TestStepSetCase
 	 */
 	public TestStepArrayList getThen()
 	{
-		Trace.println(Trace.LEVEL.GETTER);
+		Trace.println(Trace.GETTER);
 		return myThen;
 	}
 }

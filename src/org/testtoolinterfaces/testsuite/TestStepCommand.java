@@ -12,7 +12,7 @@ import org.testtoolinterfaces.utils.Trace;
 public class TestStepCommand extends TestStepSimple
 {
 	private String myCommand;
-	private String myInterface;
+	private TestInterface myInterface;
 
 	/**
 	 * @param anActionType one of action, check
@@ -26,16 +26,16 @@ public class TestStepCommand extends TestStepSimple
 			 			 int aSequenceNr,
 						 String aDescription,
 						 String aCommand,
-						 String anInterface,
+						 TestInterface anInterface,
 						 ParameterArrayList aParameters )
 	{
 		super(anActionType, aSequenceNr, aDescription, aParameters);
-		Trace.println( Trace.LEVEL.CONSTRUCTOR,
+		Trace.println( Trace.CONSTRUCTOR,
 					   "TestStepImpl( " + anActionType + ", "
 	   									+ aSequenceNr + ", "
 	   									+ aDescription + ", "
 					   					+ aCommand + ", "
-					   					+ anInterface + ", "
+					   					+ anInterface.getInterfaceName() + ", "
 					   					+ "aParameters )",
 				   	   true );
 
@@ -48,7 +48,7 @@ public class TestStepCommand extends TestStepSimple
 		return myCommand;
 	}
 
-	public String getInterface()
+	public TestInterface getInterface()
 	{
 		return myInterface;
 	}

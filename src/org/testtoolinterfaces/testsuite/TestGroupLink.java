@@ -31,7 +31,7 @@ public class TestGroupLink extends TestEntryImpl
 	{
 		super(aTestGroupId, TestEntry.TYPE.GroupLink, "", aSequenceNr);
 
-		Trace.println( Trace.LEVEL.CONSTRUCTOR,
+		Trace.println( Trace.CONSTRUCTOR,
 					   "TestGroupLinkImpl( " + aTestGroupId + ", " 
 					   						 + aTestGroupType + ", "
 					   						 + aSequenceNr + ", "

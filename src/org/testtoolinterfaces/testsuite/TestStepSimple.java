@@ -33,7 +33,7 @@ abstract public class TestStepSimple extends TestStep implements TestEntry
 						 ParameterArrayList aParameters )
 	{
 		super(anActionType, aSequenceNr);
-		Trace.println( Trace.LEVEL.CONSTRUCTOR,
+		Trace.println( Trace.CONSTRUCTOR,
 					   "TestStepImpl( " + anActionType + ", "
 	   									+ aSequenceNr + ", "
 	   									+ aDescription + ", "

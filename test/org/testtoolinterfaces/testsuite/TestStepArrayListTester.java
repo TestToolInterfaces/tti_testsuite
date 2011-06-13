@@ -37,8 +37,10 @@ public class TestStepArrayListTester extends TestCase
 	 */
 	public void testCase_sort()
 	{
-		TestStepSimple ts1 = new TestStepCommand(TestStep.StepType.check, 3, "description", "command", "interface1", new ParameterArrayList());
-		TestStepSimple ts2 = new TestStepCommand(TestStep.StepType.check, 2, "description2", "command2", "interface2", new ParameterArrayList());
+		TestInterface_stub iface1 = new TestInterface_stub( "interface1" );
+		TestStepSimple ts1 = new TestStepCommand(TestStep.StepType.check, 3, "description", "command", iface1, new ParameterArrayList());
+		TestInterface_stub iface2 = new TestInterface_stub( "interface2" );
+		TestStepSimple ts2 = new TestStepCommand(TestStep.StepType.check, 2, "description2", "command2", iface2, new ParameterArrayList());
 		TestStepArrayList tsArray = new TestStepArrayList();
 		tsArray.add(ts1);
 		tsArray.add(ts2);

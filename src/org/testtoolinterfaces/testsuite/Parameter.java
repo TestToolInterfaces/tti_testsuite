@@ -8,38 +8,24 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class Parameter
 {
-	public static enum DIRECTION { IN, OUT, INOUT }
-
-	private DIRECTION myInOut;
 	private String myParameter;
 	private Class<? extends Object> myType;
 	private int myIndex;
 	private Object myValue;
 	
 	/**
-	 * @param aParameter
-	 * @param aValue
+	 * @param aParameter Parameter name
+	 * @param aValue	Value or variable name
 	 */
 	public Parameter(String aParameter, Object aValue)
 	{
 		Trace.println(Trace.CONSTRUCTOR, "Parameter( " + aParameter + ", " 
 													   + aValue.toString() + " )", true);
-	    myInOut = DIRECTION.IN;
-
 	    myIndex = 99;
 
 	    myParameter = aParameter;
 	    myType = aValue.getClass();
 	    myValue = aValue;
-	}
-
-	public Parameter(String aParameter, DIRECTION anInOut, Object aValue)
-	{
-		this(aParameter, aValue);
-		Trace.println(Trace.CONSTRUCTOR, "Parameter( " + aParameter + ", " 
-													   + anInOut.toString() + ", "
-													   + aValue.toString() + " )", true);
-		myInOut = anInOut;
 	}
 
 	public String getName()
@@ -111,10 +97,7 @@ public class Parameter
 	public void setValue(Object aValue)
 	{
 		Trace.println(Trace.SETTER, "setValue( " + aValue.toString() + " )", true);
-		if ((myInOut == DIRECTION.INOUT) || (myInOut == DIRECTION.OUT))
-	    {
-			myValue = aValue;
-	    }
+		myValue = aValue;
 	}
 
 	public int getIndex()
@@ -127,11 +110,5 @@ public class Parameter
 	{
 		Trace.println(Trace.SETTER, "setValue( " + anIndex + " )", true);
 	    myIndex = anIndex;
-	}
-
-	public boolean isIn()
-	{
-		Trace.println(Trace.UTIL);
-	    return ((myInOut == DIRECTION.IN) || (myInOut == DIRECTION.INOUT));
 	}
 }

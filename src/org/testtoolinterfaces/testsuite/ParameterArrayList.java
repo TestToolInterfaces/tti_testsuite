@@ -57,7 +57,7 @@ public class ParameterArrayList extends ArrayList<Parameter>
 			{
 				new_i++;
 			}
-    		Trace.println(Trace.LEVEL.ALL, "inserting " + this.get(old_i).getName() + " at location " + new_i);
+    		Trace.println(Trace.ALL, "inserting " + this.get(old_i).getName() + " at location " + new_i);
     		newParams.add(new_i, this.get(old_i));
 
 			if (new_i>0 && 
@@ -70,7 +70,7 @@ public class ParameterArrayList extends ArrayList<Parameter>
 			}
 	    }
 	    
-		Trace.println(Trace.LEVEL.ALL, "New Array size is " + newParams.size());
+		Trace.println(Trace.ALL, "New Array size is " + newParams.size());
 		return newParams;
 	}
 }

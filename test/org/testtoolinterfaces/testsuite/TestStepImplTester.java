@@ -25,16 +25,17 @@ public class TestStepImplTester extends TestCase
 	 */
 	public void testCase_constructor()
 	{
+		TestInterface_stub iface = new TestInterface_stub( "interface1" );
 		TestStepCommand testStep = new TestStepCommand(
 				TestStep.StepType.action,
 				0,
 				"An extensive description",
 				"command string",
-				"interface1",
+				iface,
 				new ParameterArrayList() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Command", "command string", testStep.getCommand());
-		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface());
+		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface().getInterfaceName());
 	}
 }

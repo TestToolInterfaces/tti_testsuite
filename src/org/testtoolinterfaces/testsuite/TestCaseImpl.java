@@ -31,7 +31,7 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 			Hashtable<String, String> anAnyElements )
 	{
 		super(aTestCaseId, TestEntry.TYPE.Case, aDescription, 0);
-		Trace.println( Trace.LEVEL.CONSTRUCTOR,
+		Trace.println( Trace.CONSTRUCTOR,
 					   "TestCaseImpl( " + aTestCaseId + ", "
 									+ aDescription + ", "
 									+ aRequirementIds.hashCode() + ", "

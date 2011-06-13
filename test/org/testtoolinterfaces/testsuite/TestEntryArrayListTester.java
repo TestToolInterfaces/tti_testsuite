@@ -52,11 +52,12 @@ public class TestEntryArrayListTester extends TestCase
 				new TestStepArrayList(),
 				new Hashtable<String, String>());
 
+		TestInterface_stub iface = new TestInterface_stub( "interface" );
 		TestStepSimple testStep = new TestStepCommand(TestStep.StepType.check,
 				3,
 				"description2",
 				"command2",
-				"interface",
+				iface,
 				new ParameterArrayList() );
 
 		TestGroupImpl testGroup = new TestGroupImpl( "ID",

@@ -22,7 +22,7 @@ abstract class TestEntryImpl implements TestEntry
 	 */
 	public TestEntryImpl(String anId, TYPE aType, String aDescription, int aSequenceNr)
 	{
-		Trace.println( Trace.LEVEL.CONSTRUCTOR,
+		Trace.println( Trace.CONSTRUCTOR,
 					   "TestEntryImpl(" + anId + ", "
 					   				+ aType + ", "
 					   				+ aDescription + ", "

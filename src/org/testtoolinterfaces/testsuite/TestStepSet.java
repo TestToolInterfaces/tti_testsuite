@@ -16,7 +16,7 @@ public class TestStepSet extends TestStep
 
 	public ArrayList<TestStepSetCase> getSetCase()
 	{
-		Trace.println(Trace.LEVEL.GETTER);
+		Trace.println(Trace.GETTER);
 		return myCases;
 	}
 }

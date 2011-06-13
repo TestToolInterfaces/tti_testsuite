@@ -29,7 +29,7 @@ public class TestStepScript extends TestStepSimple
 						 ParameterArrayList aParameters )
 	{
 		super(anActionType, aSequenceNr, aDescription, aParameters);
-		Trace.println( Trace.LEVEL.CONSTRUCTOR,
+		Trace.println( Trace.CONSTRUCTOR,
 					   "TestStepImpl( " + anActionType + ", "
 	   									+ aSequenceNr + ", "
 	   									+ aDescription + ", "

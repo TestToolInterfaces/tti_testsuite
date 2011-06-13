@@ -27,7 +27,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      Hashtable<String, String> anAnyElements )
 	{
 		super(aTestGroupId, TestEntry.TYPE.Group, aDescription, 0);
-		Trace.println( Trace.LEVEL.CONSTRUCTOR,
+		Trace.println( Trace.CONSTRUCTOR,
 					   "TestGroupImpl( " + aTestGroupId + ", "
 									 + aDescription + ", "
 									 + aRequirementIds.hashCode() + ", "
