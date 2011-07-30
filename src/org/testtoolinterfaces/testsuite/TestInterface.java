@@ -18,5 +18,10 @@ public interface TestInterface
 	
 	public boolean verifyParameters( String aCommand,
 	                                 ParameterArrayList aParameters )
-		   throws TestSuiteException;
+			throws TestSuiteException;
+	
+	public Parameter createParameter( String aName,
+	                                  String aType,
+	                                  String aValue )
+			throws TestSuiteException;
 }

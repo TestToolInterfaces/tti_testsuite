@@ -19,7 +19,7 @@ public class TestSuiteException extends TTIException
 	 */
 	public TestSuiteException(String aMessage)
 	{
-		this( aMessage, "Unknown", 0 );
+		this( aMessage, "UnknownID", 0 );
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class TestSuiteException extends TTIException
 	 */
 	public TestSuiteException(String aMessage, Exception anException)
 	{
-		this( aMessage, "Unknown", 0, anException );
+		this( aMessage, "UnknownID", 0, anException );
 	}
 
 	/**

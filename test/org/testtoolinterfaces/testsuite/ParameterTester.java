@@ -53,6 +53,24 @@ public class ParameterTester extends TestCase
 	}
 
 	/**
+	 * Test method for {@link org.testtoolinterfaces.testsuite.Parameter#getValueAs( java.lang.Class<Type> )}.
+	 */
+	@Test
+	public void testGetValueAsDerivedObject()
+	{
+		TestGroupLink tgLink = new TestGroupLink( "anId", "tgType", 2, null, null );
+		Parameter param = new Parameter( "name", tgLink );
+		
+		TestEntryImpl paramValue = param.getValueAs(TestEntryImpl.class);
+		Assert.assertNotNull(paramValue);
+		Assert.assertEquals("Incorrect class", TestGroupLink.class, paramValue.getClass());
+
+		TestEntry paramSameValue = param.getValueAs(TestEntry.class);
+		Assert.assertNotNull(paramSameValue);
+		Assert.assertEquals("Incorrect class", TestGroupLink.class, paramSameValue.getClass());
+	}
+
+	/**
 	 * Test method for {@link org.testtoolinterfaces.testsuite.Parameter#getValueAsInt()}.
 	 */
 	@Test

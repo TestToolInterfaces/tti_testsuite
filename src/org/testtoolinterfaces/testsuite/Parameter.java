@@ -51,8 +51,11 @@ public class Parameter
 
 	/**
 	 * @return the value as a <Type> object
-	 *         null if it doesn't exist or is not a <Type>
+	 *         null if it doesn't exist or is not exactly a <Type> (also no subclasses)
+	 *         
 	 *         In case of Boolean, false is returned in stead of null. Be carefull to use this for booleans
+	 *         
+	 *         
 	 */
 	@SuppressWarnings("unchecked")
 	public <Type> Type getValueAs(Class<Type> aType)
@@ -69,7 +72,7 @@ public class Parameter
 		}
 
 		Object value = this.getValue();
-		if ( value != null && this.getValueType( ).equals( aType ) )
+		if ( value != null && aType.isInstance(value) )
 		{
 			varOfType = (Type) value;
 		}
