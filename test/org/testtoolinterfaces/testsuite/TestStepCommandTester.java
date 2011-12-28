@@ -4,11 +4,12 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestEntry;
 import org.testtoolinterfaces.testsuite.TestStep;
 
-public class TestStepImplTester extends TestCase
+public class TestStepCommandTester extends TestCase
 {
 	/**
 	 * @throws java.lang.Exception
@@ -21,21 +22,33 @@ public class TestStepImplTester extends TestCase
 	}
 
 	/**
-	 * Test Cases
+	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
 	 */
-	public void testCase_constructor()
+	@Test
+	public void testConstructor()
 	{
 		TestInterface_stub iface = new TestInterface_stub( "interface1" );
+
+		ParameterArrayList paramTable = new ParameterArrayList();
+
+		ParameterImpl param_e = new ParameterImpl("-e", "e-parameter");
+		param_e.setIndex(0);
+		paramTable.add(param_e);
+
 		TestStepCommand testStep = new TestStepCommand(
 				TestStep.StepType.action,
 				0,
 				"An extensive description",
 				"command string",
 				iface,
-				new ParameterArrayList() );
+				paramTable );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
+		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
+		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
+
 		Assert.assertEquals("Incorrect Command", "command string", testStep.getCommand());
 		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface().getInterfaceName());
+		Assert.assertEquals("Incorrect Display Name", "command string", testStep.getDisplayName());
 	}
 }

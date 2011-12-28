@@ -6,23 +6,38 @@ import org.testtoolinterfaces.utils.Trace;
 import org.testtoolinterfaces.utils.Warning;
 
 
+/**
+ * Class to hold an ArrayList of {@link org.testtoolinterfaces.testsuite.ParameterImpl}.
+ * It provides sorting over the index of Parameter
+ * 
+ * @author Arjan Kranenburg
+ *
+ */
 public class ParameterArrayList extends ArrayList<Parameter>
 {
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= -6149383369436247558L;
 
+	/**
+	 * @see java.util.ArrayList#ArrayList()
+	 */
 	public ParameterArrayList()
 	{
 		super();
 	}
 	
+	/**
+	 * @see java.util.ArrayList#ArrayList( int )
+	 */
 	public ParameterArrayList( int aSize )
 	{
 		super( aSize );
 	}
 
-	/*
-	 * Returns the parameter with requested Id
-	 * Returns null if the parameter was not found
+	/**
+	 * Getter for a parameter from the list.
+	 * 
+	 * @param  anId the id of the parameter to get.
+	 * @return the parameter with requested Id or null if the parameter was not found.
 	 */
 	public Parameter get( String anId )
 	{
@@ -39,9 +54,11 @@ public class ParameterArrayList extends ArrayList<Parameter>
 
 	/**
 	 * Sorts the Entries in the ArrayList.
-	 * @return a new sorted TestEntryArrayList
+	 * It uses the index from {@link org.testtoolinterfaces.testsuite.ParameterImpl} to sort.
 	 * 
-	 *  Note: the old ArrayList remains unchanged
+	 * @return a new sorted ParameterArrayList.
+	 * 
+	 * Note: the old ParameterArrayList remains unchanged
 	 */
 	public ParameterArrayList sort()
 	{
@@ -66,7 +83,7 @@ public class ParameterArrayList extends ArrayList<Parameter>
 				Warning.println("Steps found with same sequence numbers: " +
 						newParams.get(new_i-1).getName() + " and " +
 						newParams.get(new_i).getName() + "\n" +
-						"         Order of execution is undetermined...");
+						"         Order of parameters is undetermined...");
 			}
 	    }
 	    

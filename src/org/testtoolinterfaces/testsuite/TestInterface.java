@@ -20,7 +20,7 @@ public interface TestInterface
 	                                 ParameterArrayList aParameters )
 			throws TestSuiteException;
 	
-	public Parameter createParameter( String aName,
+	public ParameterImpl createParameter( String aName,
 	                                  String aType,
 	                                  String aValue )
 			throws TestSuiteException;

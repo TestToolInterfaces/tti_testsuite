@@ -26,7 +26,8 @@ public interface TestEntry
 	public int getSequenceNr();
 
 	/**
-	 * @param aDescription: the new description
+	 * 
+	 * @param aDescription the new description
 	 */
 	public void setDescription(String aDescription);
 

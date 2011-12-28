@@ -6,6 +6,8 @@ package org.testtoolinterfaces.testsuite;
 import org.testtoolinterfaces.utils.Trace;
 
 /**
+ * Class for simple command.
+ * 
  * @author Arjan Kranenburg
  *
  */
@@ -43,11 +45,17 @@ public class TestStepCommand extends TestStepSimple
 		myInterface = anInterface;
 	}
 
+	/**
+	 * @return the command
+	 */
 	public String getCommand()
 	{
 		return myCommand;
 	}
 
+	/**
+	 * @return the TestInterface
+	 */
 	public TestInterface getInterface()
 	{
 		return myInterface;

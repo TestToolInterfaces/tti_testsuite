@@ -48,18 +48,18 @@ public class TestInterface_stub implements TestInterface
 	}
 
 	@Override
-	public Parameter createParameter( String aName,
+	public ParameterImpl createParameter( String aName,
 	                                  String aType,
 	                                  String aValue ) throws TestSuiteException
 	{
 		if ( aType.equalsIgnoreCase( "string" ) )
 		{
-			return new Parameter(aName, (String) aValue);
+			return new ParameterImpl(aName, (String) aValue);
 		}			
 
 		if ( aType.equalsIgnoreCase( "int" ) )
 		{
-			return new Parameter(aName, new Integer(aValue) );
+			return new ParameterImpl(aName, new Integer(aValue) );
 		}
 
 		throw new TestSuiteException("Parameter type " + aType + " is not supported for this interface", aName);

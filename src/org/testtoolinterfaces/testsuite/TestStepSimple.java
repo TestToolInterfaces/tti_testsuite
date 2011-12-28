@@ -6,13 +6,12 @@ package org.testtoolinterfaces.testsuite;
 import org.testtoolinterfaces.utils.Trace;
 
 /**
+ * Abstract Class for a Simple Test Step
  * @author Arjan Kranenburg
  *
  */
 abstract public class TestStepSimple extends TestStep implements TestEntry
 {
-	public enum SimpleType { action, check };
-
 	private ParameterArrayList myParameters;
 	private String myDescription;
 

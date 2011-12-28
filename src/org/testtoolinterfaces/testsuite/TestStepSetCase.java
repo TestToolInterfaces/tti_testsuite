@@ -2,6 +2,13 @@ package org.testtoolinterfaces.testsuite;
 
 import org.testtoolinterfaces.utils.Trace;
 
+/**
+ * Class for a case in a Test Step Set.
+ * If the check of this case passes, this step is further used.
+ * 
+ * @author Arjan Kranenburg
+ *
+ */
 public class TestStepSetCase
 {
 	String myId;
