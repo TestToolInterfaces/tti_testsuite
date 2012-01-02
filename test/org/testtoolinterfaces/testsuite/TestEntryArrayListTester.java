@@ -12,8 +12,6 @@ import org.testtoolinterfaces.testsuite.TestCaseImpl;
 import org.testtoolinterfaces.testsuite.TestEntryArrayList;
 import org.testtoolinterfaces.testsuite.TestGroupImpl;
 import org.testtoolinterfaces.testsuite.TestStep;
-import org.testtoolinterfaces.testsuite.TestStepArrayList;
-import org.testtoolinterfaces.testsuite.TestStepSimple;
 
 
 public class TestEntryArrayListTester extends TestCase
@@ -47,13 +45,13 @@ public class TestEntryArrayListTester extends TestCase
 				new Hashtable<String, String>(),
 				"An extensive description",
 				new ArrayList<String>(),
-				new TestStepArrayList(),
-				new TestStepArrayList(),
-				new TestStepArrayList(),
+				new TestStepOrdered(0),
+				new TestStepOrdered(0),
+				new TestStepOrdered(0),
 				new Hashtable<String, String>());
 
 		TestInterface_stub iface = new TestInterface_stub( "interface" );
-		TestStepSimple testStep = new TestStepCommand(TestStep.StepType.check,
+		TestStep testStep = new TestStepCommand(
 				3,
 				"description2",
 				"command2",
@@ -64,9 +62,9 @@ public class TestEntryArrayListTester extends TestCase
 				 new Hashtable<String, String>(),
 				 "A Description",
 				 new ArrayList<String>(),
-				 new TestStepArrayList(),
+				 new TestStepOrdered(0),
 				 new TestEntryArrayList(),
-				 new TestStepArrayList(),
+				 new TestStepOrdered(0),
 				 new Hashtable<String, String>() );
 
 	

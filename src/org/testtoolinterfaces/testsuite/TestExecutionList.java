@@ -40,7 +40,7 @@ public class TestExecutionList extends ArrayList<TestStep>
 			{
 				new_i++;
 			}
-    		Trace.println(Trace.ALL, "inserting " + this.get(old_i).getStepType() + " at location " + new_i);
+    		Trace.println(Trace.ALL, "inserting " + this.get(old_i).getDisplayName() + " at location " + new_i);
 			newSteps.add(new_i, this.get(old_i));
 
 			if (new_i>0 && 

@@ -10,9 +10,9 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 {
     private ArrayList<String> myRequirementIds;
 
-	private TestStepArrayList myInitializationSteps;
+	private TestStepOrdered myInitializationSteps;
 	private TestEntryArrayList myExecutionEntries;
-    private TestStepArrayList myRestoreSteps;
+    private TestStepOrdered myRestoreSteps;
     
     private Hashtable<String, String> myAnyAttributes;
     private Hashtable<String, String> myAnyElements;
@@ -21,9 +21,9 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      Hashtable<String, String> anAnyAttributes,
 	                      String aDescription,
 	                      ArrayList<String> aRequirementIds,
-	                      TestStepArrayList aPrepareSteps,
+	                      TestStepOrdered aPrepareSteps,
 	                      TestEntryArrayList aTestEntries,
-	                      TestStepArrayList aRestoreSteps,
+	                      TestStepOrdered aRestoreSteps,
 	                      Hashtable<String, String> anAnyElements )
 	{
 		super(aTestGroupId, TestEntry.TYPE.Group, aDescription, 0);
@@ -48,7 +48,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	/* (non-Javadoc)
 	 * @see org.testtoolinterfaces.TestSuite.TestGroup#getInitializationSteps()
 	 */
-	public TestStepArrayList getPrepareSteps()
+	public TestStepOrdered getPrepareSteps()
 	{
 		return myInitializationSteps;
 	}
@@ -64,7 +64,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	/* (non-Javadoc)
 	 * @see org.testtoolinterfaces.TestSuite.TestGroup#getRestoreSteps()
 	 */
-	public TestStepArrayList getRestoreSteps()
+	public TestStepOrdered getRestoreSteps()
 	{
 		return myRestoreSteps;
 	}

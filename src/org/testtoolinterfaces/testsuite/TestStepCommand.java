@@ -11,7 +11,7 @@ import org.testtoolinterfaces.utils.Trace;
  * @author Arjan Kranenburg
  *
  */
-public class TestStepCommand extends TestStepSimple
+public class TestStepCommand extends TestStep
 {
 	private String myCommand;
 	private TestInterface myInterface;
@@ -24,16 +24,19 @@ public class TestStepCommand extends TestStepSimple
 	 * @param anInterface
 	 * @param aParameters
 	 */
-	public TestStepCommand( StepType anActionType,
+	public TestStepCommand(
+//	                       StepType anActionType,
 			 			 int aSequenceNr,
 						 String aDescription,
 						 String aCommand,
 						 TestInterface anInterface,
 						 ParameterArrayList aParameters )
 	{
-		super(anActionType, aSequenceNr, aDescription, aParameters);
+		super( aSequenceNr, aDescription, aParameters );
+//		super(anActionType, aSequenceNr, aDescription, aParameters);
 		Trace.println( Trace.CONSTRUCTOR,
-					   "TestStepImpl( " + anActionType + ", "
+					   "TestStepImpl( "
+//		               					+ anActionType + ", "
 	   									+ aSequenceNr + ", "
 	   									+ aDescription + ", "
 					   					+ aCommand + ", "
@@ -61,9 +64,7 @@ public class TestStepCommand extends TestStepSimple
 		return myInterface;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.testtoolinterfaces.TestSuite.TestStepSimple#getDisplayName()
-	 */
+	@Override
 	public String getDisplayName()
 	{
 		return myCommand;

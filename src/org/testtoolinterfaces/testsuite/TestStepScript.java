@@ -11,29 +11,29 @@ import org.testtoolinterfaces.utils.Trace;
  * @author Arjan Kranenburg
  *
  */
-public class TestStepScript extends TestStepSimple
+public class TestStepScript extends TestStep
 {
 	private String myScript;
 	private String myScriptType;
 
 	/**
-	 * @param anActionType one of action, check
 	 * @param aSequenceNr
 	 * @param aDescription
 	 * @param aScript
 	 * @param aScriptType
 	 * @param aParameters
 	 */
-	public TestStepScript( StepType anActionType,
+	public TestStepScript( 
 			 			   int aSequenceNr,
 			 			   String aDescription,
 			 			   String aScript,
 			 			   String aScriptType,
 			 			   ParameterArrayList aParameters )
 	{
-		super(anActionType, aSequenceNr, aDescription, aParameters);
+		super(aSequenceNr, aParameters);
+		this.setDescription(aDescription);
 		Trace.println( Trace.CONSTRUCTOR,
-					   "TestStepImpl( " + anActionType + ", "
+					   "TestStepScript( "
 	   									+ aSequenceNr + ", "
 	   									+ aDescription + ", "
 					   					+ aScript + ", "
@@ -61,8 +61,8 @@ public class TestStepScript extends TestStepSimple
 		return myScriptType;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.testtoolinterfaces.TestSuite.TestStepSimple#getDisplayName()
+	/**
+	 * 
 	 */
 	public String getDisplayName()
 	{

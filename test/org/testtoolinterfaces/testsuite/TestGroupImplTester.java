@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.testtoolinterfaces.testsuite.TestEntry;
 import org.testtoolinterfaces.testsuite.TestEntryArrayList;
 import org.testtoolinterfaces.testsuite.TestGroupImpl;
-import org.testtoolinterfaces.testsuite.TestStepArrayList;
 
 
 public class TestGroupImplTester extends TestCase
@@ -34,9 +33,9 @@ public class TestGroupImplTester extends TestCase
 		                                             new Hashtable<String, String>(),
 		                                             "A Description",
 		                                             new ArrayList<String>(),
-		                                             new TestStepArrayList(),
+		                                             new TestStepOrdered(0),
 		                                             new TestEntryArrayList(),
-		                                             new TestStepArrayList(),
+		                                             new TestStepOrdered(0),
 		                                             new Hashtable<String, String>() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());

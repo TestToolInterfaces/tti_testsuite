@@ -9,8 +9,6 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.testtoolinterfaces.testsuite.TestCaseImpl;
 import org.testtoolinterfaces.testsuite.TestEntry;
-import org.testtoolinterfaces.testsuite.TestStepArrayList;
-
 
 public class TestCaseImplTester extends TestCase
 {
@@ -34,9 +32,9 @@ public class TestCaseImplTester extends TestCase
 				new Hashtable<String, String>(),
 				"An extensive description",
 				new ArrayList<String>(),
-				new TestStepArrayList(),
-				new TestStepArrayList(),
-				new TestStepArrayList(),
+				new TestStepOrdered(0),
+				new TestStepOrdered(0),
+				new TestStepOrdered(0),
 				new Hashtable<String, String>()
 		);
 

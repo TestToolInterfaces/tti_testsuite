@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestEntry;
-import org.testtoolinterfaces.testsuite.TestStep;
 
 public class TestStepScriptTester extends TestCase
 {
@@ -28,7 +27,6 @@ public class TestStepScriptTester extends TestCase
 	public void testConstructor()
 	{
 		TestStepScript testStep = new TestStepScript(
-				TestStep.StepType.check,
 				0,
 				"An extensive description",
 				"script",

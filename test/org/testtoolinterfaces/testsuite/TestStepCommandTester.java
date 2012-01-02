@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestEntry;
-import org.testtoolinterfaces.testsuite.TestStep;
 
 public class TestStepCommandTester extends TestCase
 {
@@ -36,7 +35,6 @@ public class TestStepCommandTester extends TestCase
 		paramTable.add(param_e);
 
 		TestStepCommand testStep = new TestStepCommand(
-				TestStep.StepType.action,
 				0,
 				"An extensive description",
 				"command string",

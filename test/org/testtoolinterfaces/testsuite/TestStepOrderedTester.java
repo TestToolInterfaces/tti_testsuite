@@ -6,11 +6,9 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestStep;
-import org.testtoolinterfaces.testsuite.TestStepArrayList;
-import org.testtoolinterfaces.testsuite.TestStepSimple;
 
 
-public class TestStepArrayListTester extends TestCase
+public class TestStepOrderedTester extends TestCase
 {
 	/**
 	 * @throws java.lang.Exception
@@ -27,7 +25,7 @@ public class TestStepArrayListTester extends TestCase
 	 */
 	public void testCase_constructor()
 	{
-		TestStepArrayList tsArray = new TestStepArrayList();
+		TestStepOrdered tsArray = new TestStepOrdered(0);
 
 		Assert.assertEquals("Incorrect Size", 0, tsArray.size());
 	}
@@ -38,14 +36,14 @@ public class TestStepArrayListTester extends TestCase
 	public void testCase_sort()
 	{
 		TestInterface_stub iface1 = new TestInterface_stub( "interface1" );
-		TestStepSimple ts1 = new TestStepCommand(TestStep.StepType.check, 3, "description", "command", iface1, new ParameterArrayList());
+		TestStep ts1 = new TestStepCommand(3, "description", "command", iface1, new ParameterArrayList());
 		TestInterface_stub iface2 = new TestInterface_stub( "interface2" );
-		TestStepSimple ts2 = new TestStepCommand(TestStep.StepType.check, 2, "description2", "command2", iface2, new ParameterArrayList());
-		TestStepArrayList tsArray = new TestStepArrayList();
+		TestStep ts2 = new TestStepCommand(2, "description2", "command2", iface2, new ParameterArrayList());
+		TestStepUnordered tsArray = new TestStepUnordered(0);
 		tsArray.add(ts1);
 		tsArray.add(ts2);
 
-		TestStepArrayList newArray = tsArray.sort();
+		TestStepOrdered newArray = tsArray.sort();
 
 		// Old array remains unchanged
 		Assert.assertEquals("Incorrect Size", 2, tsArray.size());
