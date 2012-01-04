@@ -1,15 +1,35 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestStep;
 
+/**
+ * 
+ * @author Arjan
+ *
+ * TODO Test Order in ALL cases. E.g. when messed with ListIterator.
+ * 
+ */
 
 public class TestStepOrderedTester extends TestCase
 {
+	TestStep myTestStep1 = null;
+	TestStep myTestStep2 = null;
+	TestStep myTestStep3 = null;
+	TestStep myTestStep4 = null;
+	TestStep myTestStep5 = null;
+	TestStep myTestStep6 = null;
+	
+	TestStepOrdered myTestStepList = null;
+
+	
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -18,40 +38,478 @@ public class TestStepOrderedTester extends TestCase
 	{
 		System.out.println("==========================================================================");
 		System.out.println(this.getName() + ":");
+
+		TestInterface_stub iface1 = new TestInterface_stub( "interface1" );
+		TestInterface_stub iface2 = new TestInterface_stub( "interface2" );
+		if ( myTestStep1 == null )
+		{
+			myTestStep1 = new TestStepCommand(5, "command1", iface1);
+		}
+
+		if ( myTestStep2 == null )
+		{
+			myTestStep2 = new TestStepCommand(2, "command2", iface2);
+		}
+
+		if ( myTestStep3 == null )
+		{
+			myTestStep3 = new TestStepCommand(3, "command3", iface1);
+		}
+
+		if ( myTestStep4 == null )
+		{
+			myTestStep4 = new TestStepCommand(1, "command4", iface2);
+		}
+
+		if ( myTestStep5 == null )
+		{
+			myTestStep5 = new TestStepCommand(6, "command5", iface1);
+		}
+
+		if ( myTestStep6 == null )
+		{
+			myTestStep6 = new TestStepCommand(4, "command6", iface2);
+		}
+		
+		if ( myTestStepList == null )
+		{
+			myTestStepList = new TestStepOrdered(0);
+			myTestStepList.add(myTestStep1);
+			myTestStepList.add(myTestStep2);
+			myTestStepList.add(myTestStep3);
+			myTestStepList.add(myTestStep4);
+			myTestStepList.add(myTestStep5);
+			myTestStepList.add(myTestStep6);
+		}
 	}
 
 	/**
 	 * Test Cases
 	 */
-	public void testCase_constructor()
+	public void testCase_constructor1()
 	{
 		TestStepOrdered tsArray = new TestStepOrdered(0);
 
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
+		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
+		Assert.assertTrue(  "Incorrect Parameters", tsArray.getParameters().isEmpty());
+
+		Assert.assertEquals("Incorrect Size", 0, tsArray.size());
+		Assert.assertTrue(  "Incorrect isEmpty", tsArray.isEmpty());
+		Assert.assertEquals("Incorrect Display Name", "Ordered (0 TestStep(s))", tsArray.getDisplayName());
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_constructor2()
+	{
+		TestStepOrdered tsArray = new TestStepOrdered(0,2);
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
+		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
+		Assert.assertTrue(  "Incorrect Parameters", tsArray.getParameters().isEmpty());
+
+		Assert.assertEquals("Incorrect Size", 0, tsArray.size());
+		Assert.assertEquals("Incorrect Display Name", "Ordered (0 TestStep(s))", tsArray.getDisplayName());
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_add()
+	{
+		TestStepOrdered tsArray = new TestStepOrdered(0);
+		Assert.assertTrue("Add not OK", tsArray.add(myTestStep1) );
+		Assert.assertTrue("Add not OK", tsArray.add(myTestStep2) );
+		Assert.assertTrue("Add not OK", tsArray.add(myTestStep3) );
+		Assert.assertTrue("Add not OK", tsArray.add(myTestStep4) );
+		Assert.assertTrue("Add not OK", tsArray.add(myTestStep5) );
+		Assert.assertTrue("Add not OK", tsArray.add(myTestStep6) );
+
+//		System.out.println("Modified contents of tsArray: "); 
+//		Iterator<TestStep> itr = tsArray.iterator();
+//		while(itr.hasNext())
+//		{
+//		    TestStep step = itr.next(); 
+//		    System.out.println( step.getSequenceNr() + " - " + step.getDisplayName());
+//		} 
+
+		Assert.assertEquals("Incorrect Size", 6, tsArray.size());
+		Assert.assertEquals("Incorrect SeqNr 1st step", 1, tsArray.get(0).getSequenceNr());
+		Assert.assertEquals("Incorrect SeqNr 2nd step", 2, tsArray.get(1).getSequenceNr());
+
+		Assert.assertTrue("Add not OK", tsArray.add(myTestStep2) ); // Duplicates are possible
+		Assert.assertEquals("Incorrect Size", 7, tsArray.size());
+	}
+	
+	/**
+	 * Test Cases
+	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_add_int()
+	{
+		TestStepOrdered tsArray = new TestStepOrdered(0);
+		tsArray.add(2, myTestStep1);
+		tsArray.add(1, myTestStep2);
+
+		Assert.assertEquals("Incorrect Size", 2, tsArray.size());
+		Assert.assertEquals("Incorrect SeqNr 1st step", 2, tsArray.get(0).getSequenceNr());
+		Assert.assertEquals("Incorrect SeqNr 2nd step", 5, tsArray.get(1).getSequenceNr());
+	}
+	
+	/**
+	 * Test Cases
+	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_set()
+	{
+		TestStepOrdered tsArray = new TestStepOrdered(0);
+		Assert.assertEquals("Incorrect TestStep returned", myTestStep1, tsArray.set(2, myTestStep1));
+		Assert.assertEquals("Incorrect TestStep returned", myTestStep2, tsArray.set(5, myTestStep2));
+
+		Assert.assertEquals("Incorrect Size", 2, tsArray.size());
+	}
+	
+	/**
+	 * Test Cases
+	 */
+	public void testCase_iterator()
+	{
+		Iterator<TestStep> itr = myTestStepList.iterator();
+		int i = 0;
+		while(itr.hasNext())
+		{
+		    TestStep step = itr.next();
+			Assert.assertEquals("Incorrect SeqNr " + step.getDisplayName(), ++i, step.getSequenceNr());
+		} 
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_listIterator()
+	{
+		ListIterator<TestStep> litr = myTestStepList.listIterator();
+		int i = 0;
+		while(litr.hasNext())
+		{
+		    TestStep step = litr.next();
+			Assert.assertEquals("Incorrect SeqNr " + step.getDisplayName(), ++i, step.getSequenceNr());
+		} 
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_listIterator_int()
+	{
+		int i = 3; // We start at 3
+		ListIterator<TestStep> litr = myTestStepList.listIterator( i );
+		while(litr.hasNext())
+		{
+		    TestStep step = litr.next();
+			Assert.assertEquals("Incorrect SeqNr " + step.getDisplayName(), ++i, step.getSequenceNr());
+		} 
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_clear()
+	{
+		TestStepOrdered tsArray = new TestStepOrdered(0);
+		tsArray.add(myTestStep1);
+		tsArray.add(myTestStep2);
+		tsArray.add(myTestStep3);
+
+		Assert.assertEquals("Incorrect Size", 3, tsArray.size());
+		tsArray.clear();
 		Assert.assertEquals("Incorrect Size", 0, tsArray.size());
 	}
 
 	/**
 	 * Test Cases
 	 */
-	public void testCase_sort()
+	public void testCase_remove()
 	{
-		TestInterface_stub iface1 = new TestInterface_stub( "interface1" );
-		TestStep ts1 = new TestStepCommand(3, "description", "command", iface1, new ParameterArrayList());
-		TestInterface_stub iface2 = new TestInterface_stub( "interface2" );
-		TestStep ts2 = new TestStepCommand(2, "description2", "command2", iface2, new ParameterArrayList());
-		TestStepUnordered tsArray = new TestStepUnordered(0);
-		tsArray.add(ts1);
-		tsArray.add(ts2);
+		TestStepOrdered tsArray = new TestStepOrdered(0);
+		tsArray.add(myTestStep1);
+		tsArray.add(myTestStep2);
+		tsArray.add(myTestStep3);
 
-		TestStepOrdered newArray = tsArray.sort();
-
-		// Old array remains unchanged
+		Assert.assertEquals("Incorrect Size", 3, tsArray.size());
+		Assert.assertTrue("Remove not OK", tsArray.remove(myTestStep2) );
 		Assert.assertEquals("Incorrect Size", 2, tsArray.size());
-		Assert.assertEquals("Incorrect SeqNr 1st step", 3, tsArray.get(0).getSequenceNr());
-		Assert.assertEquals("Incorrect SeqNr 2nd step", 2, tsArray.get(1).getSequenceNr());
+		Assert.assertFalse("Remove OK, should not", tsArray.remove(myTestStep2) ); //again
+		Assert.assertEquals("Incorrect Size", 2, tsArray.size());
+		Assert.assertTrue("Remove not OK", tsArray.remove(myTestStep1) );
+		Assert.assertEquals("Incorrect Size", 1, tsArray.size());
+		Assert.assertFalse("Remove OK, should not", tsArray.remove(myTestStep4) ); //non-existing
+		Assert.assertEquals("Incorrect Size", 1, tsArray.size());
+		tsArray.add(myTestStep5); // new one
+		Assert.assertEquals("Incorrect Size", 2, tsArray.size());
+		Assert.assertTrue("Remove not OK", tsArray.remove(myTestStep3) ); // last of orginal
+		Assert.assertEquals("Incorrect Size", 1, tsArray.size());
 
-		Assert.assertEquals("Incorrect Size", 2, newArray.size());
-		Assert.assertEquals("Incorrect SeqNr 1st step", 2, newArray.get(0).getSequenceNr());
-		Assert.assertEquals("Incorrect SeqNr 2nd step", 3, newArray.get(1).getSequenceNr());
+		tsArray.add(myTestStep6);
+		tsArray.add(myTestStep6); // Duplicates are possible
+		Assert.assertEquals("Incorrect Size", 3, tsArray.size());
+		Assert.assertTrue("Remove not OK", tsArray.remove(myTestStep6) ); // Removes one
+		Assert.assertEquals("Incorrect Size", 2, tsArray.size());
+		Assert.assertTrue("Remove not OK", tsArray.remove(myTestStep6) ); // Removes other
+		Assert.assertEquals("Incorrect Size", 1, tsArray.size());
+		Assert.assertTrue("Remove not OK", tsArray.remove(myTestStep5) ); // last remaining
+		Assert.assertEquals("Incorrect Size", 0, tsArray.size());
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_remove_int()
+	{
+		// order of steps: 4 2 3 3 1
+		TestStepOrdered tsArray = new TestStepOrdered(0);
+		tsArray.add(myTestStep1);
+		tsArray.add(myTestStep2);
+		tsArray.add(myTestStep3);
+		tsArray.add(myTestStep3); // Duplicates are possible
+		tsArray.add(myTestStep4);
+
+		Assert.assertEquals("Incorrect Size", 5, tsArray.size());
+		Assert.assertEquals("Incorrect TestStep", myTestStep3, tsArray.remove(2) );
+		Assert.assertEquals("Incorrect Size", 4, tsArray.size());
+		Assert.assertEquals("Incorrect TestStep", myTestStep3, tsArray.remove(2) );
+		Assert.assertEquals("Incorrect Size", 3, tsArray.size());
+		Assert.assertEquals("Incorrect TestStep", myTestStep1, tsArray.remove(2) );
+		Assert.assertEquals("Incorrect Size", 2, tsArray.size());
+		Assert.assertEquals("Incorrect TestStep", myTestStep4, tsArray.remove(0) );
+	}
+	
+	/**
+	 * Test Cases
+	 */
+	public void testCase_removeAll()
+	{
+		TestStepOrdered tsArray1 = new TestStepOrdered(0);
+		tsArray1.add(myTestStep1);
+		tsArray1.add(myTestStep2);
+		tsArray1.add(myTestStep3);
+		tsArray1.add(myTestStep3); // Duplicates are possible
+		tsArray1.add(myTestStep4);
+
+		TestStepOrdered tsArray2 = new TestStepOrdered(0);
+		tsArray2.add(myTestStep2);
+		tsArray2.add(myTestStep3);
+
+		TestStepOrdered tsArray3 = new TestStepOrdered(0);
+		tsArray3.add(myTestStep4);
+		tsArray3.add(myTestStep5);
+
+		Assert.assertEquals("Incorrect Size", 5, tsArray1.size());
+
+		tsArray1.removeAll(tsArray2); // all of tsArray2 match
+		Assert.assertEquals("Incorrect Size", 2, tsArray1.size()); // Also both step3 are removed
+
+		tsArray1.removeAll(tsArray3); // some match
+		Assert.assertEquals("Incorrect Size", 1, tsArray1.size());
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_retainAll()
+	{
+		TestStepOrdered tsArray1 = new TestStepOrdered(0);
+		tsArray1.add(myTestStep1);
+		tsArray1.add(myTestStep2);
+		tsArray1.add(myTestStep3);
+		tsArray1.add(myTestStep3); // Duplicates are possible
+		tsArray1.add(myTestStep4);
+
+		TestStepOrdered tsArray2 = new TestStepOrdered(1);
+		tsArray2.add(myTestStep2);
+		tsArray2.add(myTestStep3);
+
+		TestStepOrdered tsArray3 = new TestStepOrdered(2);
+		tsArray3.add(myTestStep2);
+		tsArray3.add(myTestStep5);
+
+		TestStepOrdered tsArray4 = new TestStepOrdered(3);
+		tsArray4.add(myTestStep2);
+
+		Assert.assertEquals("Incorrect Size", 5, tsArray1.size());
+
+		Assert.assertTrue( "List not changed", tsArray1.retainAll(tsArray2) );
+		Assert.assertEquals("Incorrect Size", 3, tsArray1.size()); // Also both step3 are retained
+
+		Assert.assertTrue( "List not changed", tsArray1.retainAll(tsArray3) ); // some match
+		Assert.assertEquals("Incorrect Size", 1, tsArray1.size());
+
+		Assert.assertFalse( "List changed, should not", tsArray1.retainAll(tsArray4) ); // all matches
+		Assert.assertEquals("Incorrect Size", 1, tsArray1.size());
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_containsAll()
+	{
+		TestStepOrdered tsArray2 = new TestStepOrdered(1);
+		tsArray2.add(myTestStep2);
+		tsArray2.add(myTestStep4);
+
+		TestStepOrdered tsArray3 = new TestStepOrdered(2);
+		tsArray3.add(myTestStep2);
+		tsArray3.add(myTestStep5);
+		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));
+		tsArray3.add(testStep7);
+
+		TestStepOrdered tsArray4 = new TestStepOrdered(3);
+		tsArray4.add(myTestStep2);
+		tsArray4.add(myTestStep4);
+		tsArray4.add(myTestStep4);
+
+		Assert.assertTrue( "List did not contain all", myTestStepList.containsAll(tsArray2) );
+		Assert.assertFalse( "List contains all, but should not", myTestStepList.containsAll(tsArray3) );
+		Assert.assertTrue( "List did not contain all", tsArray4.containsAll(tsArray2) ); // Also works with duplicates
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_indexOf()
+	{
+		// order of steps: 4 2 3 6 1 5
+		Assert.assertEquals("Incorrect index", 4, myTestStepList.indexOf(myTestStep1));
+		Assert.assertEquals("Incorrect index", 1, myTestStepList.indexOf(myTestStep2));
+		Assert.assertEquals("Incorrect index", 2, myTestStepList.indexOf(myTestStep3));
+		Assert.assertEquals("Incorrect index", 0, myTestStepList.indexOf(myTestStep4));
+		Assert.assertEquals("Incorrect index", 5, myTestStepList.indexOf(myTestStep5));
+		Assert.assertEquals("Incorrect index", 3, myTestStepList.indexOf(myTestStep6));
+
+		// order of steps: 4 4 2
+		TestStepOrdered tsArray2 = new TestStepOrdered(1);
+		tsArray2.add(myTestStep2);
+		tsArray2.add(myTestStep4);
+		tsArray2.add(myTestStep4);
+		Assert.assertEquals("Incorrect index", -1, tsArray2.indexOf(myTestStep1));
+		Assert.assertEquals("Incorrect index", 2, tsArray2.indexOf(myTestStep2));
+		Assert.assertEquals("Incorrect index", 0, tsArray2.indexOf(myTestStep4));
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_lastIndexOf()
+	{
+		// order of steps: 4 4 2
+		TestStepOrdered tsArray2 = new TestStepOrdered(1);
+		tsArray2.add(myTestStep2);
+		tsArray2.add(myTestStep4);
+		tsArray2.add(myTestStep4);
+		Assert.assertEquals("Incorrect index", -1, tsArray2.lastIndexOf(myTestStep1));
+		Assert.assertEquals("Incorrect index", 2, tsArray2.lastIndexOf(myTestStep2));
+		Assert.assertEquals("Incorrect index", 1, tsArray2.lastIndexOf(myTestStep4));
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_toArray()
+	{
+		TestStep[] tsArray = myTestStepList.toArray();
+
+		Assert.assertEquals("Incorrect size", 6, tsArray.length );
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_toArray_Array()
+	{
+		TestStep[] array_small = new TestStep[ 4 ];
+		TestStep[] tsArray1 = myTestStepList.toArray( array_small );
+		Assert.assertNotSame("Same array returned", array_small, tsArray1);
+		Assert.assertEquals( "Incorrect size", 6, tsArray1.length );
+
+		TestStep[] array_ok = new TestStep[ 6 ];
+		TestStep[] tsArray2 = myTestStepList.toArray( array_ok );
+		Assert.assertSame("New array returned", array_ok, tsArray2);
+		Assert.assertEquals( "Incorrect size", 6, tsArray2.length );
+
+		TestStep[] array_large = new TestStep[ 9 ];
+		TestStep[] tsArray3 = myTestStepList.toArray( array_large );
+		Assert.assertSame("New array returned", array_large, tsArray3);
+		Assert.assertEquals( "Incorrect size", 9, tsArray3.length );
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_subList()
+	{
+		List<TestStep> tsArray = myTestStepList.subList(2, 4);
+
+		Assert.assertEquals("Incorrect size", 2, tsArray.size());
+		Assert.assertEquals("Incorrect step 1", "interface1->command3", tsArray.get(0).getDisplayName());
+		Assert.assertEquals("Incorrect step 2", "interface2->command6", tsArray.get(1).getDisplayName());
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_addAll_Collection()
+	{
+		// order of steps: 2 7 5 8
+		TestStepOrdered tsArray = new TestStepOrdered(0);
+		tsArray.add(myTestStep2);
+		tsArray.add(myTestStep5);
+		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));
+		tsArray.add(testStep7);
+		TestStepCommand testStep8 = new TestStepCommand(7, "command8", new TestInterface_stub( "interface1" ));
+		tsArray.add(testStep8);
+
+		Assert.assertTrue("No steps were added", tsArray.addAll(myTestStepList) );
+		Assert.assertEquals("Incorrect size", 10, tsArray.size());
+		Assert.assertEquals("Incorrect size", 6, myTestStepList.size()); // unchanged
+
+		// order of steps: 4 2 2 3 6 7 1 5 5 8
+		Assert.assertEquals("Incorrect index", 3, tsArray.indexOf(myTestStep3));
+		Assert.assertEquals("Incorrect index", 6, tsArray.indexOf(myTestStep1));
+		Assert.assertEquals("Incorrect index", 9, tsArray.indexOf(testStep8));
+
+		// order of steps: 4 4 2 2 2 3 3 6 6 7 1 1 5 5 5 8
+		Assert.assertTrue("No steps were added", tsArray.addAll(myTestStepList) );
+		Assert.assertEquals("Incorrect size", 16, tsArray.size());
+	}
+
+	/**
+	 * Test Cases
+	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_addAll_Int_Collection()
+	{
+		// order of steps: 2 7 5 8
+		TestStepOrdered tsArray = new TestStepOrdered(0);
+		tsArray.add(myTestStep2);
+		tsArray.add(myTestStep5);
+		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));
+		tsArray.add(testStep7);
+		TestStepCommand testStep8 = new TestStepCommand(7, "command8", new TestInterface_stub( "interface1" ));
+		tsArray.add(testStep8);
+
+		Assert.assertTrue("No steps were added", tsArray.addAll(2, myTestStepList) );
+		Assert.assertEquals("Incorrect size", 10, tsArray.size());
+		Assert.assertEquals("Incorrect size", 6, myTestStepList.size()); // unchanged
+
+		// order of steps: 4 2 2 3 6 7 1 5 5 8
+		Assert.assertEquals("Incorrect index", 3, tsArray.indexOf(myTestStep3));
+		Assert.assertEquals("Incorrect index", 6, tsArray.indexOf(myTestStep1));
+		Assert.assertEquals("Incorrect index", 9, tsArray.indexOf(testStep8));
+
+		// order of steps: 4 4 2 2 2 3 3 6 6 7 1 1 5 5 5 8
+		Assert.assertTrue("No steps were added", tsArray.addAll(5, myTestStepList) );
+		Assert.assertEquals("Incorrect size", 16, tsArray.size());
 	}
 }

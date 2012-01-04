@@ -1,14 +1,12 @@
 package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
-//import java.util.Collection;
+import java.util.Collection;
 import java.util.Iterator;
-//import java.util.List;
+import java.util.List;
 import java.util.ListIterator;
 
-
-public class TestStepOrdered extends TestStep
-//		implements List<TestStep>
+public class TestStepOrdered extends TestStep implements List<TestStep>
 {
 	private ArrayList<TestStep> mySteps;
 
@@ -29,21 +27,6 @@ public class TestStepOrdered extends TestStep
 		return mySteps.size();
 	}
 
-	/**
-	 * 
-	 * @param aSequenceNr
-	 * @return
-	 */
-	public TestStep get( int anIndex )
-	{
-		return mySteps.get(anIndex);
-	}
-	
-	public boolean add( TestStep aStep )
-	{
-		return mySteps.add( aStep );
-	}
-	
 	@Override
 	public String toString()
 	{
@@ -56,141 +39,184 @@ public class TestStepOrdered extends TestStep
 		return "Ordered (" + this.toString() + ")";
 	}
 
-//	@Override
-	public void add(int anIndex, TestStep aStep)
+	/**
+	 * 
+	 * @param aSequenceNr
+	 * @return
+	 */
+	public TestStep get( int anIndex )
 	{
-		mySteps.add(anIndex, aStep);
-	}
-/*
-	@Override
-	public boolean addAll(Collection<? extends TestStep> arg0)
-	{
-		// TODO Auto-generated method stub
-		return false;
+		return mySteps.get(anIndex);
 	}
 
-	@Override
-	public boolean addAll(int arg0, Collection<? extends TestStep> arg1)
+	public boolean add( TestStep aStep )
 	{
-		// TODO Auto-generated method stub
-		return false;
+		 // We start at the end, since in most cases steps will be added already in order.
+		ListIterator<TestStep> stepsIter = mySteps.listIterator( mySteps.size() );
+		
+		while ( stepsIter.hasPrevious() )
+		{
+			TestStep step = stepsIter.previous();
+			if (step.getSequenceNr() < aStep.getSequenceNr())
+			{
+				stepsIter.next(); // We were 1 too far
+				break;
+			}
+		}
+		stepsIter.add(aStep);
+
+		return true;
+	}
+
+	/**
+	 * In order to guarantee the order of the elements, this method is kept the same as
+	 * add(TestStep)
+	 */
+	@Override
+	@Deprecated
+	public void add(int anIndex, TestStep aStep)
+	{
+		add(aStep);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean addAll(Collection<? extends TestStep> aTestStepList)
+	{
+		boolean rc = false;
+		Iterator<TestStep> itr = (Iterator<TestStep>) aTestStepList.iterator();
+		while(itr.hasNext())
+		{
+			if ( this.add(itr.next()) )
+			{
+				rc = true;
+			}
+		}
+		
+		return rc;
+	}
+
+	/**
+	 * In order to guarantee the order of the elements, this method is kept the same as
+	 * add(Collection)
+	 */
+	@Override
+	@Deprecated
+	public boolean addAll(int anIndex, Collection<? extends TestStep> aTestStepList)
+	{
+		return this.addAll(aTestStepList);
 	}
 
 	@Override
 	public void clear()
 	{
-		// TODO Auto-generated method stub
-		
+		mySteps.clear();
 	}
 
 	@Override
-	public boolean contains(Object arg0)
+	public boolean contains(Object anObject)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return mySteps.contains(anObject);
 	}
 
 	@Override
-	public boolean containsAll(Collection<?> arg0)
+	public boolean containsAll(Collection<?> anObjects)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return mySteps.containsAll(anObjects);
 	}
 
 	@Override
-	public int indexOf(Object arg0)
+	public int indexOf(Object anObject)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return mySteps.indexOf(anObject);
 	}
 
 	@Override
 	public boolean isEmpty()
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return mySteps.isEmpty();
 	}
-*/
-//	@Override
+	@Override
 	public Iterator<TestStep> iterator()
 	{
 		return mySteps.iterator();
 	}
-/*
+
 	@Override
-	public int lastIndexOf(Object arg0)
+	public int lastIndexOf(Object anObject)
 	{
-		// TODO Auto-generated method stub
-		return 0;
+		return mySteps.lastIndexOf(anObject);
 	}
-*/
-//	@Override
+
+	@Override
 	public ListIterator<TestStep> listIterator()
 	{
 		return mySteps.listIterator();
 	}
 
-//	@Override
+	@Override
 	public ListIterator<TestStep> listIterator(int anIndex)
 	{
 		return mySteps.listIterator(anIndex);
 	}
-/*
+
 	@Override
-	public boolean remove(Object arg0)
+	public boolean remove(Object anObject)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return mySteps.remove(anObject);
 	}
 
 	@Override
-	public TestStep remove(int arg0)
+	public TestStep remove(int anIndex)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return mySteps.remove(anIndex);
 	}
 
 	@Override
-	public boolean removeAll(Collection<?> arg0)
+	public boolean removeAll(Collection<?> aTestSteps)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return mySteps.removeAll(aTestSteps);
 	}
 
 	@Override
-	public boolean retainAll(Collection<?> arg0)
+	public boolean retainAll(Collection<?> aTestSteps)
 	{
-		// TODO Auto-generated method stub
-		return false;
+		return mySteps.retainAll(aTestSteps);
+	}
+
+	/**
+	 * In order to guarantee the order of the elements, this method is kept the same as
+	 * add(TestStep)
+	 * 
+	 * @param anIndex	ignored
+	 * @param aTestStep	TestStep to be added
+	 * 
+	 * @return the added TestStep
+	 */
+	@Override
+	@Deprecated
+	public TestStep set(int anIndex, TestStep aTestStep)
+	{
+		this.add(aTestStep);
+		return aTestStep;
 	}
 
 	@Override
-	public TestStep set(int arg0, TestStep arg1)
+	public List<TestStep> subList(int aFromIndex, int aToIndex)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return mySteps.subList(aFromIndex, aToIndex);
 	}
 
 	@Override
-	public List<TestStep> subList(int arg0, int arg1)
+	public TestStep[] toArray()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		TestStep[] array = new TestStep[ mySteps.size() ];
+		return mySteps.toArray( array );
 	}
 
 	@Override
-	public Object[] toArray()
+	public <T> T[] toArray(T[] aTestStepArray)
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return mySteps.toArray(aTestStepArray);
 	}
-
-	@Override
-	public <T> T[] toArray(T[] arg0)
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-*/
-
 }

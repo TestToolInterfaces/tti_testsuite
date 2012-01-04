@@ -24,7 +24,7 @@ public class TestStepCommandTester extends TestCase
 	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
 	 */
 	@Test
-	public void testConstructor()
+	public void testConstructor1()
 	{
 		TestInterface_stub iface = new TestInterface_stub( "interface1" );
 
@@ -37,7 +37,7 @@ public class TestStepCommandTester extends TestCase
 		TestStepCommand testStep = new TestStepCommand(
 				0,
 				"An extensive description",
-				"command string",
+				"commandA",
 				iface,
 				paramTable );
 
@@ -45,8 +45,73 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
-		Assert.assertEquals("Incorrect Command", "command string", testStep.getCommand());
+		Assert.assertEquals("Incorrect Command", "commandA", testStep.getCommand());
 		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface().getInterfaceName());
-		Assert.assertEquals("Incorrect Display Name", "command string", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "commandA->interface1", testStep.getDisplayName());
+	}
+
+	/**
+	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
+	 */
+	@Test
+	public void testConstructor2()
+	{
+		TestInterface_stub iface = new TestInterface_stub( "interface1" );
+
+		TestStepCommand testStep = new TestStepCommand(
+				0,
+				"An extensive description",
+				"commandB",
+				iface );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
+		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
+		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
+		Assert.assertEquals("Incorrect Display Name", "commandB->interface1", testStep.getDisplayName());
+	}
+
+	/**
+	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
+	 */
+	@Test
+	public void testConstructor3()
+	{
+		TestInterface_stub iface = new TestInterface_stub( "interface1" );
+
+		ParameterArrayList paramTable = new ParameterArrayList();
+
+		ParameterImpl param_e = new ParameterImpl("-f", "f-parameter");
+		param_e.setIndex(0);
+		paramTable.add(param_e);
+
+		TestStepCommand testStep = new TestStepCommand(
+				0,
+				"commandC",
+				iface,
+				paramTable );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
+		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
+		Assert.assertEquals("Incorrect Parameters", "f-parameter", ((ParameterImpl) testStep.getParameters().get("-f")).getValue());
+		Assert.assertEquals("Incorrect Display Name", "commandC->interface1", testStep.getDisplayName());
+	}
+
+	/**
+	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
+	 */
+	@Test
+	public void testConstructor4()
+	{
+		TestInterface_stub iface = new TestInterface_stub( "interface1" );
+
+		TestStepCommand testStep = new TestStepCommand(
+				0,
+				"commandD",
+				iface );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
+		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
+		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
+		Assert.assertEquals("Incorrect Display Name", "commandD->interface1", testStep.getDisplayName());
 	}
 }

@@ -6,7 +6,11 @@ package org.testtoolinterfaces.testsuite;
 import org.testtoolinterfaces.utils.Trace;
 
 /**
- * Class for simple command.
+ * Class for Test Steps that consist of a single command.
+ * TestStepCommands all have a sequenceNr, a Command, and an Interface.
+ * And they may have a description or list of Parameter.
+ * 
+ * The interface is the interface towards the command must be issued.
  * 
  * @author Arjan Kranenburg
  *
@@ -17,15 +21,15 @@ public class TestStepCommand extends TestStep
 	private TestInterface myInterface;
 
 	/**
-	 * @param anActionType one of action, check
-	 * @param aSequenceNr
-	 * @param aDescription
-	 * @param aCommand
-	 * @param anInterface
-	 * @param aParameters
+	 * Creates a TestStepCommand
+	 * 
+	 * @param aSequenceNr	Sequence number, to be used in a list
+	 * @param aDescription	Description
+	 * @param aCommand		Command to execute
+	 * @param anInterface	Interface towards which the command is directed
+	 * @param aParameters	List of parameters
 	 */
 	public TestStepCommand(
-//	                       StepType anActionType,
 			 			 int aSequenceNr,
 						 String aDescription,
 						 String aCommand,
@@ -33,10 +37,8 @@ public class TestStepCommand extends TestStep
 						 ParameterArrayList aParameters )
 	{
 		super( aSequenceNr, aDescription, aParameters );
-//		super(anActionType, aSequenceNr, aDescription, aParameters);
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestStepImpl( "
-//		               					+ anActionType + ", "
 	   									+ aSequenceNr + ", "
 	   									+ aDescription + ", "
 					   					+ aCommand + ", "
@@ -46,6 +48,55 @@ public class TestStepCommand extends TestStep
 
 		myCommand = aCommand;
 		myInterface = anInterface;
+	}
+
+	/**
+	 * Creates a TestStepCommand with an empty parameter list
+	 * 
+	 * @param aSequenceNr	Sequence number, to be used in a list
+	 * @param aDescription	Description
+	 * @param aCommand		Command to execute
+	 * @param anInterface	Interface towards which the command is directed
+	 */
+	public TestStepCommand(
+			 			 int aSequenceNr,
+						 String aDescription,
+						 String aCommand,
+						 TestInterface anInterface )
+	{
+		this( aSequenceNr, aDescription, aCommand, anInterface, new ParameterArrayList() );
+	}
+
+	/**
+	 * Creates a TestStepCommand with no description
+	 * 
+	 * @param aSequenceNr	Sequence number, to be used in a list
+	 * @param aCommand		Command to execute
+	 * @param anInterface	Interface towards which the command is directed
+	 * @param aParameters	List of parameters
+	 */
+	public TestStepCommand(
+			 			 int aSequenceNr,
+						 String aCommand,
+						 TestInterface anInterface,
+						 ParameterArrayList aParameters )
+	{
+		this( aSequenceNr, "", aCommand, anInterface, aParameters );
+	}
+
+	/**
+	 * Creates a TestStepCommand with no description and an empty parameter list
+	 * 
+	 * @param aSequenceNr	Sequence number, to be used in a list
+	 * @param aCommand		Command to execute
+	 * @param anInterface	Interface towards which the command is directed
+	 */
+	public TestStepCommand(
+			 			 int aSequenceNr,
+						 String aCommand,
+						 TestInterface anInterface )
+	{
+		this( aSequenceNr, "", aCommand, anInterface, new ParameterArrayList() );
 	}
 
 	/**
@@ -67,6 +118,6 @@ public class TestStepCommand extends TestStep
 	@Override
 	public String getDisplayName()
 	{
-		return myCommand;
+		return myInterface.getInterfaceName() + "->" + myCommand;
 	}
 }
