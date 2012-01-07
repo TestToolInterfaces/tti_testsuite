@@ -6,25 +6,25 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 /**
- * Class for Test Steps that consist of a List of TestSteps.
- * The list is ordered on the Sequence Number at all times
+ * Class for Test Steps that consist of a Collection of TestSteps.
+ * The collection is ordered on the Sequence Number at all times.
  * 
  * This class implements the Collection<TestStep> interface
  * 
  * @author Arjan Kranenburg
  *
  */
-public class TestStepOrdered extends TestStep implements Collection<TestStep>
+public class TestStepCollection extends TestStep implements Collection<TestStep>
 {
 	private ArrayList<TestStep> mySteps;
 
-	public TestStepOrdered( int aSequenceNr )
+	public TestStepCollection( int aSequenceNr )
 	{
 		super( aSequenceNr );
 		mySteps = new ArrayList<TestStep>();
 	}
 	
-	public TestStepOrdered( int aSequenceNr, int aSize )
+	public TestStepCollection( int aSequenceNr, int aSize )
 	{
 		super( aSequenceNr );
 		mySteps = new ArrayList<TestStep>( aSize );

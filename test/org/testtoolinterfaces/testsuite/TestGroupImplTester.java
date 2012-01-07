@@ -33,9 +33,9 @@ public class TestGroupImplTester extends TestCase
 		                                             new Hashtable<String, String>(),
 		                                             "A Description",
 		                                             new ArrayList<String>(),
-		                                             new TestStepOrdered(0),
+		                                             new TestStepCollection(0),
 		                                             new TestEntryArrayList(),
-		                                             new TestStepOrdered(0),
+		                                             new TestStepCollection(0),
 		                                             new Hashtable<String, String>() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());

@@ -45,9 +45,9 @@ public class TestEntryArrayListTester extends TestCase
 				new Hashtable<String, String>(),
 				"An extensive description",
 				new ArrayList<String>(),
-				new TestStepOrdered(0),
-				new TestStepOrdered(0),
-				new TestStepOrdered(0),
+				new TestStepCollection(0),
+				new TestStepCollection(0),
+				new TestStepCollection(0),
 				new Hashtable<String, String>());
 
 		TestInterface_stub iface = new TestInterface_stub( "interface" );
@@ -62,9 +62,9 @@ public class TestEntryArrayListTester extends TestCase
 				 new Hashtable<String, String>(),
 				 "A Description",
 				 new ArrayList<String>(),
-				 new TestStepOrdered(0),
+				 new TestStepCollection(0),
 				 new TestEntryArrayList(),
-				 new TestStepOrdered(0),
+				 new TestStepCollection(0),
 				 new Hashtable<String, String>() );
 
 	

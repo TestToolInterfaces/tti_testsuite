@@ -12,7 +12,7 @@ public interface TestGroup extends TestEntry
 	/**
 	 * @return the Initialization Steps
 	 */
-	public TestStepOrdered getPrepareSteps();
+	public TestStepCollection getPrepareSteps();
 
 	/**
 	 * @return the Execution Entries
@@ -22,7 +22,7 @@ public interface TestGroup extends TestEntry
 	/**
 	 * @return the Restore Steps
 	 */
-	public TestStepOrdered getRestoreSteps();
+	public TestStepCollection getRestoreSteps();
 	
 	/**
 	 * @return if this group's id or one of the sub-group's id is equal to the requested id

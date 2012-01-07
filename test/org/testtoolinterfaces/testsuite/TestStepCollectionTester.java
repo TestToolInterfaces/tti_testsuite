@@ -12,11 +12,10 @@ import org.testtoolinterfaces.testsuite.TestStep;
  * 
  * @author Arjan
  *
- * TODO Test Order in ALL cases. E.g. when messed with ListIterator.
  * 
  */
 
-public class TestStepOrderedTester extends TestCase
+public class TestStepCollectionTester extends TestCase
 {
 	TestStep myTestStep1 = null;
 	TestStep myTestStep2 = null;
@@ -25,9 +24,9 @@ public class TestStepOrderedTester extends TestCase
 	TestStep myTestStep5 = null;
 	TestStep myTestStep6 = null;
 	
-	TestStepOrdered myTestStepList = null;
+	TestStepCollection myTestStepList = null;
 
-	private void assertOrder( TestStepOrdered atsList )
+	private void assertOrder( TestStepCollection atsList )
 	{
 		Iterator<TestStep> itr = atsList.iterator();
 		int curSequence = 0;
@@ -82,7 +81,7 @@ public class TestStepOrderedTester extends TestCase
 		
 		if ( myTestStepList == null )
 		{
-			myTestStepList = new TestStepOrdered(0);
+			myTestStepList = new TestStepCollection(0);
 			myTestStepList.add(myTestStep1);
 			myTestStepList.add(myTestStep2);
 			myTestStepList.add(myTestStep3);
@@ -97,7 +96,7 @@ public class TestStepOrderedTester extends TestCase
 	 */
 	public void testCase_constructor1()
 	{
-		TestStepOrdered tsArray = new TestStepOrdered(0);
+		TestStepCollection tsArray = new TestStepCollection(0);
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
 		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
@@ -115,7 +114,7 @@ public class TestStepOrderedTester extends TestCase
 	 */
 	public void testCase_constructor2()
 	{
-		TestStepOrdered tsArray = new TestStepOrdered(0,2);
+		TestStepCollection tsArray = new TestStepCollection(0,2);
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
 		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
@@ -132,7 +131,7 @@ public class TestStepOrderedTester extends TestCase
 	 */
 	public void testCase_add()
 	{
-		TestStepOrdered tsArray = new TestStepOrdered(0);
+		TestStepCollection tsArray = new TestStepCollection(0);
 		Assert.assertTrue("Add not OK", tsArray.add(myTestStep1) );
 		Assert.assertTrue("Add not OK", tsArray.add(myTestStep2) );
 		Assert.assertTrue("Add not OK", tsArray.add(myTestStep3) );
@@ -178,7 +177,7 @@ public class TestStepOrderedTester extends TestCase
 	 */
 	public void testCase_clear()
 	{
-		TestStepOrdered tsArray = new TestStepOrdered(0);
+		TestStepCollection tsArray = new TestStepCollection(0);
 		tsArray.add(myTestStep1);
 		tsArray.add(myTestStep2);
 		tsArray.add(myTestStep3);
@@ -195,7 +194,7 @@ public class TestStepOrderedTester extends TestCase
 	 */
 	public void testCase_remove()
 	{
-		TestStepOrdered tsArray = new TestStepOrdered(0);
+		TestStepCollection tsArray = new TestStepCollection(0);
 		tsArray.add(myTestStep1);
 		tsArray.add(myTestStep2);
 		tsArray.add(myTestStep3);
@@ -248,18 +247,18 @@ public class TestStepOrderedTester extends TestCase
 	 */
 	public void testCase_removeAll()
 	{
-		TestStepOrdered tsArray1 = new TestStepOrdered(0);
+		TestStepCollection tsArray1 = new TestStepCollection(0);
 		tsArray1.add(myTestStep1);
 		tsArray1.add(myTestStep2);
 		tsArray1.add(myTestStep3);
 		tsArray1.add(myTestStep3); // Duplicates are possible
 		tsArray1.add(myTestStep4);
 
-		TestStepOrdered tsArray2 = new TestStepOrdered(0);
+		TestStepCollection tsArray2 = new TestStepCollection(0);
 		tsArray2.add(myTestStep2);
 		tsArray2.add(myTestStep3);
 
-		TestStepOrdered tsArray3 = new TestStepOrdered(0);
+		TestStepCollection tsArray3 = new TestStepCollection(0);
 		tsArray3.add(myTestStep4);
 		tsArray3.add(myTestStep5);
 
@@ -280,22 +279,22 @@ public class TestStepOrderedTester extends TestCase
 	 */
 	public void testCase_retainAll()
 	{
-		TestStepOrdered tsArray1 = new TestStepOrdered(0);
+		TestStepCollection tsArray1 = new TestStepCollection(0);
 		tsArray1.add(myTestStep1);
 		tsArray1.add(myTestStep2);
 		tsArray1.add(myTestStep3);
 		tsArray1.add(myTestStep3); // Duplicates are possible
 		tsArray1.add(myTestStep4);
 
-		TestStepOrdered tsArray2 = new TestStepOrdered(1);
+		TestStepCollection tsArray2 = new TestStepCollection(1);
 		tsArray2.add(myTestStep2);
 		tsArray2.add(myTestStep3);
 
-		TestStepOrdered tsArray3 = new TestStepOrdered(2);
+		TestStepCollection tsArray3 = new TestStepCollection(2);
 		tsArray3.add(myTestStep2);
 		tsArray3.add(myTestStep5);
 
-		TestStepOrdered tsArray4 = new TestStepOrdered(3);
+		TestStepCollection tsArray4 = new TestStepCollection(3);
 		tsArray4.add(myTestStep2);
 
 		Assert.assertEquals("Incorrect Size", 5, tsArray1.size());
@@ -318,17 +317,17 @@ public class TestStepOrderedTester extends TestCase
 	 */
 	public void testCase_containsAll()
 	{
-		TestStepOrdered tsArray2 = new TestStepOrdered(1);
+		TestStepCollection tsArray2 = new TestStepCollection(1);
 		tsArray2.add(myTestStep2);
 		tsArray2.add(myTestStep4);
 
-		TestStepOrdered tsArray3 = new TestStepOrdered(2);
+		TestStepCollection tsArray3 = new TestStepCollection(2);
 		tsArray3.add(myTestStep2);
 		tsArray3.add(myTestStep5);
 		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));
 		tsArray3.add(testStep7);
 
-		TestStepOrdered tsArray4 = new TestStepOrdered(3);
+		TestStepCollection tsArray4 = new TestStepCollection(3);
 		tsArray4.add(myTestStep2);
 		tsArray4.add(myTestStep4);
 		tsArray4.add(myTestStep4);
@@ -375,7 +374,7 @@ public class TestStepOrderedTester extends TestCase
 	public void testCase_addAll_Collection()
 	{
 		// order of steps: 2 7 5 8
-		TestStepOrdered tsArray = new TestStepOrdered(0);
+		TestStepCollection tsArray = new TestStepCollection(0);
 		tsArray.add(myTestStep2);
 		tsArray.add(myTestStep5);
 		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));

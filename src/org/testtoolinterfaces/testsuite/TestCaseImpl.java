@@ -16,18 +16,18 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 {
     private ArrayList<String> myRequirementIds;
 
-    private TestStepOrdered myPrepareSteps;
-    private TestStepOrdered myExecutionSteps;
-    private TestStepOrdered myRestoreSteps;
+    private TestStepCollection myPrepareSteps;
+    private TestStepCollection myExecutionSteps;
+    private TestStepCollection myRestoreSteps;
 
 	public TestCaseImpl(
 			String aTestCaseId,
             Hashtable<String, String> anAnyAttributes,
 			String aDescription,
 			ArrayList<String> aRequirementIds,
-			TestStepOrdered aPrepareSteps,
-			TestStepOrdered anExecutionSteps,
-			TestStepOrdered aRestoreSteps,
+			TestStepCollection aPrepareSteps,
+			TestStepCollection anExecutionSteps,
+			TestStepCollection aRestoreSteps,
 			Hashtable<String, String> anAnyElements )
 	{
 		super(aTestCaseId, TestEntry.TYPE.Case, aDescription, 0);
@@ -50,7 +50,7 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 	/* (non-Javadoc)
 	 * @see org.testtoolinterfaces.TestSuite.TestCase#getInitializationSteps()
 	 */
-	public TestStepOrdered getPrepareSteps()
+	public TestStepCollection getPrepareSteps()
 	{
 		return myPrepareSteps;
 	}
@@ -58,7 +58,7 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 	/* (non-Javadoc)
 	 * @see org.testtoolinterfaces.TestSuite.TestCase#getExecutionSteps()
 	 */
-	public TestStepOrdered getExecutionSteps()
+	public TestStepCollection getExecutionSteps()
 	{
 		return myExecutionSteps;
 	}
@@ -74,7 +74,7 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 	/* (non-Javadoc)
 	 * @see org.testtoolinterfaces.TestSuite.TestCase#getRestoreSteps()
 	 */
-	public TestStepOrdered getRestoreSteps()
+	public TestStepCollection getRestoreSteps()
 	{
 		return myRestoreSteps;
 	}
