@@ -3,10 +3,18 @@ package org.testtoolinterfaces.testsuite;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.ListIterator;
 
-public class TestStepOrdered extends TestStep implements List<TestStep>
+/**
+ * Class for Test Steps that consist of a List of TestSteps.
+ * The list is ordered on the Sequence Number at all times
+ * 
+ * This class implements the Collection<TestStep> interface
+ * 
+ * @author Arjan Kranenburg
+ *
+ */
+public class TestStepOrdered extends TestStep implements Collection<TestStep>
 {
 	private ArrayList<TestStep> mySteps;
 
@@ -22,6 +30,9 @@ public class TestStepOrdered extends TestStep implements List<TestStep>
 		mySteps = new ArrayList<TestStep>( aSize );
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.util.Collection#size()
+	 */
 	public int size()
 	{
 		return mySteps.size();
@@ -39,16 +50,9 @@ public class TestStepOrdered extends TestStep implements List<TestStep>
 		return "Ordered (" + this.toString() + ")";
 	}
 
-	/**
-	 * 
-	 * @param aSequenceNr
-	 * @return
+	/* (non-Javadoc)
+	 * @see java.util.Collection#add(java.lang.Object)
 	 */
-	public TestStep get( int anIndex )
-	{
-		return mySteps.get(anIndex);
-	}
-
 	public boolean add( TestStep aStep )
 	{
 		 // We start at the end, since in most cases steps will be added already in order.
@@ -68,17 +72,6 @@ public class TestStepOrdered extends TestStep implements List<TestStep>
 		return true;
 	}
 
-	/**
-	 * In order to guarantee the order of the elements, this method is kept the same as
-	 * add(TestStep)
-	 */
-	@Override
-	@Deprecated
-	public void add(int anIndex, TestStep aStep)
-	{
-		add(aStep);
-	}
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean addAll(Collection<? extends TestStep> aTestStepList)
@@ -94,17 +87,6 @@ public class TestStepOrdered extends TestStep implements List<TestStep>
 		}
 		
 		return rc;
-	}
-
-	/**
-	 * In order to guarantee the order of the elements, this method is kept the same as
-	 * add(Collection)
-	 */
-	@Override
-	@Deprecated
-	public boolean addAll(int anIndex, Collection<? extends TestStep> aTestStepList)
-	{
-		return this.addAll(aTestStepList);
 	}
 
 	@Override
@@ -126,12 +108,6 @@ public class TestStepOrdered extends TestStep implements List<TestStep>
 	}
 
 	@Override
-	public int indexOf(Object anObject)
-	{
-		return mySteps.indexOf(anObject);
-	}
-
-	@Override
 	public boolean isEmpty()
 	{
 		return mySteps.isEmpty();
@@ -143,33 +119,9 @@ public class TestStepOrdered extends TestStep implements List<TestStep>
 	}
 
 	@Override
-	public int lastIndexOf(Object anObject)
-	{
-		return mySteps.lastIndexOf(anObject);
-	}
-
-	@Override
-	public ListIterator<TestStep> listIterator()
-	{
-		return mySteps.listIterator();
-	}
-
-	@Override
-	public ListIterator<TestStep> listIterator(int anIndex)
-	{
-		return mySteps.listIterator(anIndex);
-	}
-
-	@Override
 	public boolean remove(Object anObject)
 	{
 		return mySteps.remove(anObject);
-	}
-
-	@Override
-	public TestStep remove(int anIndex)
-	{
-		return mySteps.remove(anIndex);
 	}
 
 	@Override
@@ -182,29 +134,6 @@ public class TestStepOrdered extends TestStep implements List<TestStep>
 	public boolean retainAll(Collection<?> aTestSteps)
 	{
 		return mySteps.retainAll(aTestSteps);
-	}
-
-	/**
-	 * In order to guarantee the order of the elements, this method is kept the same as
-	 * add(TestStep)
-	 * 
-	 * @param anIndex	ignored
-	 * @param aTestStep	TestStep to be added
-	 * 
-	 * @return the added TestStep
-	 */
-	@Override
-	@Deprecated
-	public TestStep set(int anIndex, TestStep aTestStep)
-	{
-		this.add(aTestStep);
-		return aTestStep;
-	}
-
-	@Override
-	public List<TestStep> subList(int aFromIndex, int aToIndex)
-	{
-		return mySteps.subList(aFromIndex, aToIndex);
 	}
 
 	@Override
