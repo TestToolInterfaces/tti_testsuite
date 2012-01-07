@@ -48,6 +48,7 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertEquals("Incorrect Command", "commandA", testStep.getCommand());
 		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface().getInterfaceName());
 		Assert.assertEquals("Incorrect Display Name", "interface1->commandA", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", testStep.getDisplayName(), testStep.toString());
 	}
 
 	/**
