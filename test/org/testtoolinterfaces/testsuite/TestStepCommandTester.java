@@ -47,7 +47,7 @@ public class TestStepCommandTester extends TestCase
 
 		Assert.assertEquals("Incorrect Command", "commandA", testStep.getCommand());
 		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface().getInterfaceName());
-		Assert.assertEquals("Incorrect Display Name", "commandA->interface1", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1->commandA", testStep.getDisplayName());
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
-		Assert.assertEquals("Incorrect Display Name", "commandB->interface1", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1->commandB", testStep.getDisplayName());
 	}
 
 	/**
@@ -93,7 +93,7 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "f-parameter", ((ParameterImpl) testStep.getParameters().get("-f")).getValue());
-		Assert.assertEquals("Incorrect Display Name", "commandC->interface1", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1->commandC", testStep.getDisplayName());
 	}
 
 	/**
@@ -112,6 +112,6 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
-		Assert.assertEquals("Incorrect Display Name", "commandD->interface1", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1->commandD", testStep.getDisplayName());
 	}
 }
