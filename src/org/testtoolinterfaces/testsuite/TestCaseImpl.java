@@ -10,7 +10,7 @@ import org.testtoolinterfaces.utils.Trace;
 
 /**
  * Class for Default (i.e. TTI) Test Cases.
- * TestCases all have an Id, a sequenceNr and may have a description and a list of Requirements.
+ * TestCaseImpls all have an Id, a sequenceNr and may have a description and a list of Requirements.
  * And the all have collections of prepare, execution, and restore steps.
  * (These collections may be empty as well.)
  * 
