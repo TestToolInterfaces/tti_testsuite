@@ -1,5 +1,7 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
 /**
  * Abstract Class to hold a TestStep.
  * TestSteps all have a sequenceNr and may have a description or ParameterArrayList.
@@ -12,6 +14,8 @@ public abstract class TestStep implements TestEntry
 	private int mySequenceNr;
 	private String myDescription;
 	private ParameterArrayList myParameters;
+	private Hashtable<String, String> myAnyAttributes;
+	private Hashtable<String, String> myAnyElements;
 
 	/**
 	 * Returns the Name of this step e.g. to be displayed in the result list
@@ -21,7 +25,7 @@ public abstract class TestStep implements TestEntry
 	/**
 	 * Creates a TestStep
 	 * 
-	 * @param aSequenceNr	Sequence nummer, to be used in a list
+	 * @param aSequenceNr	Sequence number, to be used in a collection
 	 * @param aDescription	Description
 	 * @param aParameters	List of parameters
 	 */
@@ -106,5 +110,17 @@ public abstract class TestStep implements TestEntry
 	public String toString()
 	{
 		return getDisplayName();
+	}
+
+	@Override
+	public Hashtable<String, String> getAnyAttributes()
+	{
+		return myAnyAttributes;
+	}
+
+	@Override
+	public Hashtable<String, String> getAnyElements()
+	{
+		return myAnyElements;
 	}
 }

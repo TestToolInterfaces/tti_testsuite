@@ -2,6 +2,12 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
 
+/**
+ * Interface for TestCases.
+ * 
+ * @author Arjan Kranenburg
+ *
+ */
 public interface TestCase extends TestEntry
 {
 	/**

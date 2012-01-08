@@ -42,13 +42,11 @@ public class TestEntryArrayListTester extends TestCase
 	public void testCase_sort()
 	{
 		TestCaseImpl testCase = new TestCaseImpl( "tcId",
-				new Hashtable<String, String>(),
 				"An extensive description",
-				new ArrayList<String>(),
+				0,
 				new TestStepCollection(0),
 				new TestStepCollection(0),
-				new TestStepCollection(0),
-				new Hashtable<String, String>());
+				new TestStepCollection(0) );
 
 		TestInterface_stub iface = new TestInterface_stub( "interface" );
 		TestStep testStep = new TestStepCommand(

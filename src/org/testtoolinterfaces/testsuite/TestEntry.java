@@ -1,7 +1,24 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
+/**
+ * Interface for TestEntries.
+ * 
+ * @author Arjan Kranenburg
+ *
+ */
 public interface TestEntry
 {
+	
+	/**
+	 * Type of the TestEntry
+	 * Group		for Test Groups
+	 * GroupLink	for a link to a TestGroup, e.g. a TestGroup File
+	 * Case			for a Test Case
+	 * CaseLink		for a link to a TestCase, e.g. in a seperate file
+	 * Step			for a Test Step
+	 */
 	public enum TYPE { Group, GroupLink, Case, CaseLink, Step };
 	
 	/**
@@ -36,4 +53,13 @@ public interface TestEntry
 	 */
 	public String toString();
 
+	/**
+	 * @return the myAnyAttributes
+	 */
+	public Hashtable<String, String> getAnyAttributes();
+
+	/**
+	 * @return the myAnyElements
+	 */
+	public Hashtable<String, String> getAnyElements();
 }

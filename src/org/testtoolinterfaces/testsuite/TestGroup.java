@@ -2,6 +2,12 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
 
+/**
+ * Interface for TestGroups.
+ * 
+ * @author Arjan Kranenburg
+ *
+ */
 public interface TestGroup extends TestEntry
 {
 	/**
@@ -10,7 +16,7 @@ public interface TestGroup extends TestEntry
 	public ArrayList<String> getRequirements();
 
 	/**
-	 * @return the Initialization Steps
+	 * @return the Preparation Steps
 	 */
 	public TestStepCollection getPrepareSteps();
 

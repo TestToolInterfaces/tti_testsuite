@@ -18,6 +18,12 @@ public class TestStepCollection extends TestStep implements Collection<TestStep>
 {
 	private ArrayList<TestStep> mySteps;
 
+	public TestStepCollection()
+	{
+		super( 0 );
+		mySteps = new ArrayList<TestStep>();
+	}
+	
 	public TestStepCollection( int aSequenceNr )
 	{
 		super( aSequenceNr );
