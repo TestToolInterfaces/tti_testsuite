@@ -16,8 +16,97 @@ public class TestCaseLink extends TestEntryImpl
 {
 	public static final String TYPE_TTI = "tti";
 	
-	private String myType;
-	private File myLink;
+	private TestLink myLink;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param aTestCaseId		TC Identifier
+	 * @param aSequenceNr		Sequence Number
+	 * @param aTcLink			Link to Test Case File
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 */
+	public TestCaseLink( String aTestCaseId,
+	                     int aSequenceNr,
+	                     TestLink aTcLink,
+	                     Hashtable<String, String> anAnyAttributes,
+						 Hashtable<String, String> anAnyElements )
+	{
+		super(aTestCaseId, TestEntry.TYPE.CaseLink, "", aSequenceNr, anAnyAttributes, anAnyElements );
+
+		Trace.println( Trace.CONSTRUCTOR,
+					   "TestCaseLink( " + aTestCaseId + ", " 
+					                    + aSequenceNr + ", "
+					                    + aTcLink.getPath() + ", "
+					                    + anAnyAttributes.size() + ", "
+					                    + anAnyElements.size() + " )",
+					   true );
+
+		myLink = aTcLink;
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * @param aTestCaseId		TC Identifier
+	 * @param aSequenceNr		Sequence Number
+	 * @param aTcLinkName		Test Case File Name
+	 * @param aType				Type of the TC File
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 */
+	public TestCaseLink( String aTestCaseId,
+	                     int aSequenceNr,
+	                     String aTcLinkName,
+	                     String aType,
+	                     Hashtable<String, String> anAnyAttributes,
+						 Hashtable<String, String> anAnyElements )
+	{
+		this( aTestCaseId,
+		      aSequenceNr,
+		      new TestLinkImpl( aTcLinkName, aType ),
+		      anAnyAttributes,
+		      anAnyElements );
+	}
+
+	/**
+	 * Constructor without unknown attributes or elements
+	 * 
+	 * @param aTestCaseId		TC Identifier
+	 * @param aSequenceNr		Sequence Number
+	 * @param aTcLinkName		Test Case File Name
+	 * @param aType				Type of the TC File
+	 */
+	public TestCaseLink( String aTestCaseId,
+	                     int aSequenceNr,
+	                     String aTcLinkName,
+	                     String aType )
+	{
+		this( aTestCaseId,
+		      aSequenceNr,
+		      new TestLinkImpl( aTcLinkName, aType ),
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
+
+	/**
+	 * Constructor for default type and without unknown attributes or elements
+	 * 
+	 * @param aTestCaseId		TC Identifier
+	 * @param aSequenceNr		Sequence Number
+	 * @param aTcLinkName		Test Case File Name
+	 */
+	public TestCaseLink( String aTestCaseId,
+	                     int aSequenceNr,
+	                     String aTcLinkName )
+	{
+		this( aTestCaseId,
+		      aSequenceNr,
+		      new TestLinkImpl( aTcLinkName, TYPE_TTI ),
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
 
 	/**
 	 * Constructor
@@ -29,6 +118,7 @@ public class TestCaseLink extends TestEntryImpl
 	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
 	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
+	@Deprecated
 	public TestCaseLink( String aTestCaseId,
 	                     int aSequenceNr,
 	                     File aTestCaseLink,
@@ -36,19 +126,11 @@ public class TestCaseLink extends TestEntryImpl
 	                     Hashtable<String, String> anAnyAttributes,
 						 Hashtable<String, String> anAnyElements )
 	{
-		super(aTestCaseId, TestEntry.TYPE.CaseLink, "", aSequenceNr, anAnyAttributes, anAnyElements );
-
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestCaseLink( " + aTestCaseId + ", " 
-					                    + aSequenceNr + ", "
-					                    + aTestCaseLink.getPath() + ", "
-					                    + aType + ", "
-					                    + anAnyAttributes.size() + ", "
-					                    + anAnyElements.size() + " )",
-					   true );
-
-		myType = aType;
-		myLink = aTestCaseLink;
+		this( aTestCaseId,
+		      aSequenceNr,
+		      new TestLinkImpl( aTestCaseLink.getPath(), aType ),
+		      anAnyAttributes,
+		      anAnyElements );
 	}
 
 	/**
@@ -59,6 +141,7 @@ public class TestCaseLink extends TestEntryImpl
 	 * @param aTestCaseLink		Test Case File
 	 * @param aType				Type of the TC File
 	 */
+	@Deprecated
 	public TestCaseLink( String aTestCaseId,
 	                     int aSequenceNr,
 	                     File aTestCaseLink,
@@ -66,8 +149,7 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		this( aTestCaseId,
 		      aSequenceNr,
-		      aTestCaseLink,
-		      aType,
+		      new TestLinkImpl( aTestCaseLink.getPath(), aType ),
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
@@ -79,14 +161,14 @@ public class TestCaseLink extends TestEntryImpl
 	 * @param aSequenceNr		Sequence Number
 	 * @param aTestCaseLink		Test Case File
 	 */
+	@Deprecated
 	public TestCaseLink( String aTestCaseId,
 	                     int aSequenceNr,
 	                     File aTestCaseLink )
 	{
 		this( aTestCaseId,
 		      aSequenceNr,
-		      aTestCaseLink,
-		      TYPE_TTI,
+		      new TestLinkImpl( aTestCaseLink.getPath(), TYPE_TTI ),
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
@@ -96,7 +178,7 @@ public class TestCaseLink extends TestEntryImpl
 	 */
 	public File getLink()
 	{
-		return myLink;
+		return myLink.getFile();
 	}
 
 	/**
@@ -104,7 +186,7 @@ public class TestCaseLink extends TestEntryImpl
 	 */
 	public String getLinkType()
 	{
-		return myType;
+		return myLink.getType();
 	}
 
 	/**
@@ -117,9 +199,9 @@ public class TestCaseLink extends TestEntryImpl
 	 */
 	public void setLinkDir( File aLinkDir )
 	{
-		if ( ! myLink.isAbsolute() )
+		if ( ! myLink.getFile().isAbsolute() )
 		{
-			myLink = new File( aLinkDir, myLink.getPath() );
+			myLink = new TestLinkImpl( aLinkDir, myLink.getPath(), myLink.getType() );
 		}
 	}
 }

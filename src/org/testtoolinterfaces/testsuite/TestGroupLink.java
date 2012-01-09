@@ -24,8 +24,7 @@ public class TestGroupLink extends TestEntryImpl
 	 * 
 	 * @param aTestGroupId		TG Identifier
 	 * @param aSequenceNr		Sequence Number
-	 * @param aTgLinkName		Test Group File Name
-	 * @param aType				Type of the TG File
+	 * @param aTgLink			Link to Test Group File
 	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
 	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
@@ -68,8 +67,8 @@ public class TestGroupLink extends TestEntryImpl
 		this( aTestGroupId,
 		      aSequenceNr,
 		      new TestLinkImpl( aTgLinkName, aType ),
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      anAnyAttributes,
+		      anAnyElements );
 	}
 
 	/**
@@ -87,27 +86,25 @@ public class TestGroupLink extends TestEntryImpl
 	{
 		this( aTestGroupId,
 		      aSequenceNr,
-		      aTgLinkName,
-		      aType,
+		      new TestLinkImpl( aTgLinkName, aType ),
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
 
 	/**
-	 * Constructor for type 'tti' without unknown attributes or elements
+	 * Constructor for default type and without unknown attributes or elements
 	 * 
 	 * @param aTestGroupId		TG Identifier
 	 * @param aSequenceNr		Sequence Number
-	 * @param aTgLink			Test Group File Name
+	 * @param aTgLinkName		Test Group File Name
 	 */
 	public TestGroupLink( String aTestGroupId,
 	                      int aSequenceNr,
-	                      String aTgLink )
+	                      String aTgLinkName )
 	{
 		this( aTestGroupId,
 		      aSequenceNr,
-		      aTgLink,
-		      TYPE_TTI,
+		      new TestLinkImpl( aTgLinkName, TYPE_TTI ),
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
@@ -130,18 +127,11 @@ public class TestGroupLink extends TestEntryImpl
 	                      Hashtable<String, String> anAnyAttributes,
 	                      Hashtable<String, String> anAnyElements )
 	{
-		super(aTestGroupId, TestEntry.TYPE.GroupLink, "", aSequenceNr, anAnyAttributes, anAnyElements );
-
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestGroupLinkImpl( " + aTestGroupId + ", " 
-					   						 + aSequenceNr + ", "
-					   						 + aTestGroupLink + ", "
-					   						 + aType + ", "
-					   						 + anAnyAttributes.size() + ", "
-					   						 + anAnyElements.size() + " )",
-					   true );
-		
-		myLink = new TestLinkImpl( aTestGroupLink.getPath(), aType );
+		this( aTestGroupId,
+		      aSequenceNr,
+		      new TestLinkImpl( aTestGroupLink.getPath(), aType ),
+		      anAnyAttributes,
+		      anAnyElements );
 	}
 
 	/**
@@ -160,8 +150,7 @@ public class TestGroupLink extends TestEntryImpl
 	{
 		this( aTestGroupId,
 		      aSequenceNr,
-		      aTestGroupLink,
-		      aType,
+		      new TestLinkImpl( aTestGroupLink.getPath(), aType ),
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
@@ -180,8 +169,7 @@ public class TestGroupLink extends TestEntryImpl
 	{
 		this( aTestGroupId,
 		      aSequenceNr,
-		      aTestGroupLink,
-		      TYPE_TTI,
+		      new TestLinkImpl( aTestGroupLink.getPath(), TYPE_TTI ),
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}

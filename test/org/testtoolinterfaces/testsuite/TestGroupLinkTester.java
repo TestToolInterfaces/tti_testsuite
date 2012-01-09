@@ -147,7 +147,7 @@ public class TestGroupLinkTester extends TestCase
 		File drive = File.listRoots()[0];
 		TestGroupLink tgLink = new TestGroupLink( "ID2", 
 		                                          3,
-		                                          new File("link") );
+		                                          "link" );
 
 		Assert.assertEquals("TC File incorrect", "link", tgLink.getLink().getPath());
 

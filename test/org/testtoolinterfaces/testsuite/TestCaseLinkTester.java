@@ -29,7 +29,7 @@ public class TestCaseLinkTester extends TestCase
 		TestCaseLink tcLink = new TestCaseLink(
 				"tcLinkId",
 				2,
-				new File( "fileName" ),
+				"fileName",
 				"perl",
 				new Hashtable<String, String>(),
 				new Hashtable<String, String>() );
@@ -49,12 +49,33 @@ public class TestCaseLinkTester extends TestCase
 	/**
 	 * Test Cases
 	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_constructor0b()
+	{
+		TestCaseLink tcLink = new TestCaseLink(
+				"tcLinkId_b",
+				2,
+				new File( "fileName" ),
+				"perl",
+				new Hashtable<String, String>(),
+				new Hashtable<String, String>() );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
+		Assert.assertEquals("Incorrect ID", "tcLinkId_b", tcLink.getId());
+
+		Assert.assertEquals("TC File incorrect", "fileName", tcLink.getLink().getPath());
+		Assert.assertEquals("Incorrect TC Link Type", "perl", tcLink.getLinkType());
+	}
+
+	/**
+	 * Test Cases
+	 */
 	public void testCase_constructor1()
 	{
 		TestCaseLink tcLink = new TestCaseLink(
 				"tcLinkId",
 				4,
-				new File( "fileName" ),
+				"fileName",
 				"shell" );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
@@ -72,12 +93,31 @@ public class TestCaseLinkTester extends TestCase
 	/**
 	 * Test Cases
 	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_constructor1b()
+	{
+		TestCaseLink tcLink = new TestCaseLink(
+				"tcLinkId_b",
+				4,
+				new File( "fileName" ),
+				"shell" );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
+		Assert.assertEquals("Incorrect ID", "tcLinkId_b", tcLink.getId());
+
+		Assert.assertEquals("TC File incorrect", "fileName", tcLink.getLink().getPath());
+		Assert.assertEquals("Incorrect TC Link Type", "shell", tcLink.getLinkType());
+	}
+
+	/**
+	 * Test Cases
+	 */
 	public void testCase_constructor2()
 	{
 		TestCaseLink tcLink = new TestCaseLink(
 				"tcLinkId",
 				5,
-				new File( "fileName2" ) );
+				"fileName2" );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
 		Assert.assertEquals("Incorrect ID", "tcLinkId", tcLink.getId());
@@ -94,6 +134,24 @@ public class TestCaseLinkTester extends TestCase
 	/**
 	 * Test Cases
 	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_constructor2b()
+	{
+		TestCaseLink tcLink = new TestCaseLink(
+				"tcLinkId_b",
+				5,
+				new File( "fileName2" ) );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
+		Assert.assertEquals("Incorrect ID", "tcLinkId_b", tcLink.getId());
+
+		Assert.assertEquals("TC File incorrect", "fileName2", tcLink.getLink().getPath());
+		Assert.assertEquals("Incorrect TC Link Type", "tti", tcLink.getLinkType());
+	}
+
+	/**
+	 * Test Cases
+	 */
 	public void testCase_setLinkDir()
 	{
 		String sep = File.separator;
@@ -101,7 +159,7 @@ public class TestCaseLinkTester extends TestCase
 		TestCaseLink tcLink = new TestCaseLink(
 				"tcLinkId",
 				5,
-				new File( "fileName2" ) );
+				"fileName2" );
 
 		Assert.assertEquals("TC File incorrect", "fileName2", tcLink.getLink().getPath());
 
