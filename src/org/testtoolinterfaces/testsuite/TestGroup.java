@@ -23,7 +23,7 @@ public interface TestGroup extends TestEntry
 	/**
 	 * @return the Execution Entries
 	 */
-	public TestEntryArrayList getExecutionEntries();
+	public TestEntryCollection getExecutionEntries();
 
 	/**
 	 * @return the Restore Steps

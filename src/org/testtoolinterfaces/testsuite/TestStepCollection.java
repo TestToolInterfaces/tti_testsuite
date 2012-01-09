@@ -99,9 +99,7 @@ public class TestStepCollection extends TestStep implements Collection<TestStep>
 		      new Hashtable<String, String>() );
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.util.Collection#size()
-	 */
+	@Override
 	public int size()
 	{
 		return mySteps.size();

@@ -2,6 +2,7 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Iterator;
 
 import org.testtoolinterfaces.utils.Trace;
 
@@ -19,7 +20,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
     private ArrayList<String> myRequirementIds;
 
 	private TestStepCollection myInitializationSteps;
-	private TestEntryArrayList myExecutionEntries;
+	private TestEntryCollection myExecutionEntries;
     private TestStepCollection myRestoreSteps;
     
 	/**
@@ -40,7 +41,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepCollection aPrepareSteps,
-	                      TestEntryArrayList aTestEntries,
+	                      TestEntryCollection aTestEntries,
 	                      TestStepCollection aRestoreSteps,
 	                      Hashtable<String, String> anAnyAttributes,
 	                      Hashtable<String, String> anAnyElements )
@@ -84,7 +85,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepCollection aPrepareSteps,
-	                      TestEntryArrayList aTestEntries,
+	                      TestEntryCollection aTestEntries,
 	                      TestStepCollection aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -112,7 +113,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepCollection aPrepareSteps,
-	                      TestEntryArrayList aTestEntries,
+	                      TestEntryCollection aTestEntries,
 	                      TestStepCollection aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -140,7 +141,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      String aDescription,
 	                      int aSequenceNr,
 	                      TestStepCollection aPrepareSteps,
-	                      TestEntryArrayList aTestEntries,
+	                      TestEntryCollection aTestEntries,
 	                      TestStepCollection aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -166,7 +167,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	public TestGroupImpl( String aTestGroupId,
 	                      int aSequenceNr,
 	                      TestStepCollection aPrepareSteps,
-	                      TestEntryArrayList aTestEntries,
+	                      TestEntryCollection aTestEntries,
 	                      TestStepCollection aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -187,7 +188,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	}
 
 	@Override
-	public TestEntryArrayList getExecutionEntries()
+	public TestEntryCollection getExecutionEntries()
 	{
 		return myExecutionEntries;
 	}
@@ -207,14 +208,15 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	@Override
 	public boolean hasGroupId(String aGroupId)
 	{
-		if (this.getId().equals(aGroupId))
+		if ( this.getId().equals(aGroupId) )
 		{
 			return true;
 		}
 
-		for (int key = 0; key < myExecutionEntries.size(); key++)
-    	{
-			TestEntry entry = myExecutionEntries.get(key);
+		Iterator<TestEntry> itr = (Iterator<TestEntry>) myExecutionEntries.iterator();
+		while(itr.hasNext())
+		{
+			TestEntry entry = itr.next();
 			if ( entry.getType() == TestEntry.TYPE.Group )
 			{
 				if ( ((TestGroup) entry).hasGroupId(aGroupId) )
@@ -229,7 +231,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 					return true;
 				}
 			}
-    	}
+		}
 
 		return false;
 	}
