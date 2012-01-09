@@ -13,7 +13,7 @@ public interface TestEntry
 	
 	/**
 	 * Type of the TestEntry
-	 * Group		for Test Groups
+	 * Group		for a Test Group
 	 * GroupLink	for a link to a TestGroup, e.g. a TestGroup File
 	 * Case			for a Test Case
 	 * CaseLink		for a link to a TestCase, e.g. in a seperate file

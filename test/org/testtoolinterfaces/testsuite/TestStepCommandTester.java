@@ -49,6 +49,9 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface().getInterfaceName());
 		Assert.assertEquals("Incorrect Display Name", "interface1->commandA", testStep.getDisplayName());
 		Assert.assertEquals("Incorrect Display Name", testStep.getDisplayName(), testStep.toString());
+
+		Assert.assertTrue(  "Any Attributes not empty", testStep.getAnyAttributes().isEmpty());
+		Assert.assertTrue(  "Any Elements not empty", testStep.getAnyElements().isEmpty());
 	}
 
 	/**
@@ -69,6 +72,9 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 		Assert.assertEquals("Incorrect Display Name", "interface1->commandB", testStep.getDisplayName());
+
+		Assert.assertTrue(  "Any Attributes not empty", testStep.getAnyAttributes().isEmpty());
+		Assert.assertTrue(  "Any Elements not empty", testStep.getAnyElements().isEmpty());
 	}
 
 	/**
@@ -114,5 +120,26 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 		Assert.assertEquals("Incorrect Display Name", "interface1->commandD", testStep.getDisplayName());
+	}
+
+	/**
+	 * Test Case
+	 */
+	@Test
+	public void testConstructor_setDescription()
+	{
+		TestInterface_stub iface = new TestInterface_stub( "interface1" );
+
+		TestStepCommand testStep = new TestStepCommand(
+				0,
+				"An extensive description",
+				"commandD",
+				iface );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
+		Assert.assertEquals("Incorrect Description (1)", "An extensive description", testStep.getDescription());
+
+		testStep.setDescription( "new description" );
+		Assert.assertEquals("Incorrect Description (2)", "new description", testStep.getDescription());
 	}
 }

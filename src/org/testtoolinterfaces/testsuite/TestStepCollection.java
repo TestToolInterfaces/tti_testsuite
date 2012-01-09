@@ -2,6 +2,7 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.ListIterator;
 
@@ -18,22 +19,84 @@ public class TestStepCollection extends TestStep implements Collection<TestStep>
 {
 	private ArrayList<TestStep> mySteps;
 
-	public TestStepCollection()
+	/**
+	 * Creates a TestStepCollection
+	 * 
+	 * @param aSequenceNr		Sequence number, to be used in a list
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 */
+	public TestStepCollection( int aSequenceNr,
+	                           Hashtable<String, String> anAnyAttributes, 
+	                           Hashtable<String, String> anAnyElements )
 	{
-		super( 0 );
+		super( aSequenceNr,
+		       "",
+		       new ParameterArrayList(),
+		       anAnyAttributes,
+		       anAnyElements );
 		mySteps = new ArrayList<TestStep>();
 	}
 	
+	/**
+	 * Creates a TestStepCollection with a specific size
+	 * 
+	 * @param aSequenceNr		Sequence number, to be used in a list
+	 * @param aSize				Initial size of the collection
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 */
+	public TestStepCollection( int aSequenceNr,
+	                           int aSize,
+	                           Hashtable<String, String> anAnyAttributes, 
+	                           Hashtable<String, String> anAnyElements )
+	{
+		super( aSequenceNr,
+		       "",
+		       new ParameterArrayList(),
+		       anAnyAttributes,
+		       anAnyElements );
+		mySteps = new ArrayList<TestStep>( aSize );
+	}
+	
+	/**
+	 * Creates a TestStepCollection with a specific size,
+	 * but without any unknown attributes or elements
+	 * 
+	 * @param aSequenceNr		Sequence number, to be used in a list
+	 * @param aSize				Initial size of the collection
+	 */
+	public TestStepCollection( int aSequenceNr,
+	                           int aSize )
+	{
+		this( aSequenceNr,
+		      aSize,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
+	
+	/**
+	 * Creates a TestStepCollection without any unknown attributes or elements
+	 * 
+	 * @param aSequenceNr		Sequence number, to be used in a list
+	 */
 	public TestStepCollection( int aSequenceNr )
 	{
-		super( aSequenceNr );
-		mySteps = new ArrayList<TestStep>();
+		this( aSequenceNr,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 	
-	public TestStepCollection( int aSequenceNr, int aSize )
+	/**
+	 * Creates a TestStepCollection with sequence number 0,
+	 * but without any unknown attributes or elements
+	 * 
+	 */
+	public TestStepCollection()
 	{
-		super( aSequenceNr );
-		mySteps = new ArrayList<TestStep>( aSize );
+		this( 0,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 	
 	/* (non-Javadoc)

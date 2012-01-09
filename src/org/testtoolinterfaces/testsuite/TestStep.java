@@ -25,48 +25,57 @@ public abstract class TestStep implements TestEntry
 	/**
 	 * Creates a TestStep
 	 * 
-	 * @param aSequenceNr	Sequence number, to be used in a collection
-	 * @param aDescription	Description
-	 * @param aParameters	List of parameters
+	 * @param aSequenceNr		Sequence number, to be used in a collection
+	 * @param aDescription		Description
+	 * @param aParameters		List of parameters
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
-	public TestStep( int aSequenceNr, String aDescription, ParameterArrayList aParameters )
+	public TestStep( int aSequenceNr,
+	                 String aDescription,
+	                 ParameterArrayList aParameters,
+                     Hashtable<String, String> anAnyAttributes,
+                     Hashtable<String, String> anAnyElements )
 	{
 		mySequenceNr = aSequenceNr;
 		myDescription = aDescription;
 		myParameters = aParameters;
+
+		myAnyAttributes = anAnyAttributes;
+		myAnyElements = anAnyElements;
 	}
 
-	/**
-	 * Creates a TestStep without any parameters
-	 * 
-	 * @param aSequenceNr	Sequence nummer, to be used in a list
-	 * @param aDescription	Description
-	 */
-	public TestStep( int aSequenceNr, String aDescription )
-	{
-		this( aSequenceNr, aDescription, new ParameterArrayList() );
-	}
+//	/**
+//	 * Creates a TestStep without any parameters
+//	 * 
+//	 * @param aSequenceNr	Sequence nummer, to be used in a list
+//	 * @param aDescription	Description
+//	 */
+//	public TestStep( int aSequenceNr, String aDescription )
+//	{
+//		this( aSequenceNr, aDescription, new ParameterArrayList() );
+//	}
 
-	/**
-	 * Creates a TestStep without a description
-	 * 
-	 * @param aSequenceNr	Sequence nummer, to be used in a list
-	 * @param aParameters	List of parameters
-	 */
-	public TestStep( int aSequenceNr, ParameterArrayList aParameters )
-	{
-		this( aSequenceNr, "", aParameters );
-	}
-
-	/**
-	 * Creates a TestStep without a description and any parameters
-	 * 
-	 * @param aSequenceNr	Sequence nummer, to be used in a list
-	 */
-	public TestStep( int aSequenceNr )
-	{
-		this( aSequenceNr, "", new ParameterArrayList() );
-	}
+//	/**
+//	 * Creates a TestStep without a description
+//	 * 
+//	 * @param aSequenceNr	Sequence nummer, to be used in a list
+//	 * @param aParameters	List of parameters
+//	 */
+//	public TestStep( int aSequenceNr, ParameterArrayList aParameters )
+//	{
+//		this( aSequenceNr, "", aParameters );
+//	}
+//
+//	/**
+//	 * Creates a TestStep without a description and any parameters
+//	 * 
+//	 * @param aSequenceNr	Sequence nummer, to be used in a list
+//	 */
+//	public TestStep( int aSequenceNr )
+//	{
+//		this( aSequenceNr, "", new ParameterArrayList() );
+//	}
 
 	/**
 	 * @return the list of parameters. The list can be empty.

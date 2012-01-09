@@ -3,6 +3,8 @@
  */
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
 import org.testtoolinterfaces.utils.Trace;
 
 /**
@@ -21,21 +23,28 @@ public class TestStepScript extends TestStep
 	/**
 	 * Creates a TestStepScript
 	 * 
-	 * @param aSequenceNr	Sequence number, to be used in a list
-	 * @param aDescription	Description
-	 * @param aScript		Test Step Script
-	 * @param aScriptType	Type of the Script
-	 * @param aParameters	List of parameters
+	 * @param aSequenceNr		Sequence number, to be used in a list
+	 * @param aDescription		Description
+	 * @param aScript			Test Step Script
+	 * @param aScriptType		Type of the Script
+	 * @param aParameters		List of parameters
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
 	public TestStepScript( 
 			 			   int aSequenceNr,
 			 			   String aDescription,
 			 			   String aScript,
 			 			   String aScriptType,
-			 			   ParameterArrayList aParameters )
+			 			   ParameterArrayList aParameters,
+			 			   Hashtable<String, String> anAnyAttributes,
+			 			   Hashtable<String, String> anAnyElements )
 	{
-		super(aSequenceNr, aParameters);
-		this.setDescription(aDescription);
+		super( aSequenceNr,
+		       aDescription,
+		       aParameters,
+		       anAnyAttributes,
+		       anAnyElements );
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestStepScript( "
 	   									+ aSequenceNr + ", "
@@ -50,7 +59,32 @@ public class TestStepScript extends TestStep
 	}
 
 	/**
-	 * Creates a TestStepScript with an empty parameter list
+	 * Creates a TestStepScript without unknown attributes and elements
+	 * 
+	 * @param aSequenceNr	Sequence number, to be used in a list
+	 * @param aDescription	Description
+	 * @param aScript		Test Step Script
+	 * @param aScriptType	Type of the Script
+	 * @param aParameters	List of parameters
+	 */
+	public TestStepScript( 
+			 			   int aSequenceNr,
+			 			   String aDescription,
+			 			   String aScript,
+			 			   String aScriptType,
+			 			   ParameterArrayList aParameters )
+	{
+		this( aSequenceNr,
+		      aDescription,
+		      aScript,
+		      aScriptType,
+		      aParameters, 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
+
+	/**
+	 * Creates a TestStepScript without parameter and unknown attributes and elements
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param aDescription	Description
@@ -63,11 +97,17 @@ public class TestStepScript extends TestStep
 			 			   String aScript,
 			 			   String aScriptType )
 	{
-		this( aSequenceNr, aDescription, aScript, aScriptType, new ParameterArrayList() );
+		this( aSequenceNr,
+		      aDescription,
+		      aScript,
+		      aScriptType,
+		      new ParameterArrayList(), 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**
-	 * Creates a TestStepScript with no description
+	 * Creates a TestStepScript without description and unknown attributes and elements
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param aScript		Test Step Script
@@ -80,11 +120,17 @@ public class TestStepScript extends TestStep
 			 			   String aScriptType,
 			 			   ParameterArrayList aParameters )
 	{
-		this( aSequenceNr, "", aScript, aScriptType, aParameters );
+		this( aSequenceNr,
+		      "",
+		      aScript,
+		      aScriptType,
+		      aParameters, 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**
-	 * Creates a TestStepScript with no description and an empty parameter list
+	 * Creates a TestStepScript without description, parameters, and unknown attributes and elements
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param aScript		Test Step Script
@@ -95,7 +141,13 @@ public class TestStepScript extends TestStep
 			 			   String aScript,
 			 			   String aScriptType )
 	{
-		this( aSequenceNr, "", aScript, aScriptType, new ParameterArrayList() );
+		this( aSequenceNr,
+		      "",
+		      aScript,
+		      aScriptType,
+		      new ParameterArrayList(), 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**

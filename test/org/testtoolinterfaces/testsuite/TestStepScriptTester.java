@@ -51,6 +51,9 @@ public class TestStepScriptTester extends TestCase
 		Assert.assertEquals("Incorrect Script", "script", testStep.getScript());
 		Assert.assertEquals("Incorrect Script Type", "bash", testStep.getScriptType());
 		Assert.assertEquals("Incorrect Display Name", "script", testStep.getDisplayName());
+
+		Assert.assertTrue(  "Any Attributes not empty", testStep.getAnyAttributes().isEmpty());
+		Assert.assertTrue(  "Any Elements not empty", testStep.getAnyElements().isEmpty());
 	}
 
 	/**
@@ -71,6 +74,9 @@ public class TestStepScriptTester extends TestCase
 
 		Assert.assertEquals("Incorrect Script", "script", testStep.getScript());
 		Assert.assertEquals("Incorrect Script Type", "bash", testStep.getScriptType());
+
+		Assert.assertTrue(  "Any Attributes not empty", testStep.getAnyAttributes().isEmpty());
+		Assert.assertTrue(  "Any Elements not empty", testStep.getAnyElements().isEmpty());
 	}
 
 	/**
@@ -110,5 +116,24 @@ public class TestStepScriptTester extends TestCase
 
 		Assert.assertEquals("Incorrect Script", "script", testStep.getScript());
 		Assert.assertEquals("Incorrect Script Type", "bash", testStep.getScriptType());
+	}
+
+	/**
+	 * Test Case
+	 */
+	@Test
+	public void testConstructor_setDescription()
+	{
+		TestStepScript testStep = new TestStepScript(
+		                             				0,
+		                            				"An extensive description",
+		                             				"script",
+		                             				"bash" );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
+		Assert.assertEquals("Incorrect Description (1)", "An extensive description", testStep.getDescription());
+
+		testStep.setDescription( "new description" );
+		Assert.assertEquals("Incorrect Description (2)", "new description", testStep.getDescription());
 	}
 }

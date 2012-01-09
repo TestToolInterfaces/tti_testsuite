@@ -3,6 +3,8 @@
  */
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
 import org.testtoolinterfaces.utils.Trace;
 
 /**
@@ -23,20 +25,28 @@ public class TestStepCommand extends TestStep
 	/**
 	 * Creates a TestStepCommand
 	 * 
-	 * @param aSequenceNr	Sequence number, to be used in a list
-	 * @param aDescription	Description
-	 * @param aCommand		Command to execute
-	 * @param anInterface	Interface towards which the command is directed
-	 * @param aParameters	List of parameters
+	 * @param aSequenceNr		Sequence number, to be used in a list
+	 * @param aDescription		Description
+	 * @param aCommand			Command to execute
+	 * @param anInterface		Interface towards which the command is directed
+	 * @param aParameters		List of parameters
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
 	public TestStepCommand(
 			 			 int aSequenceNr,
 						 String aDescription,
 						 String aCommand,
 						 TestInterface anInterface,
-						 ParameterArrayList aParameters )
+						 ParameterArrayList aParameters,
+	                     Hashtable<String, String> anAnyAttributes,
+	                     Hashtable<String, String> anAnyElements )
 	{
-		super( aSequenceNr, aDescription, aParameters );
+		super( aSequenceNr,
+		       aDescription,
+		       aParameters,
+		       anAnyAttributes,
+		       anAnyElements );
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestStepImpl( "
 	   									+ aSequenceNr + ", "
@@ -51,7 +61,32 @@ public class TestStepCommand extends TestStep
 	}
 
 	/**
-	 * Creates a TestStepCommand with an empty parameter list
+	 * Creates a TestStepCommand without unknown attributes and elements
+	 * 
+	 * @param aSequenceNr		Sequence number, to be used in a list
+	 * @param aDescription		Description
+	 * @param aCommand			Command to execute
+	 * @param anInterface		Interface towards which the command is directed
+	 * @param aParameters		List of parameters
+	 */
+	public TestStepCommand(
+			 			 int aSequenceNr,
+						 String aDescription,
+						 String aCommand,
+						 TestInterface anInterface,
+						 ParameterArrayList aParameters )
+	{
+		this( aSequenceNr,
+		      aDescription,
+		      aCommand,
+		      anInterface,
+		      aParameters, 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
+
+	/**
+	 * Creates a TestStepCommand without parameters and unknown attributes and elements
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param aDescription	Description
@@ -64,11 +99,17 @@ public class TestStepCommand extends TestStep
 						 String aCommand,
 						 TestInterface anInterface )
 	{
-		this( aSequenceNr, aDescription, aCommand, anInterface, new ParameterArrayList() );
+		this( aSequenceNr,
+		      aDescription,
+		      aCommand,
+		      anInterface,
+		      new ParameterArrayList(), 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**
-	 * Creates a TestStepCommand with no description
+	 * Creates a TestStepCommand without description and unknown attributes and elements
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param aCommand		Command to execute
@@ -81,11 +122,17 @@ public class TestStepCommand extends TestStep
 						 TestInterface anInterface,
 						 ParameterArrayList aParameters )
 	{
-		this( aSequenceNr, "", aCommand, anInterface, aParameters );
+		this( aSequenceNr,
+		      "",
+		      aCommand,
+		      anInterface,
+		      aParameters, 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**
-	 * Creates a TestStepCommand with no description and an empty parameter list
+	 * Creates a TestStepCommand without description, parameter, and unknown attributes and elements
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param aCommand		Command to execute
@@ -96,7 +143,13 @@ public class TestStepCommand extends TestStep
 						 String aCommand,
 						 TestInterface anInterface )
 	{
-		this( aSequenceNr, "", aCommand, anInterface, new ParameterArrayList() );
+		this( aSequenceNr,
+		      "",
+		      aCommand,
+		      anInterface,
+		      new ParameterArrayList(), 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**

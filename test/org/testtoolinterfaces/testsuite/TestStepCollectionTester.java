@@ -106,6 +106,9 @@ public class TestStepCollectionTester extends TestCase
 		Assert.assertTrue(  "Incorrect isEmpty", tsArray.isEmpty());
 		Assert.assertEquals("Incorrect Display Name", "Ordered (0 TestStep(s))", tsArray.getDisplayName());
 		
+		Assert.assertTrue(  "Any Attributes not empty", tsArray.getAnyAttributes().isEmpty());
+		Assert.assertTrue(  "Any Elements not empty", tsArray.getAnyElements().isEmpty());
+
 		assertOrder(tsArray);
 	}
 
@@ -115,6 +118,26 @@ public class TestStepCollectionTester extends TestCase
 	public void testCase_constructor2()
 	{
 		TestStepCollection tsArray = new TestStepCollection(0,2);
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
+		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
+		Assert.assertTrue(  "Incorrect Parameters", tsArray.getParameters().isEmpty());
+
+		Assert.assertEquals("Incorrect Size", 0, tsArray.size());
+		Assert.assertEquals("Incorrect Display Name", "Ordered (0 TestStep(s))", tsArray.getDisplayName());
+
+		Assert.assertTrue(  "Any Attributes not empty", tsArray.getAnyAttributes().isEmpty());
+		Assert.assertTrue(  "Any Elements not empty", tsArray.getAnyElements().isEmpty());
+
+		assertOrder(tsArray);
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_constructor3()
+	{
+		TestStepCollection tsArray = new TestStepCollection();
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
 		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
