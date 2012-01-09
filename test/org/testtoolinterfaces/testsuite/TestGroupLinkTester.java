@@ -28,7 +28,7 @@ public class TestGroupLinkTester extends TestCase
 	{
 		TestGroupLink tgLink = new TestGroupLink( "ID0", 
 		                                             8,
-		                                             new File("link"),
+		                                             "link",
 		                                             "aType",
 		                                             new Hashtable<String, String>(),
 		                                             new Hashtable<String, String>() );
@@ -48,11 +48,31 @@ public class TestGroupLinkTester extends TestCase
 	/**
 	 * Test Cases
 	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_constructor0b()
+	{
+		TestGroupLink tgLink = new TestGroupLink( "ID0b", 
+		                                             8,
+		                                             new File("link"),
+		                                             "aType",
+		                                             new Hashtable<String, String>(),
+		                                             new Hashtable<String, String>() );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
+		Assert.assertEquals("Incorrect ID", "ID0b", tgLink.getId());
+
+		Assert.assertEquals("TG File incorrect", "link", tgLink.getLink().getPath());
+		Assert.assertEquals("Incorrect TG Link Type", "aType", tgLink.getLinkType());
+	}
+
+	/**
+	 * Test Cases
+	 */
 	public void testCase_constructor1()
 	{
 		TestGroupLink tgLink = new TestGroupLink( "ID1", 
 		                                          5,
-		                                          new File("link"),
+		                                          "link",
 												  "aType" );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
@@ -69,15 +89,50 @@ public class TestGroupLinkTester extends TestCase
 	/**
 	 * Test Cases
 	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_constructor1b()
+	{
+		TestGroupLink tgLink = new TestGroupLink( "ID1b", 
+		                                          5,
+		                                          new File("link"),
+												  "aType" );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
+		Assert.assertEquals("Incorrect ID", "ID1b", tgLink.getId());
+
+		Assert.assertEquals("TG File incorrect", "link", tgLink.getLink().getPath());
+		Assert.assertEquals("Incorrect TG Link Type", "aType", tgLink.getLinkType());
+	}
+
+	/**
+	 * Test Cases
+	 */
 	public void testCase_constructor2()
 	{
 		TestGroupLink tgLink = new TestGroupLink( "ID2", 
 		                                          3,
-		                                          new File("link") );
+		                                          "link" );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
 		Assert.assertEquals("Incorrect ID", "ID2", tgLink.getId());
 		Assert.assertEquals("Incorrect Sequence Number", 3, tgLink.getSequenceNr());
+
+		Assert.assertEquals("TG File incorrect", "link", tgLink.getLink().getPath());
+		Assert.assertEquals("Incorrect TG Link Type", TestGroupLink.TYPE_TTI, tgLink.getLinkType());
+	}
+
+	/**
+	 * Test Cases
+	 */
+	@SuppressWarnings("deprecation")
+	public void testCase_constructor2b()
+	{
+		TestGroupLink tgLink = new TestGroupLink( "ID2b", 
+		                                          3,
+		                                          new File("link") );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
+		Assert.assertEquals("Incorrect ID", "ID2b", tgLink.getId());
 
 		Assert.assertEquals("TG File incorrect", "link", tgLink.getLink().getPath());
 		Assert.assertEquals("Incorrect TG Link Type", TestGroupLink.TYPE_TTI, tgLink.getLinkType());
