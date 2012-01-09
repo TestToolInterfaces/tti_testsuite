@@ -57,12 +57,13 @@ public class TestEntryArrayListTester extends TestCase
 				new ParameterArrayList() );
 
 		TestGroupImpl testGroup = new TestGroupImpl( "ID",
-				 new Hashtable<String, String>(),
 				 "A Description",
+				 3,
 				 new ArrayList<String>(),
 				 new TestStepCollection(0),
 				 new TestEntryArrayList(),
 				 new TestStepCollection(0),
+				 new Hashtable<String, String>(),
 				 new Hashtable<String, String>() );
 
 	

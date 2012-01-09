@@ -53,39 +53,6 @@ abstract class TestEntryImpl implements TestEntry
 		myAnyElements = anAnyElements;
 	}
 
-    /**
-     * Creates a TestEntry
-     * 
-	 * @param anId			Identifier
-	 * @param aType			Type of TestEntry
-	 * @param aDescription	Description
-	 * @param aSequenceNr	Sequence number, to be used in a collection
-	 */
-	public TestEntryImpl( String anId,
-	                      TYPE aType,
-	                      String aDescription,
-	                      int aSequenceNr )
-	{
-		this( anId,
-		      aType,
-		      aDescription,
-		      aSequenceNr,
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
-	}
-
-    /**
-     * Creates a TestEntry with empty description
-     * 
-	 * @param anId			Identifier
-	 * @param aType			Type of TestEntry
-	 * @param aSequenceNr	Sequence number, to be used in a collection
-	 */
-	public TestEntryImpl(String anId, TYPE aType, int aSequenceNr)
-	{
-		this( anId, aType, "", aSequenceNr );
-	}
-
 	@Override
 	public String getId()
 	{
