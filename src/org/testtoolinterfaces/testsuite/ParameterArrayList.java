@@ -7,7 +7,7 @@ import org.testtoolinterfaces.utils.Warning;
 
 
 /**
- * Class to hold an ArrayList of {@link org.testtoolinterfaces.testsuite.ParameterImpl}.
+ * Class to hold an ArrayList of {@link org.testtoolinterfaces.testsuite.Parameter}.
  * It provides sorting over the index of Parameter
  * 
  * @author Arjan Kranenburg
