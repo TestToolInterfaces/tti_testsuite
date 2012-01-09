@@ -45,38 +45,6 @@ public abstract class TestStep implements TestEntry
 		myAnyElements = anAnyElements;
 	}
 
-//	/**
-//	 * Creates a TestStep without any parameters
-//	 * 
-//	 * @param aSequenceNr	Sequence nummer, to be used in a list
-//	 * @param aDescription	Description
-//	 */
-//	public TestStep( int aSequenceNr, String aDescription )
-//	{
-//		this( aSequenceNr, aDescription, new ParameterArrayList() );
-//	}
-
-//	/**
-//	 * Creates a TestStep without a description
-//	 * 
-//	 * @param aSequenceNr	Sequence nummer, to be used in a list
-//	 * @param aParameters	List of parameters
-//	 */
-//	public TestStep( int aSequenceNr, ParameterArrayList aParameters )
-//	{
-//		this( aSequenceNr, "", aParameters );
-//	}
-//
-//	/**
-//	 * Creates a TestStep without a description and any parameters
-//	 * 
-//	 * @param aSequenceNr	Sequence nummer, to be used in a list
-//	 */
-//	public TestStep( int aSequenceNr )
-//	{
-//		this( aSequenceNr, "", new ParameterArrayList() );
-//	}
-
 	/**
 	 * @return the list of parameters. The list can be empty.
 	 */

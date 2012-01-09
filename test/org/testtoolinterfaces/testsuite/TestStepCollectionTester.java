@@ -99,6 +99,7 @@ public class TestStepCollectionTester extends TestCase
 		TestStepCollection tsArray = new TestStepCollection(0);
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
+		Assert.assertNull(  "Step has an ID", tsArray.getId());
 		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", tsArray.getParameters().isEmpty());
 
@@ -120,6 +121,7 @@ public class TestStepCollectionTester extends TestCase
 		TestStepCollection tsArray = new TestStepCollection(0,2);
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
+		Assert.assertNull(  "Step has an ID", tsArray.getId());
 		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", tsArray.getParameters().isEmpty());
 
@@ -140,6 +142,7 @@ public class TestStepCollectionTester extends TestCase
 		TestStepCollection tsArray = new TestStepCollection();
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
+		Assert.assertNull(  "Step has an ID", tsArray.getId());
 		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", tsArray.getParameters().isEmpty());
 

@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 import org.junit.Before;
 
 
-public class TestGroupLinkImplTester extends TestCase
+public class TestGroupLinkTester extends TestCase
 {
 	/**
 	 * @throws java.lang.Exception
