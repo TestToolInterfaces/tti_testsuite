@@ -2,12 +2,11 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.ListIterator;
 
 /**
- * Class for Test Steps that consist of a Sequence of TestSteps.
+ * Class for a Sequence of TestSteps.
  * The sequence is ordered on the Sequence Number at all times.
  * 
  * This class implements the Collection<TestStep> interface
@@ -15,88 +14,27 @@ import java.util.ListIterator;
  * @author Arjan Kranenburg
  *
  */
-public class TestStepSequence extends TestStep implements Collection<TestStep>
+public class TestStepSequence implements Collection<TestStep>
 {
 	private ArrayList<TestStep> mySteps;
 
 	/**
 	 * Creates a TestStepSequence
 	 * 
-	 * @param aSequenceNr		Sequence number, to be used in a list
-	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
-	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
-	public TestStepSequence( int aSequenceNr,
-	                           Hashtable<String, String> anAnyAttributes, 
-	                           Hashtable<String, String> anAnyElements )
+	public TestStepSequence()
 	{
-		super( aSequenceNr,
-		       "",
-		       new ParameterArrayList(),
-		       anAnyAttributes,
-		       anAnyElements );
 		mySteps = new ArrayList<TestStep>();
 	}
 	
 	/**
 	 * Creates a TestStepSequence with a specific size
 	 * 
-	 * @param aSequenceNr		Sequence number, to be used in a list
-	 * @param aSize				Initial size of the sequence
-	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
-	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 * @param aSize	Initial size of the sequence
 	 */
-	public TestStepSequence( int aSequenceNr,
-	                           int aSize,
-	                           Hashtable<String, String> anAnyAttributes, 
-	                           Hashtable<String, String> anAnyElements )
+	public TestStepSequence( int aSize )
 	{
-		super( aSequenceNr,
-		       "",
-		       new ParameterArrayList(),
-		       anAnyAttributes,
-		       anAnyElements );
 		mySteps = new ArrayList<TestStep>( aSize );
-	}
-	
-	/**
-	 * Creates a TestStepSequence with a specific size,
-	 * but without any unknown attributes or elements
-	 * 
-	 * @param aSequenceNr		Sequence number, to be used in a list
-	 * @param aSize				Initial size of the sequence
-	 */
-	public TestStepSequence( int aSequenceNr,
-	                           int aSize )
-	{
-		this( aSequenceNr,
-		      aSize,
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
-	}
-	
-	/**
-	 * Creates a TestStepSequence without any unknown attributes or elements
-	 * 
-	 * @param aSequenceNr		Sequence number, to be used in a list
-	 */
-	public TestStepSequence( int aSequenceNr )
-	{
-		this( aSequenceNr,
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
-	}
-	
-	/**
-	 * Creates a TestStepSequence with sequence number 0,
-	 * but without any unknown attributes or elements
-	 * 
-	 */
-	public TestStepSequence()
-	{
-		this( 0,
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
 	}
 	
 	@Override
@@ -109,12 +47,6 @@ public class TestStepSequence extends TestStep implements Collection<TestStep>
 	public String toString()
 	{
 		return mySteps.size() + " TestStep(s)";
-	}
-
-	@Override
-	public String getDisplayName()
-	{
-		return "Ordered (" + this.toString() + ")";
 	}
 
 	/* (non-Javadoc)
