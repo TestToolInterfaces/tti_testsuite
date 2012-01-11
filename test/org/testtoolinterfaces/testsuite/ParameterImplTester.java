@@ -3,8 +3,6 @@
  */
 package org.testtoolinterfaces.testsuite;
 
-import java.io.File;
-
 import junit.framework.TestCase;
 import junit.framework.Assert;
 
@@ -67,7 +65,7 @@ public class ParameterImplTester extends TestCase
 	@Test
 	public void testGetValueAsDerivedObject()
 	{
-		TestGroupLink tgLink = new TestGroupLink( "anId", 2, new File("a/link") );
+		TestGroupLink tgLink = new TestGroupLink( "anId", 2, "a/link" );
 		ParameterImpl param = new ParameterImpl( "name", tgLink );
 		
 		TestEntryImpl paramValue = param.getValueAs(TestEntryImpl.class);

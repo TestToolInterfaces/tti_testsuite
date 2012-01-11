@@ -1,6 +1,5 @@
 package org.testtoolinterfaces.testsuite;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -175,7 +174,7 @@ public class TestGroupImplTester extends TestCase
 		// Test Group ID2
 		TestGroupLink testGroupLink = new TestGroupLink( "tgLink",
 		                                              3,
-		                                              new File( "a/link" ) );
+		                                              "a/link" );
 
 		// Test Group all
 		TestEntryCollection te_all = new TestEntryCollection();

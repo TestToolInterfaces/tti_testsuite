@@ -1,6 +1,5 @@
 package org.testtoolinterfaces.testsuite;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -70,7 +69,7 @@ public class TestEntryCollectionTester extends TestCase
 		{
 			myTestCase2 = new TestCaseLink( "tcId",
 			                               4,
-			                               new File("link") );
+			                              "link" );
 		}
 
 		if ( myTestGroup == null )
