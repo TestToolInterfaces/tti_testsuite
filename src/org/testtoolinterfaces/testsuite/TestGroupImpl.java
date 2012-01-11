@@ -20,7 +20,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
     private ArrayList<String> myRequirementIds;
 
 	private TestStepSequence myInitializationSteps;
-	private TestEntryCollection myExecutionEntries;
+	private TestEntrySequence myExecutionEntries;
     private TestStepSequence myRestoreSteps;
     
 	/**
@@ -41,7 +41,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntryCollection aTestEntries,
+	                      TestEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps,
 	                      Hashtable<String, String> anAnyAttributes,
 	                      Hashtable<String, String> anAnyElements )
@@ -85,7 +85,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntryCollection aTestEntries,
+	                      TestEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -113,7 +113,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntryCollection aTestEntries,
+	                      TestEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -141,7 +141,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      String aDescription,
 	                      int aSequenceNr,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntryCollection aTestEntries,
+	                      TestEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -167,7 +167,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	public TestGroupImpl( String aTestGroupId,
 	                      int aSequenceNr,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntryCollection aTestEntries,
+	                      TestEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -188,7 +188,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	}
 
 	@Override
-	public TestEntryCollection getExecutionEntries()
+	public TestEntrySequence getExecutionEntries()
 	{
 		return myExecutionEntries;
 	}

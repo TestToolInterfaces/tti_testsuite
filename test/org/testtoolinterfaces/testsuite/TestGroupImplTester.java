@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.testtoolinterfaces.testsuite.TestEntry;
-import org.testtoolinterfaces.testsuite.TestEntryCollection;
+import org.testtoolinterfaces.testsuite.TestEntrySequence;
 import org.testtoolinterfaces.testsuite.TestGroupImpl;
 
 
@@ -42,7 +42,7 @@ public class TestGroupImplTester extends TestCase
 		                                             6,
 		                                             new ArrayList<String>(),
 		                                             new TestStepSequence(),
-		                                             new TestEntryCollection(),
+		                                             new TestEntrySequence(),
 		                                             new TestStepSequence(),
 		                                             new Hashtable<String, String>(),
 		                                             new Hashtable<String, String>() );
@@ -72,7 +72,7 @@ public class TestGroupImplTester extends TestCase
 		                                             6,
 		                                             new ArrayList<String>(),
 		                                             new TestStepSequence(),
-		                                             new TestEntryCollection(),
+		                                             new TestEntrySequence(),
 		                                             new TestStepSequence() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
@@ -92,7 +92,7 @@ public class TestGroupImplTester extends TestCase
 		                                             6,
 		                                             new ArrayList<String>(),
 		                                             new TestStepSequence(),
-		                                             new TestEntryCollection(),
+		                                             new TestEntrySequence(),
 		                                             new TestStepSequence() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
@@ -109,7 +109,7 @@ public class TestGroupImplTester extends TestCase
 		                                             "A Description",
 		                                             6,
 		                                             new TestStepSequence(),
-		                                             new TestEntryCollection(),
+		                                             new TestEntrySequence(),
 		                                             new TestStepSequence() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
@@ -126,7 +126,7 @@ public class TestGroupImplTester extends TestCase
 		TestGroupImpl testGroup = new TestGroupImpl( "ID",
 		                                             6,
 		                                             new TestStepSequence(),
-		                                             new TestEntryCollection(),
+		                                             new TestEntrySequence(),
 		                                             new TestStepSequence() );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
@@ -144,18 +144,18 @@ public class TestGroupImplTester extends TestCase
 		TestGroupImpl testGroup1_1 = new TestGroupImpl( "ID1_1",
 		                                             1,
 		                                             new TestStepSequence(),
-		                                             new TestEntryCollection(),
+		                                             new TestEntrySequence(),
 		                                             new TestStepSequence() );
 
 		// Test Group ID1_2
 		TestGroupImpl testGroup1_2 = new TestGroupImpl( "ID1_2",
 		                                             2,
 		                                             new TestStepSequence(),
-		                                             new TestEntryCollection(),
+		                                             new TestEntrySequence(),
 		                                             new TestStepSequence() );
 
 		// Test Group ID1
-		TestEntryCollection te1 = new TestEntryCollection();
+		TestEntrySequence te1 = new TestEntrySequence();
 		te1.add(testGroup1_1);
 		te1.add(testGroup1_2);
 		TestGroupImpl testGroup1 = new TestGroupImpl( "ID1",
@@ -168,7 +168,7 @@ public class TestGroupImplTester extends TestCase
 		TestGroupImpl testGroup2 = new TestGroupImpl( "ID2",
 		                                              4,
 		                                              new TestStepSequence(),
-		                                              new TestEntryCollection(),
+		                                              new TestEntrySequence(),
 		                                              new TestStepSequence() );
 
 		// Test Case
@@ -185,7 +185,7 @@ public class TestGroupImplTester extends TestCase
 		                                              "a/link" );
 
 		// Test Group all
-		TestEntryCollection te_all = new TestEntryCollection();
+		TestEntrySequence te_all = new TestEntrySequence();
 		te_all.add( testGroup1 );
 		te_all.add( testGroup2 );
 		te_all.add( testCase );

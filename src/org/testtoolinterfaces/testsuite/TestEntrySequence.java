@@ -6,15 +6,15 @@ import java.util.Iterator;
 import java.util.ListIterator;
 
 /**
- * Class for a Collection of Test Entries (i.e Test Groups, Test Cases, etc.).
- * The collection is ordered on the Sequence Number at all times.
+ * Class for a Sequence of Test Entries (i.e Test Groups, Test Cases, etc.).
+ * The Sequence is ordered on the Sequence Number at all times.
  * 
  * This class implements the Collection<TestEntry> interface
  * 
  * @author Arjan Kranenburg
  *
  */
-public class TestEntryCollection implements Collection<TestEntry>
+public class TestEntrySequence implements Collection<TestEntry>
 {
 	private ArrayList<TestEntry> myEntries;
 
@@ -22,12 +22,12 @@ public class TestEntryCollection implements Collection<TestEntry>
 	 * Creates a TestEntryCollection
 	 * 
 	 */
-	public TestEntryCollection()
+	public TestEntrySequence()
 	{
 		myEntries = new ArrayList<TestEntry>();
 	}
 	
-	public TestEntryCollection( int aSize )
+	public TestEntrySequence( int aSize )
 	{
 		myEntries = new ArrayList<TestEntry>( aSize );
 	}

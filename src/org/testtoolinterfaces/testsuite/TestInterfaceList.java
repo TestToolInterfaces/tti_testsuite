@@ -15,6 +15,6 @@ public interface TestInterfaceList
 	 * @param anInterfaceName	The interface name
 	 * @return The TestInterface from the list, null if the TestInterface is not found
 	 */
-	TestInterface getInterface( String anInterfaceName );
+	public TestInterface getInterface( String anInterfaceName );
 
 }

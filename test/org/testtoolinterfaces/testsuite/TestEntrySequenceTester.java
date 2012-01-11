@@ -9,21 +9,21 @@ import junit.framework.TestCase;
 import org.junit.Before;
 import org.testtoolinterfaces.testsuite.ParameterArrayList;
 import org.testtoolinterfaces.testsuite.TestCaseImpl;
-import org.testtoolinterfaces.testsuite.TestEntryCollection;
+import org.testtoolinterfaces.testsuite.TestEntrySequence;
 import org.testtoolinterfaces.testsuite.TestGroupImpl;
 import org.testtoolinterfaces.testsuite.TestStep;
 
 
-public class TestEntryCollectionTester extends TestCase
+public class TestEntrySequenceTester extends TestCase
 {
 	TestStep myTestStep = null;
 	TestCaseImpl myTestCase = null;
 	TestCaseLink myTestCase2 = null;
 	TestGroup myTestGroup = null;
 	
-	TestEntryCollection myTestEntryList = null;
+	TestEntrySequence myTestEntryList = null;
 
-	private void assertOrder( TestEntryCollection atsList )
+	private void assertOrder( TestEntrySequence atsList )
 	{
 		Iterator<TestEntry> itr = atsList.iterator();
 		int curSequence = 0;
@@ -79,13 +79,13 @@ public class TestEntryCollectionTester extends TestCase
 			                                 1,
 			                                 new ArrayList<String>(),
 			                                 new TestStepSequence(),
-			                                 new TestEntryCollection(),
+			                                 new TestEntrySequence(),
 			                                 new TestStepSequence() );
 		}
 
 		if ( myTestEntryList == null )
 		{
-			myTestEntryList = new TestEntryCollection();
+			myTestEntryList = new TestEntrySequence();
 			myTestEntryList.add(myTestCase);
 			myTestEntryList.add(myTestStep);
 			myTestEntryList.add(myTestGroup);
@@ -98,7 +98,7 @@ public class TestEntryCollectionTester extends TestCase
 	 */
 	public void testCase_constructor()
 	{
-		TestEntryCollection teArray = new TestEntryCollection();
+		TestEntrySequence teArray = new TestEntrySequence();
 
 		Assert.assertEquals("Incorrect Size", 0, teArray.size());
 		Assert.assertTrue(  "Incorrect isEmpty", teArray.isEmpty());
@@ -109,7 +109,7 @@ public class TestEntryCollectionTester extends TestCase
 	 */
 	public void testCase_add()
 	{
-		TestEntryCollection teArray = new TestEntryCollection();
+		TestEntrySequence teArray = new TestEntrySequence();
 
 		Assert.assertTrue("Add not OK", teArray.add(myTestCase) );
 		Assert.assertTrue("Add not OK", teArray.add(myTestStep) );
@@ -140,7 +140,7 @@ public class TestEntryCollectionTester extends TestCase
 	 */
 	public void testCase_clear()
 	{
-		TestEntryCollection teArray = new TestEntryCollection(0);
+		TestEntrySequence teArray = new TestEntrySequence(0);
 		teArray.add(myTestCase);
 		teArray.add(myTestStep);
 		teArray.add(myTestGroup);
@@ -157,7 +157,7 @@ public class TestEntryCollectionTester extends TestCase
 	 */
 	public void testCase_remove()
 	{
-		TestEntryCollection teArray = new TestEntryCollection(0);
+		TestEntrySequence teArray = new TestEntrySequence(0);
 		teArray.add(myTestCase);
 		teArray.add(myTestStep);
 		teArray.add(myTestGroup);
@@ -210,18 +210,18 @@ public class TestEntryCollectionTester extends TestCase
 	 */
 	public void testCase_removeAll()
 	{
-		TestEntryCollection teArray1 = new TestEntryCollection(0);
+		TestEntrySequence teArray1 = new TestEntrySequence(0);
 		teArray1.add(myTestCase);
 		teArray1.add(myTestStep);
 		teArray1.add(myTestGroup);
 		teArray1.add(myTestCase); // Duplicates are possible
 		teArray1.add(myTestCase2);
 
-		TestEntryCollection teArray2 = new TestEntryCollection(0);
+		TestEntrySequence teArray2 = new TestEntrySequence(0);
 		teArray2.add(myTestCase);
 		teArray2.add(myTestGroup);
 
-		TestEntryCollection teArray3 = new TestEntryCollection(0);
+		TestEntrySequence teArray3 = new TestEntrySequence(0);
 		teArray3.add(myTestStep);
 		teArray3.add(myTestGroup);
 
@@ -242,22 +242,22 @@ public class TestEntryCollectionTester extends TestCase
 	 */
 	public void testCase_retainAll()
 	{
-		TestEntryCollection teArray1 = new TestEntryCollection(0);
+		TestEntrySequence teArray1 = new TestEntrySequence(0);
 		teArray1.add(myTestCase);
 		teArray1.add(myTestStep);
 		teArray1.add(myTestGroup);
 		teArray1.add(myTestStep); // Duplicates are possible
 		teArray1.add(myTestCase2);
 
-		TestEntryCollection teArray2 = new TestEntryCollection(1);
+		TestEntrySequence teArray2 = new TestEntrySequence(1);
 		teArray2.add(myTestStep);
 		teArray2.add(myTestGroup);
 
-		TestEntryCollection teArray3 = new TestEntryCollection(2);
+		TestEntrySequence teArray3 = new TestEntrySequence(2);
 		teArray3.add(myTestGroup);
 		teArray3.add(myTestCase2);
 
-		TestEntryCollection teArray4 = new TestEntryCollection(3);
+		TestEntrySequence teArray4 = new TestEntrySequence(3);
 		teArray4.add(myTestGroup);
 
 		Assert.assertEquals("Incorrect Size", 5, teArray1.size());
@@ -280,24 +280,24 @@ public class TestEntryCollectionTester extends TestCase
 	 */
 	public void testCase_containsAll()
 	{
-		TestEntryCollection teArray1 = new TestEntryCollection();
+		TestEntrySequence teArray1 = new TestEntrySequence();
 		teArray1.add(myTestCase);
 		teArray1.add(myTestStep);
 		
-		TestEntryCollection teArray2 = new TestEntryCollection(1);
+		TestEntrySequence teArray2 = new TestEntrySequence(1);
 		teArray2.add(myTestCase);
 		teArray2.add(myTestStep);
 		teArray2.add(myTestGroup);
 		teArray2.add(myTestStep);
 		teArray2.add(myTestGroup);
 
-		TestEntryCollection teArray3 = new TestEntryCollection(2);
+		TestEntrySequence teArray3 = new TestEntrySequence(2);
 		teArray3.add(myTestStep);
 		teArray3.add(myTestCase2);
 		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));
 		teArray3.add(testStep7);
 
-		TestEntryCollection teArray4 = new TestEntryCollection(3);
+		TestEntrySequence teArray4 = new TestEntrySequence(3);
 		teArray4.add(myTestStep);
 		teArray4.add(myTestCase);
 		teArray4.add(myTestCase);
@@ -344,7 +344,7 @@ public class TestEntryCollectionTester extends TestCase
 	public void testCase_addAll_Collection()
 	{
 		// order of steps: 2 7 5 8
-		TestEntryCollection teArray = new TestEntryCollection(0);
+		TestEntrySequence teArray = new TestEntrySequence(0);
 		teArray.add(myTestStep);
 		teArray.add(myTestCase);
 		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));
