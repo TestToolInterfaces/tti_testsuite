@@ -13,12 +13,12 @@ public class TestStepSelectionTester extends TestCase
 {
 	private static final String IF_THEN_ELSE_DISPLAY = "if - then - else";
 	private static final String IF_THEN_DISPLAY = "if - then";
-	private static final String IF_THEN_ELSE_STRING = "if (interface1->commandA) then {interface1->commandB} else {interface1->commandC}";
-	private static final String IF_THEN_STRING = "if (interface1->commandA) then {interface1->commandB}";
+	private static final String IF_THEN_ELSE_STRING = "if (interface1->commandA) then {3 TestStep(s)} else {2 TestStep(s)}";
+	private static final String IF_THEN_STRING = "if (interface1->commandA) then {3 TestStep(s)}";
 	private TestInterface_stub myIface = null;
 	private TestStepCommand myTsIf = null;
-	private TestStepCommand myTsThen = null;
-	private TestStepCommand myTsElse = null;
+	private TestStepSequence myTsThen = null;
+	private TestStepSequence myTsElse = null;
 	
 	/**
 	 * @throws java.lang.Exception
@@ -41,12 +41,22 @@ public class TestStepSelectionTester extends TestCase
 		
 		if ( myTsThen== null )
 		{
-			myTsThen = new TestStepCommand( 0, "commandB", myIface );
+			TestStep step1 = new TestStepCommand( 0, "commandB_1", myIface );
+			TestStep step2 = new TestStepCommand( 2, "commandB_2", myIface );
+			TestStep step3 = new TestStepCommand( 4, "commandB_3", myIface );
+			myTsThen = new TestStepSequence();
+			myTsThen.add(step1);
+			myTsThen.add(step2);
+			myTsThen.add(step3);
 		}
 		
 		if ( myTsElse== null )
 		{
-			myTsElse = new TestStepCommand( 0, "commandC", myIface );
+			TestStep step1 = new TestStepCommand( 1, "commandC_1", myIface );
+			TestStep step2 = new TestStepCommand( 3, "commandC_2", myIface );
+			myTsElse = new TestStepSequence();
+			myTsElse.add(step1);
+			myTsElse.add(step2);
 		}
 	}
 
@@ -79,8 +89,8 @@ public class TestStepSelectionTester extends TestCase
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
 		Assert.assertEquals("Incorrect if-TestStep", myTsIf, testStep.getIfStep());
-		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenStep());
-		Assert.assertEquals("Incorrect else-TestStep", myTsElse, testStep.getElseStep());
+		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenSteps());
+		Assert.assertEquals("Incorrect else-TestStep", myTsElse, testStep.getElseSteps());
 		Assert.assertEquals("Incorrect Display Name", IF_THEN_ELSE_DISPLAY, testStep.getDisplayName());
 		Assert.assertEquals("Incorrect toString", IF_THEN_ELSE_STRING, testStep.toString());
 
@@ -107,8 +117,8 @@ public class TestStepSelectionTester extends TestCase
    		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
    		Assert.assertEquals("Incorrect if-TestStep", myTsIf, testStep.getIfStep());
-   		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenStep());
-   		Assert.assertEquals("Incorrect else-TestStep", myTsElse, testStep.getElseStep());
+   		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenSteps());
+   		Assert.assertEquals("Incorrect else-TestStep", myTsElse, testStep.getElseSteps());
    		Assert.assertEquals("Incorrect Display Name", IF_THEN_ELSE_DISPLAY, testStep.getDisplayName());
    		Assert.assertEquals("Incorrect toString", IF_THEN_ELSE_STRING, testStep.toString());
 
@@ -134,8 +144,8 @@ public class TestStepSelectionTester extends TestCase
    		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
    		Assert.assertEquals("Incorrect if-TestStep", myTsIf, testStep.getIfStep());
-   		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenStep());
-   		Assert.assertEquals("Incorrect else-TestStep", myTsElse, testStep.getElseStep());
+   		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenSteps());
+   		Assert.assertEquals("Incorrect else-TestStep", myTsElse, testStep.getElseSteps());
    		Assert.assertEquals("Incorrect Display Name", IF_THEN_ELSE_DISPLAY, testStep.getDisplayName());
    		Assert.assertEquals("Incorrect toString", IF_THEN_ELSE_STRING, testStep.toString());
 
@@ -161,8 +171,8 @@ public class TestStepSelectionTester extends TestCase
    		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
    		Assert.assertEquals("Incorrect if-TestStep", myTsIf, testStep.getIfStep());
-   		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenStep());
-   		Assert.assertNull(  "Else-TestStep not null", testStep.getElseStep());
+   		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenSteps());
+   		Assert.assertTrue(  "Else-TestStep not empty", testStep.getElseSteps().isEmpty());
    		Assert.assertEquals("Incorrect Display Name", IF_THEN_DISPLAY, testStep.getDisplayName());
    		Assert.assertEquals("Incorrect toString", IF_THEN_STRING, testStep.toString());
 
@@ -187,8 +197,8 @@ public class TestStepSelectionTester extends TestCase
    		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
    		Assert.assertEquals("Incorrect if-TestStep", myTsIf, testStep.getIfStep());
-   		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenStep());
-   		Assert.assertNull(  "Else-TestStep not null", testStep.getElseStep());
+   		Assert.assertEquals("Incorrect then-TestStep", myTsThen, testStep.getThenSteps());
+   		Assert.assertTrue(  "Else-TestStep not empty", testStep.getElseSteps().isEmpty());
    		Assert.assertEquals("Incorrect Display Name", IF_THEN_DISPLAY, testStep.getDisplayName());
    		Assert.assertEquals("Incorrect toString", IF_THEN_STRING, testStep.toString());
 

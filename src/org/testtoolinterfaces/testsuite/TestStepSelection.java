@@ -21,8 +21,8 @@ import org.testtoolinterfaces.utils.Trace;
 public class TestStepSelection extends TestStep
 {
 	private TestStep myIfStep;
-	private TestStep myThenStep;
-	private TestStep myElseStep;
+	private TestStepSequence myThenSteps;
+	private TestStepSequence myElseSteps;
 
 	/**
 	 * Creates a TestStepSelection
@@ -30,8 +30,8 @@ public class TestStepSelection extends TestStep
 	 * @param aSequenceNr		Sequence number, to be used in a list
 	 * @param aDescription		Description
 	 * @param anIfStep			The if-step, evaluated before the decision
-	 * @param aThenStep			The then-step, executed when the if-step evaluates to PASS
-	 * @param anElseStep		The else-step, executed when the if-step does not evaluate to PASS
+	 * @param aThenSteps		The sequence of then-steps, executed when the if-step evaluates to PASS
+	 * @param anElseSteps		The sequence of else-steps, executed when the if-step does not evaluate to PASS
 	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
 	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
@@ -39,8 +39,8 @@ public class TestStepSelection extends TestStep
 			 			 int aSequenceNr,
 						 String aDescription,
 						 TestStep anIfStep,
-						 TestStep aThenStep,
-						 TestStep anElseStep,
+						 TestStepSequence aThenSteps,
+						 TestStepSequence anElseSteps,
 	                     Hashtable<String, String> anAnyAttributes,
 	                     Hashtable<String, String> anAnyElements )
 	{
@@ -54,13 +54,13 @@ public class TestStepSelection extends TestStep
 	   									+ aSequenceNr + ", "
 	   									+ aDescription + ", "
 					   					+ anIfStep.toString() + ", "
-					   					+ aThenStep.toString() + ", "
-					   					+ ( anElseStep == null ? "<no else>" : anElseStep.toString() ) + " )",
+					   					+ aThenSteps.toString() + ", "
+					   					+ ( anElseSteps.isEmpty() ? "<no else>" : anElseSteps.toString() ) + " )",
 				   	   true );
 
-		myIfStep   = anIfStep;
-		myThenStep = aThenStep;
-		myElseStep = anElseStep;
+		myIfStep    = anIfStep;
+		myThenSteps = aThenSteps;
+		myElseSteps = anElseSteps;
 	}
 
 	/**
@@ -69,21 +69,21 @@ public class TestStepSelection extends TestStep
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param aDescription	Description
 	 * @param anIfStep		The if-step, evaluated before the decision
-	 * @param aThenStep		The then-step, executed when the if-step evaluates to PASS
-	 * @param anElseStep	The else-step, executed when the if-step does not evaluate to PASS
+	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
+	 * @param anElseSteps	The sequence of else-steps, executed when the if-step does not evaluate to PASS
 	 */
 	public TestStepSelection(
 			 			 int aSequenceNr,
 						 String aDescription,
 						 TestStep anIfStep,
-						 TestStep aThenStep,
-						 TestStep anElseStep )
+						 TestStepSequence aThenSteps,
+						 TestStepSequence anElseSteps )
 	{
 		this( aSequenceNr,
 		      aDescription,
 		      anIfStep,
-		      aThenStep,
-		      anElseStep, 
+		      aThenSteps,
+		      anElseSteps, 
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
@@ -95,19 +95,19 @@ public class TestStepSelection extends TestStep
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param aDescription	Description
 	 * @param anIfStep		The if-step, evaluated before the decision
-	 * @param aThenStep		The then-step, executed when the if-step evaluates to PASS
+	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
 	 */
 	public TestStepSelection(
 			 			 int aSequenceNr,
 						 String aDescription,
 						 TestStep anIfStep,
-						 TestStep aThenStep )
+						 TestStepSequence aThenSteps )
 	{
 		this( aSequenceNr,
 		      aDescription,
 		      anIfStep,
-		      aThenStep,
-		      null, 
+		      aThenSteps,
+		      new TestStepSequence(), 
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
@@ -117,20 +117,20 @@ public class TestStepSelection extends TestStep
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param anIfStep		The if-step, evaluated before the decision
-	 * @param aThenStep		The then-step, executed when the if-step evaluates to PASS
-	 * @param anElseStep	The else-step, executed when the if-step does not evaluate to PASS
+	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
+	 * @param anElseSteps	The sequence of else-steps, executed when the if-step does not evaluate to PASS
 	 */
 	public TestStepSelection(
 			 			 int aSequenceNr,
 						 TestStep anIfStep,
-						 TestStep aThenStep,
-						 TestStep anElseStep )
+						 TestStepSequence aThenSteps,
+						 TestStepSequence anElseSteps )
 	{
 		this( aSequenceNr,
 		      "",
 		      anIfStep,
-		      aThenStep,
-		      anElseStep, 
+		      aThenSteps,
+		      anElseSteps, 
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
@@ -140,24 +140,24 @@ public class TestStepSelection extends TestStep
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param anIfStep		The if-step, evaluated before the decision
-	 * @param aThenStep		The then-step, executed when the if-step evaluates to PASS
+	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
 	 */
 	public TestStepSelection(
 			 			 int aSequenceNr,
 						 TestStep anIfStep,
-						 TestStep aThenStep )
+						 TestStepSequence aThenSteps )
 	{
 		this( aSequenceNr,
 		      "",
 		      anIfStep,
-		      aThenStep,
-		      null, 
+		      aThenSteps,
+		      new TestStepSequence(), 
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
 
 	/**
-	 * @return the ifStep
+	 * @return the if-step
 	 */
 	public TestStep getIfStep()
 	{
@@ -165,31 +165,31 @@ public class TestStepSelection extends TestStep
 	}
 
 	/**
-	 * @return the thenStep
+	 * @return the sequence of then-steps
 	 */
-	public TestStep getThenStep()
+	public TestStepSequence getThenSteps()
 	{
-		return myThenStep;
+		return myThenSteps;
 	}
 
 	/**
-	 * @return the elseStep
+	 * @return the sequence of else-steps
 	 */
-	public TestStep getElseStep()
+	public TestStepSequence getElseSteps()
 	{
-		return myElseStep;
+		return myElseSteps;
 	}
 
 	@Override
 	public String toString()
 	{
-		return "if (" + myIfStep.toString() + ") then {" + myThenStep.toString()
-					  + (myElseStep != null ? "} else {" + myElseStep.toString() : "") + "}";
+		return "if (" + myIfStep.toString() + ") then {" + myThenSteps.toString()
+					  + (myElseSteps.isEmpty() ? "" : "} else {" + myElseSteps.toString()) + "}";
 	}
 
 	@Override
 	public String getDisplayName()
 	{
-		return "if - then" + (myElseStep != null ? " - else" : "");
+		return "if - then" + (myElseSteps.isEmpty() ? "" : " - else");
 	}
 }
