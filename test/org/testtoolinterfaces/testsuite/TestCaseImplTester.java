@@ -32,9 +32,9 @@ public class TestCaseImplTester extends TestCase
 				"An extensive description",
 				3,
 				new ArrayList<String>(),
-				new TestStepCollection(),
-				new TestStepCollection(),
-				new TestStepCollection(),
+				new TestStepSequence(),
+				new TestStepSequence(),
+				new TestStepSequence(),
 				new Hashtable<String, String>(),
 				new Hashtable<String, String>() );
 
@@ -62,9 +62,9 @@ public class TestCaseImplTester extends TestCase
 				"An extensive description",
 				0,
 				new ArrayList<String>(),
-				new TestStepCollection(0),
-				new TestStepCollection(0),
-				new TestStepCollection(0) );
+				new TestStepSequence(0),
+				new TestStepSequence(0),
+				new TestStepSequence(0) );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
@@ -80,9 +80,9 @@ public class TestCaseImplTester extends TestCase
 				"tcId",
 				0,
 				new ArrayList<String>(),
-				new TestStepCollection(0),
-				new TestStepCollection(0),
-				new TestStepCollection(0) );
+				new TestStepSequence(0),
+				new TestStepSequence(0),
+				new TestStepSequence(0) );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
@@ -98,9 +98,9 @@ public class TestCaseImplTester extends TestCase
 				"tcId",
 				"An extensive description",
 				0,
-				new TestStepCollection(0),
-				new TestStepCollection(0),
-				new TestStepCollection(0) );
+				new TestStepSequence(0),
+				new TestStepSequence(0),
+				new TestStepSequence(0) );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
@@ -115,9 +115,9 @@ public class TestCaseImplTester extends TestCase
 		TestCaseImpl testCase = new TestCaseImpl(
 				"tcId",
 				0,
-				new TestStepCollection(0),
-				new TestStepCollection(0),
-				new TestStepCollection(0) );
+				new TestStepSequence(0),
+				new TestStepSequence(0),
+				new TestStepSequence(0) );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
@@ -133,9 +133,9 @@ public class TestCaseImplTester extends TestCase
 				"tcId",
 				"An old description",
 				4,
-				new TestStepCollection(0),
-				new TestStepCollection(0),
-				new TestStepCollection(0) );
+				new TestStepSequence(0),
+				new TestStepSequence(0),
+				new TestStepSequence(0) );
 
 		Assert.assertEquals("Incorrect Description (1)", "An old description", testCase.getDescription());
 

@@ -18,7 +18,7 @@ public interface TestGroup extends TestEntry
 	/**
 	 * @return the Preparation Steps
 	 */
-	public TestStepCollection getPrepareSteps();
+	public TestStepSequence getPrepareSteps();
 
 	/**
 	 * @return the Execution Entries
@@ -28,7 +28,7 @@ public interface TestGroup extends TestEntry
 	/**
 	 * @return the Restore Steps
 	 */
-	public TestStepCollection getRestoreSteps();
+	public TestStepSequence getRestoreSteps();
 	
 	/**
 	 * @return if this group's id or one of the sub-group's id is equal to the requested id

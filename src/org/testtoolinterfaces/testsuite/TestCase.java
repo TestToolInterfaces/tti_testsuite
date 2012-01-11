@@ -18,15 +18,15 @@ public interface TestCase extends TestEntry
 	/**
 	 * @return the Initialization Steps
 	 */
-	public TestStepCollection getPrepareSteps();
+	public TestStepSequence getPrepareSteps();
 
 	/**
 	 * @return the Execution Steps
 	 */
-	public TestStepCollection getExecutionSteps();
+	public TestStepSequence getExecutionSteps();
 
 	/**
 	 * @return the Restore Steps
 	 */
-	public TestStepCollection getRestoreSteps();
+	public TestStepSequence getRestoreSteps();
 }

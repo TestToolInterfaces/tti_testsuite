@@ -21,9 +21,9 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 {
     private ArrayList<String> myRequirementIds;
 
-    private TestStepCollection myPrepareSteps;
-    private TestStepCollection myExecutionSteps;
-    private TestStepCollection myRestoreSteps;
+    private TestStepSequence myPrepareSteps;
+    private TestStepSequence myExecutionSteps;
+    private TestStepSequence myRestoreSteps;
 
 	/**
 	 * Constructor
@@ -43,9 +43,9 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 			String aDescription,
 			int aSequenceNr,
 			ArrayList<String> aRequirementIds,
-			TestStepCollection aPrepareSteps,
-			TestStepCollection anExecutionSteps,
-			TestStepCollection aRestoreSteps,
+			TestStepSequence aPrepareSteps,
+			TestStepSequence anExecutionSteps,
+			TestStepSequence aRestoreSteps,
             Hashtable<String, String> anAnyAttributes,
 			Hashtable<String, String> anAnyElements )
 	{
@@ -88,9 +88,9 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 			String aDescription,
 			int aSequenceNr,
 			ArrayList<String> aRequirementIds,
-			TestStepCollection aPrepareSteps,
-			TestStepCollection anExecutionSteps,
-			TestStepCollection aRestoreSteps )
+			TestStepSequence aPrepareSteps,
+			TestStepSequence anExecutionSteps,
+			TestStepSequence aRestoreSteps )
 	{
 		this( aTestCaseId,
 		      aDescription,
@@ -117,9 +117,9 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 			String aTestCaseId,
 			int aSequenceNr,
 			ArrayList<String> aRequirementIds,
-			TestStepCollection aPrepareSteps,
-			TestStepCollection anExecutionSteps,
-			TestStepCollection aRestoreSteps )
+			TestStepSequence aPrepareSteps,
+			TestStepSequence anExecutionSteps,
+			TestStepSequence aRestoreSteps )
 	{
 		this( aTestCaseId,
 		      "",
@@ -146,9 +146,9 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 			String aTestCaseId,
 			String aDescription,
 			int aSequenceNr,
-			TestStepCollection aPrepareSteps,
-			TestStepCollection anExecutionSteps,
-			TestStepCollection aRestoreSteps )
+			TestStepSequence aPrepareSteps,
+			TestStepSequence anExecutionSteps,
+			TestStepSequence aRestoreSteps )
 	{
 		this( aTestCaseId,
 		      aDescription,
@@ -173,9 +173,9 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 	public TestCaseImpl(
 			String aTestCaseId,
 			int aSequenceNr,
-			TestStepCollection aPrepareSteps,
-			TestStepCollection anExecutionSteps,
-			TestStepCollection aRestoreSteps )
+			TestStepSequence aPrepareSteps,
+			TestStepSequence anExecutionSteps,
+			TestStepSequence aRestoreSteps )
 	{
 		this( aTestCaseId,
 		      "",
@@ -189,13 +189,13 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 	}
 
 	@Override
-	public TestStepCollection getPrepareSteps()
+	public TestStepSequence getPrepareSteps()
 	{
 		return myPrepareSteps;
 	}
 
 	@Override
-	public TestStepCollection getExecutionSteps()
+	public TestStepSequence getExecutionSteps()
 	{
 		return myExecutionSteps;
 	}
@@ -207,7 +207,7 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 	}
 
 	@Override
-	public TestStepCollection getRestoreSteps()
+	public TestStepSequence getRestoreSteps()
 	{
 		return myRestoreSteps;
 	}

@@ -61,9 +61,9 @@ public class TestEntryCollectionTester extends TestCase
 			myTestCase = new TestCaseImpl( "tcId",
 			                               "An extensive description",
 			                               3,
-			                               new TestStepCollection(),
-			                               new TestStepCollection(),
-			                               new TestStepCollection() );
+			                               new TestStepSequence(),
+			                               new TestStepSequence(),
+			                               new TestStepSequence() );
 		}
 
 		if ( myTestCase2 == null )
@@ -79,9 +79,9 @@ public class TestEntryCollectionTester extends TestCase
 			                                 "A Description",
 			                                 1,
 			                                 new ArrayList<String>(),
-			                                 new TestStepCollection(),
+			                                 new TestStepSequence(),
 			                                 new TestEntryCollection(),
-			                                 new TestStepCollection() );
+			                                 new TestStepSequence() );
 		}
 
 		if ( myTestEntryList == null )
