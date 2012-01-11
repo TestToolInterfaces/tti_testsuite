@@ -26,12 +26,20 @@ public class TestGroupLinkTester extends TestCase
 	 */
 	public void testCase_constructor0()
 	{
+		Hashtable<String, String> anyParams = new Hashtable<String, String>();
+		anyParams.put("param1", "value1");
+		anyParams.put("param2", "value2");
+		Hashtable<String, String> anyElems = new Hashtable<String, String>();
+		anyElems.put("paramA", "valueA");
+		anyElems.put("paramB", "valueB");
+		anyElems.put("paramC", "valueC");
+
 		TestGroupLink tgLink = new TestGroupLink( "ID0", 
 		                                             8,
 		                                             "link",
 		                                             "aType",
-		                                             new Hashtable<String, String>(),
-		                                             new Hashtable<String, String>() );
+		                                             anyParams,
+		                                             anyElems );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
 		Assert.assertEquals("Incorrect ID", "ID0", tgLink.getId());
@@ -41,8 +49,8 @@ public class TestGroupLinkTester extends TestCase
 		Assert.assertEquals("TG File incorrect", "link", tgLink.getLink().getPath());
 		Assert.assertEquals("Incorrect TG Link Type", "aType", tgLink.getLinkType());
 
-		Assert.assertTrue(  "Any Attributes not empty", tgLink.getAnyAttributes().isEmpty());
-		Assert.assertTrue(  "Any Elements not empty", tgLink.getAnyElements().isEmpty());
+		Assert.assertEquals("Incorrect Any Attributes size", 2, tgLink.getAnyAttributes().size());
+		Assert.assertEquals("Incorrect Any Elements size", 3, tgLink.getAnyElements().size());
 	}
 
 	/**

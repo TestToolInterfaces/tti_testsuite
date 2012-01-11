@@ -27,6 +27,14 @@ public class TestCaseImplTester extends TestCase
 	 */
 	public void testCase_constructor0()
 	{
+		Hashtable<String, String> anyParams = new Hashtable<String, String>();
+		anyParams.put("param1", "value1");
+		anyParams.put("param2", "value2");
+		Hashtable<String, String> anyElems = new Hashtable<String, String>();
+		anyElems.put("paramA", "valueA");
+		anyElems.put("paramB", "valueB");
+		anyElems.put("paramC", "valueC");
+
 		TestCaseImpl testCase = new TestCaseImpl(
 				"tcId",
 				"An extensive description",
@@ -35,8 +43,8 @@ public class TestCaseImplTester extends TestCase
 				new TestStepSequence(),
 				new TestStepSequence(),
 				new TestStepSequence(),
-				new Hashtable<String, String>(),
-				new Hashtable<String, String>() );
+				anyParams,
+				anyElems );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
@@ -48,8 +56,8 @@ public class TestCaseImplTester extends TestCase
 		Assert.assertTrue(  "Execution Steps not empty", testCase.getExecutionSteps().isEmpty());
 		Assert.assertTrue(  "Restore Steps not empty", testCase.getRestoreSteps().isEmpty());
 
-		Assert.assertTrue(  "Any Attributes not empty", testCase.getAnyAttributes().isEmpty());
-		Assert.assertTrue(  "Any Elements not empty", testCase.getAnyElements().isEmpty());
+		Assert.assertEquals("Incorrect Any Attributes size", 2, testCase.getAnyAttributes().size());
+		Assert.assertEquals("Incorrect Any Elements size", 3, testCase.getAnyElements().size());
 	}
 
 	/**

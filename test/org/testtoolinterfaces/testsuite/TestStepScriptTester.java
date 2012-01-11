@@ -1,5 +1,7 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
@@ -29,6 +31,42 @@ public class TestStepScriptTester extends TestCase
 			param_e.setIndex(0);
 			myParamTable.add(param_e);
 		}
+	}
+
+	/**
+	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepScript#TestStepScript()}.
+	 */
+	@Test
+	public void testConstructor0()
+	{
+		Hashtable<String, String> anyParams = new Hashtable<String, String>();
+		anyParams.put("param1", "value1");
+		anyParams.put("param2", "value2");
+		Hashtable<String, String> anyElems = new Hashtable<String, String>();
+		anyElems.put("paramA", "valueA");
+		anyElems.put("paramB", "valueB");
+		anyElems.put("paramC", "valueC");
+
+		TestStepScript testStep = new TestStepScript(
+				0,
+				"An extensive description",
+				"script",
+				"bash",
+				myParamTable,
+				anyParams,
+				anyElems );
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
+		Assert.assertNull(  "Step has an ID", testStep.getId());
+		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
+		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
+
+		Assert.assertEquals("Incorrect Script", "script", testStep.getScript());
+		Assert.assertEquals("Incorrect Script Type", "bash", testStep.getScriptType());
+		Assert.assertEquals("Incorrect Display Name", "script", testStep.getDisplayName());
+
+		Assert.assertEquals("Incorrect Any Attributes size", 2, testStep.getAnyAttributes().size());
+		Assert.assertEquals("Incorrect Any Elements size", 3, testStep.getAnyElements().size());
 	}
 
 	/**

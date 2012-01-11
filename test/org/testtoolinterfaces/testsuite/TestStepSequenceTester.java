@@ -1,5 +1,6 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
 import java.util.Iterator;
 
 import junit.framework.Assert;
@@ -89,6 +90,36 @@ public class TestStepSequenceTester extends TestCase
 			myTestStepList.add(myTestStep5);
 			myTestStepList.add(myTestStep6);
 		}
+	}
+
+	/**
+	 * Test Cases
+	 */
+	public void testCase_constructor0()
+	{
+		Hashtable<String, String> anyParams = new Hashtable<String, String>();
+		anyParams.put("param1", "value1");
+		anyParams.put("param2", "value2");
+		Hashtable<String, String> anyElems = new Hashtable<String, String>();
+		anyElems.put("paramA", "valueA");
+		anyElems.put("paramB", "valueB");
+		anyElems.put("paramC", "valueC");
+
+		TestStepSequence tsArray = new TestStepSequence(0, anyParams, anyElems);
+
+		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, tsArray.getType());
+		Assert.assertNull(  "Step has an ID", tsArray.getId());
+		Assert.assertEquals("Incorrect Description", "", tsArray.getDescription());
+		Assert.assertTrue(  "Incorrect Parameters", tsArray.getParameters().isEmpty());
+
+		Assert.assertEquals("Incorrect Size", 0, tsArray.size());
+		Assert.assertTrue(  "Incorrect isEmpty", tsArray.isEmpty());
+		Assert.assertEquals("Incorrect Display Name", "Ordered (0 TestStep(s))", tsArray.getDisplayName());
+		
+		Assert.assertEquals("Incorrect Any Attributes size", 2, tsArray.getAnyAttributes().size());
+		Assert.assertEquals("Incorrect Any Elements size", 3, tsArray.getAnyElements().size());
+
+		assertOrder(tsArray);
 	}
 
 	/**

@@ -29,6 +29,14 @@ public class TestGroupImplTester extends TestCase
 	 */
 	public void testCase_constructor0()
 	{
+		Hashtable<String, String> anyParams = new Hashtable<String, String>();
+		anyParams.put("param1", "value1");
+		anyParams.put("param2", "value2");
+		Hashtable<String, String> anyElems = new Hashtable<String, String>();
+		anyElems.put("paramA", "valueA");
+		anyElems.put("paramB", "valueB");
+		anyElems.put("paramC", "valueC");
+
 		TestGroupImpl testGroup = new TestGroupImpl( "ID",
 		                                             "A Description",
 		                                             6,

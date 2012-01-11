@@ -26,13 +26,21 @@ public class TestCaseLinkTester extends TestCase
 	 */
 	public void testCase_constructor0()
 	{
+		Hashtable<String, String> anyParams = new Hashtable<String, String>();
+		anyParams.put("param1", "value1");
+		anyParams.put("param2", "value2");
+		Hashtable<String, String> anyElems = new Hashtable<String, String>();
+		anyElems.put("paramA", "valueA");
+		anyElems.put("paramB", "valueB");
+		anyElems.put("paramC", "valueC");
+
 		TestCaseLink tcLink = new TestCaseLink(
 				"tcLinkId",
 				2,
 				"fileName",
 				"perl",
-				new Hashtable<String, String>(),
-				new Hashtable<String, String>() );
+				anyParams,
+				anyElems );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
 		Assert.assertEquals("Incorrect ID", "tcLinkId", tcLink.getId());
@@ -42,8 +50,8 @@ public class TestCaseLinkTester extends TestCase
 		Assert.assertEquals("TC File incorrect", "fileName", tcLink.getLink().getPath());
 		Assert.assertEquals("Incorrect TC Link Type", "perl", tcLink.getLinkType());
 
-		Assert.assertTrue(  "Any Attributes not empty", tcLink.getAnyAttributes().isEmpty());
-		Assert.assertTrue(  "Any Elements not empty", tcLink.getAnyElements().isEmpty());
+		Assert.assertEquals("Incorrect Any Attributes size", 2, tcLink.getAnyAttributes().size());
+		Assert.assertEquals("Incorrect Any Elements size", 3, tcLink.getAnyElements().size());
 	}
 
 	/**
