@@ -1,5 +1,9 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
+import org.testtoolinterfaces.utils.Trace;
+
 /**
  * Class to hold an Hash of parameters.
  * 
@@ -11,17 +15,56 @@ public class ParameterHash extends Parameter
 	ParameterArrayList myParams;
 
 	/**
-	 * @param aParameter    Parameter name
-	 * @param aVariableName variable name
+	 * Creates a parameter hash
+	 * 
+	 * @param aParameter    	Parameter name
+	 * @param aVariableName 	Variable name
+	 * @param anIndex       	Index
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 *
+	 * The index can be used in a ParameterArrayList to specify an order.
 	 */
-	public ParameterHash(String aParameter, ParameterArrayList aParamList)
+	public ParameterHash( String aParameter,
+	                      ParameterArrayList aParamList,
+	                      int anIndex,
+	                      Hashtable<String, String> anAnyAttributes,
+	                      Hashtable<String, String> anAnyElements )
 	{
-		super(aParameter);
+		super( aParameter,
+		       anIndex,
+		       anAnyAttributes,
+		       anAnyElements );
+
+		Trace.println(Trace.CONSTRUCTOR, "ParameterHash( " + aParameter + ", " 
+						   + aParamList.toString() + ", "
+						   + anIndex + " )", true);
+
 		myParams = aParamList;
 	}
 
 	/**
-	 * Creates a parameter
+	 * Creates a parameter hash
+	 * 
+	 * @param aParameter    	Parameter name
+	 * @param aVariableName 	Variable name
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 */
+	public ParameterHash( String aParameter,
+	                      ParameterArrayList aParamList,
+	                      Hashtable<String, String> anAnyAttributes,
+	                      Hashtable<String, String> anAnyElements )
+	{
+		this( aParameter,
+		      aParamList,
+		      Parameter.DEFAULT_INDEX,
+		      anAnyAttributes,
+		      anAnyElements );
+	}
+
+	/**
+	 * Creates a parameter hash
 	 * 
 	 * @param aParameter    Parameter name
 	 * @param aVariableName variable name
@@ -31,8 +74,24 @@ public class ParameterHash extends Parameter
 	 */
 	public ParameterHash(String aParameter, ParameterArrayList aParamList, int anIndex)
 	{
-		super(aParameter, anIndex);
-		myParams = aParamList;
+		this( aParameter,
+		      aParamList,
+		      anIndex,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
+
+	/**
+	 * @param aParameter    Parameter name
+	 * @param aVariableName variable name
+	 */
+	public ParameterHash(String aParameter, ParameterArrayList aParamList)
+	{
+		this( aParameter,
+		      aParamList,
+		      Parameter.DEFAULT_INDEX,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**

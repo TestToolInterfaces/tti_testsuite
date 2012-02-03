@@ -1,5 +1,7 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
 import org.testtoolinterfaces.utils.Trace;
 
 /**
@@ -16,28 +18,88 @@ public class ParameterVariable extends Parameter
 	String myVariableName;
 	
 	/**
-	 * @param aParameter    Parameter name
-	 * @param aVariableName variable name
+	 * Creates a parameter variable
+	 * 
+	 * @param aParameter    	Parameter name
+	 * @param aVariableName 	Variable name
+	 * @param anIndex       	Index
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 *
+	 * The index can be used in a ParameterArrayList to specify an order.
 	 */
-	public ParameterVariable(String aParameter, String aVariableName)
+	public ParameterVariable( String aParameter,
+	                          String aVariableName,
+	                          int anIndex,
+		                      Hashtable<String, String> anAnyAttributes,
+		                      Hashtable<String, String> anAnyElements )
 	{
-		super(aParameter);
+		super( aParameter,
+		       anIndex,
+		       anAnyAttributes,
+		       anAnyElements);
+
+		Trace.println(Trace.CONSTRUCTOR, "ParameterVariable( " + aParameter + ", " 
+					   + aVariableName + ", "
+					   + anIndex + " )", true);
+
 		myVariableName = aVariableName;
 	}
 
 	/**
-	 * Creates a parameter
+	 * Creates a parameter variable
+	 * 
+	 * @param aParameter    	Parameter name
+	 * @param aVariableName 	Variable name
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 */
+	public ParameterVariable( String aParameter,
+	                          String aVariableName,
+		                      Hashtable<String, String> anAnyAttributes,
+		                      Hashtable<String, String> anAnyElements )
+	{
+		this( aParameter,
+		      aVariableName,
+		      Parameter.DEFAULT_INDEX,
+		      anAnyAttributes,
+		      anAnyElements );
+	}
+
+	/**
+	 * Creates a parameter variable
 	 * 
 	 * @param aParameter    Parameter name
-	 * @param aVariableName variable name
+	 * @param aVariableName Variable name
 	 * @param anIndex       Index
 	 *
 	 * The index can be used in a ParameterArrayList to specify an order.
 	 */
-	public ParameterVariable(String aParameter, String aVariableName, int anIndex)
+	public ParameterVariable( String aParameter,
+	                          String aVariableName,
+	                          int anIndex)
 	{
-		super(aParameter, anIndex);
-		myVariableName = aVariableName;
+		this( aParameter,
+		      aVariableName,
+		      anIndex,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
+
+	/**
+	 * Creates a parameter variable
+	 * 
+	 * @param aParameter    Parameter name
+	 * @param aVariableName Variable name
+	 */
+	public ParameterVariable( String aParameter,
+	                          String aVariableName )
+	{
+		this( aParameter,
+		      aVariableName,
+		      Parameter.DEFAULT_INDEX,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**

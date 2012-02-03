@@ -54,12 +54,12 @@ public interface TestEntry
 	public String toString();
 
 	/**
-	 * @return the myAnyAttributes
+	 * @return all other attributes
 	 */
 	public Hashtable<String, String> getAnyAttributes();
 
 	/**
-	 * @return the myAnyElements
+	 * @return all other elements
 	 */
 	public Hashtable<String, String> getAnyElements();
 }

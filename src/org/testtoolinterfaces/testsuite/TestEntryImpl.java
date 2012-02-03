@@ -29,6 +29,8 @@ abstract class TestEntryImpl implements TestEntry
 	 * @param aType			Type of TestEntry
 	 * @param aDescription	Description
 	 * @param aSequenceNr	Sequence number, to be used in a collection
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
 	public TestEntryImpl( String anId,
 	                      TYPE aType,

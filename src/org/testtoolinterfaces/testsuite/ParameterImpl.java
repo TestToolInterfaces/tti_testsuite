@@ -1,5 +1,7 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
 import org.testtoolinterfaces.utils.Trace;
 
 /**
@@ -18,39 +20,90 @@ public class ParameterImpl extends Parameter
 	private Object myValue;
 	
 	/**
-	 * Creates a parameter.
+	 * Creates a simple parameter
 	 * 
-	 * @param aParameter Parameter name
-	 * @param aValue     Value
-	 */
-	public ParameterImpl(String aParameter, Object aValue)
-	{
-		super( aParameter );
-		Trace.println(Trace.CONSTRUCTOR, "ParameterImpl( " + aParameter + ", " 
-		              									   + aValue.toString() + " )", true);
-	    myType = aValue.getClass();
-	    myValue = aValue;
-	}
-
-	/**
-	 * Creates a parameter
-	 * 
-	 * @param aParameter Parameter name
-	 * @param aValue     Value
-	 * @param anIndex    Index
+	 * @param aParameter 		Parameter name
+	 * @param aValue     		Value
+	 * @param anIndex    		Index
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 *
 	 * The index can be used in a ParameterArrayList to specify an order.
 	 * The index defaults to 99 and does not have to be unique.
 	 */
-	public ParameterImpl(String aParameter, Object aValue, int anIndex)
+	public ParameterImpl( String aParameter,
+	                      Object aValue,
+	                      int anIndex,
+	                      Hashtable<String, String> anAnyAttributes,
+	                      Hashtable<String, String> anAnyElements )
 	{
-		super( aParameter, anIndex );
+		super( aParameter, 
+		       anIndex,
+		       anAnyAttributes,
+		       anAnyElements );
 		Trace.println(Trace.CONSTRUCTOR, "ParameterImpl( " + aParameter + ", " 
 		              									   + aValue.toString() + ", "
 		              									   + anIndex + " )", true);
 
 	    myType = aValue.getClass();
 	    myValue = aValue;
+	}
+
+	/**
+	 * Creates a simple parameter.
+	 * 
+	 * @param aParameter 		Parameter name
+	 * @param aValue     		Value
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 */
+	public ParameterImpl( String aParameter,
+	                      Object aValue,
+	                      Hashtable<String, String> anAnyAttributes,
+	                      Hashtable<String, String> anAnyElements )
+	{
+		this( aParameter,
+		      aValue,
+		      Parameter.DEFAULT_INDEX,
+		      anAnyAttributes,
+		      anAnyElements );
+	}
+
+	/**
+	 * Creates a simple parameter
+	 * 
+	 * @param aParameter 		Parameter name
+	 * @param aValue     		Value
+	 * @param anIndex    		Index
+	 *
+	 * The index can be used in a ParameterArrayList to specify an order.
+	 * The index defaults to 99 and does not have to be unique.
+	 */
+	public ParameterImpl( String aParameter,
+	                      Object aValue,
+	                      int anIndex )
+	{
+		this( aParameter,
+		      aValue,
+		      anIndex,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
+
+	/**
+	 * Creates a simple parameter.
+	 * 
+	 * @param aParameter 		Parameter name
+	 * @param aValue     		Value
+	 */
+	public ParameterImpl( String aParameter,
+	                      Object aValue )
+	{
+		this( aParameter,
+		      aValue,
+		      Parameter.DEFAULT_INDEX,
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**

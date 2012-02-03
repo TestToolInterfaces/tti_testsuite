@@ -1,5 +1,7 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Hashtable;
+
 import org.testtoolinterfaces.utils.Trace;
 
 /**
@@ -15,35 +17,36 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public abstract class Parameter
 {
+	public static final int DEFAULT_INDEX = 99;
+
 	private String myParameter;
 	private int myIndex;
+	private Hashtable<String, String> myAnyAttributes;
+	private Hashtable<String, String> myAnyElements;
 	
-	/**
-	 * Creates a parameter with index 99.
-	 * 
-	 * @param aParameter Parameter name
-	 */
-	public Parameter(String aParameter)
-	{
-		this( aParameter, 99 );
-	}
-
 	/**
 	 * Creates a parameter
 	 * 
-	 * @param aParameter Parameter name
-	 * @param anIndex    Index
+	 * @param aParameter		Parameter name
+	 * @param anIndex   		Index
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 *
 	 * The index can be used in a ParameterArrayList to specify an order.
 	 * The index defaults to 99 and does not have to be unique.
 	 */
-	public Parameter(String aParameter, int anIndex)
+	public Parameter( String aParameter,
+	                  int anIndex,
+	                  Hashtable<String, String> anAnyAttributes,
+	     			  Hashtable<String, String> anAnyElements )
 	{
 		Trace.println(Trace.CONSTRUCTOR, "Parameter( " + aParameter + ", " 
 													   + anIndex + " )", true);
 	    myIndex = anIndex;
-
 	    myParameter = aParameter;
+
+	    myAnyAttributes = anAnyAttributes;
+		myAnyElements = anAnyElements;
 	}
 
 	/**
@@ -78,5 +81,21 @@ public abstract class Parameter
 	{
 		Trace.println(Trace.SETTER, "setValue( " + anIndex + " )", true);
 	    myIndex = anIndex;
+	}
+
+	/**
+	 * @return all other attributes
+	 */
+	public Hashtable<String, String> getAnyAttributes()
+	{
+		return myAnyAttributes;
+	}
+
+	/**
+	 * @return all other elements
+	 */
+	public Hashtable<String, String> getAnyElements()
+	{
+		return myAnyElements;
 	}
 }
