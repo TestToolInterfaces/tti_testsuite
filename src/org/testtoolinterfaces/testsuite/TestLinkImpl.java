@@ -36,7 +36,7 @@ public class TestLinkImpl extends File implements TestLink
 	 */
 	public TestLinkImpl(String aDir, String aPathName, String aType)
 	{
-		super(aDir, aPathName);
+		super(aDir.replace('\\', File.separatorChar), aPathName.replace('\\', File.separatorChar));
 		myType = aType;
 	}
 
@@ -61,7 +61,7 @@ public class TestLinkImpl extends File implements TestLink
 	 */
 	public TestLinkImpl(File aDir, String aPathName, String aType)
 	{
-		super(aDir, aPathName);
+		super(aDir, aPathName.replace('\\', File.separatorChar));
 		myType = aType;
 	}
 
@@ -85,7 +85,7 @@ public class TestLinkImpl extends File implements TestLink
 	 */
 	public TestLinkImpl(File aDir, String aPathName)
 	{
-		this( aDir, aPathName, TestLink.TYPE_TTI );
+		this( aDir, aPathName.replace('\\', File.separatorChar), TestLink.TYPE_TTI );
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class TestLinkImpl extends File implements TestLink
 	 */
 	public TestLinkImpl(String aPathName, String aType)
 	{
-		super(aPathName);
+		super(aPathName.replace('\\', File.separatorChar));
 		myType = aType;
 	}
 
@@ -111,7 +111,7 @@ public class TestLinkImpl extends File implements TestLink
 	 */
 	public TestLinkImpl(String aPathName)
 	{
-		this( aPathName, TestLink.TYPE_TTI);
+		this( aPathName.replace('\\', File.separatorChar), TestLink.TYPE_TTI);
 	}
 
 	@Override
