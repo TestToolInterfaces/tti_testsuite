@@ -1,5 +1,7 @@
 package org.testtoolinterfaces.testsuite;
 
+import java.util.Iterator;
+
 import org.testtoolinterfaces.testsuite.TestInterface;
 
 /**
@@ -17,4 +19,8 @@ public interface TestInterfaceList
 	 */
 	public TestInterface getInterface( String anInterfaceName );
 
+	/**
+	 * @return an Iterator for the TestInterfaces
+	 */
+	public Iterator<TestInterface> iterator();
 }
