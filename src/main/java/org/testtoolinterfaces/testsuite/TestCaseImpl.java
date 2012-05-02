@@ -188,25 +188,21 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 		      new Hashtable<String, String>() );
 	}
 
-	@Override
 	public TestStepSequence getPrepareSteps()
 	{
 		return myPrepareSteps;
 	}
 
-	@Override
 	public TestStepSequence getExecutionSteps()
 	{
 		return myExecutionSteps;
 	}
 
-	@Override
 	public ArrayList<String> getRequirements()
 	{
 		return myRequirementIds;
 	}
 
-	@Override
 	public TestStepSequence getRestoreSteps()
 	{
 		return myRestoreSteps;

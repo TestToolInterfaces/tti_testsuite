@@ -32,7 +32,6 @@ public class TestEntrySequence implements Collection<TestEntry>
 		myEntries = new ArrayList<TestEntry>( aSize );
 	}
 
-	@Override
 	public int size()
 	{
 		return myEntries.size();
@@ -67,7 +66,6 @@ public class TestEntrySequence implements Collection<TestEntry>
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public boolean addAll(Collection<? extends TestEntry> aTestEntryList)
 	{
 		boolean rc = false;
@@ -83,61 +81,52 @@ public class TestEntrySequence implements Collection<TestEntry>
 		return rc;
 	}
 
-	@Override
 	public void clear()
 	{
 		myEntries.clear();
 	}
 
-	@Override
 	public boolean contains(Object anObject)
 	{
 		return myEntries.contains(anObject);
 	}
 
-	@Override
 	public boolean containsAll(Collection<?> anObjects)
 	{
 		return myEntries.containsAll(anObjects);
 	}
 
-	@Override
 	public boolean isEmpty()
 	{
 		return myEntries.isEmpty();
 	}
-	@Override
+
 	public Iterator<TestEntry> iterator()
 	{
 		return myEntries.iterator();
 	}
 
-	@Override
 	public boolean remove(Object anObject)
 	{
 		return myEntries.remove(anObject);
 	}
 
-	@Override
 	public boolean removeAll(Collection<?> aTestEntries)
 	{
 		return myEntries.removeAll(aTestEntries);
 	}
 
-	@Override
 	public boolean retainAll(Collection<?> aTestEntries)
 	{
 		return myEntries.retainAll(aTestEntries);
 	}
 
-	@Override
 	public TestEntry[] toArray()
 	{
 		TestEntry[] array = new TestEntry[ myEntries.size() ];
 		return myEntries.toArray( array );
 	}
 
-	@Override
 	public <T> T[] toArray(T[] aTestEntryArray)
 	{
 		return myEntries.toArray(aTestEntryArray);

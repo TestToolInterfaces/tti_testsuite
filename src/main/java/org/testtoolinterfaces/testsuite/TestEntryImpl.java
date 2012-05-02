@@ -55,31 +55,26 @@ abstract class TestEntryImpl implements TestEntry
 		myAnyElements = anAnyElements;
 	}
 
-	@Override
 	public String getId()
 	{
 		return myId;
 	}
 
-	@Override
 	public TYPE getType()
 	{
 		return myType;
 	}
 
-	@Override
 	public String getDescription()
 	{
 		return myDescription;
 	}
 	
-	@Override
 	public int getSequenceNr()
 	{
 		return mySequenceNr;
 	}
 
-	@Override
 	public void setDescription(String aDescription)
 	{
 		myDescription = aDescription;
@@ -91,13 +86,11 @@ abstract class TestEntryImpl implements TestEntry
 		return myId;
 	}
 
-	@Override
 	public Hashtable<String, String> getAnyAttributes()
 	{
 		return myAnyAttributes;
 	}
 
-	@Override
 	public Hashtable<String, String> getAnyElements()
 	{
 		return myAnyElements;

@@ -114,13 +114,11 @@ public class TestLinkImpl extends File implements TestLink
 		this( aPathName.replace('\\', File.separatorChar), TestLink.TYPE_TTI);
 	}
 
-	@Override
 	public File getFile()
 	{
 		return this;
 	}
 
-	@Override
 	public String getType()
 	{
 		return myType;

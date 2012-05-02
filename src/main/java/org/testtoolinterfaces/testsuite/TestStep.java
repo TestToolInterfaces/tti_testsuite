@@ -53,31 +53,26 @@ public abstract class TestStep implements TestEntry
 		return myParameters;
 	}
 
-	@Override
 	public int getSequenceNr()
 	{
 		return mySequenceNr;
 	}
 
-	@Override
 	public String getDescription()
 	{
 		return myDescription;
 	}
 
-	@Override
 	public String getId()
 	{
 		return null; // Steps do not have unique IDs
 	}
 
-	@Override
 	public TYPE getType()
 	{
 		return TYPE.Step;
 	}
 
-	@Override
 	public void setDescription(String aDescription)
 	{
 		myDescription = aDescription;
@@ -89,13 +84,11 @@ public abstract class TestStep implements TestEntry
 		return getDisplayName();
 	}
 
-	@Override
 	public Hashtable<String, String> getAnyAttributes()
 	{
 		return myAnyAttributes;
 	}
 
-	@Override
 	public Hashtable<String, String> getAnyElements()
 	{
 		return myAnyElements;

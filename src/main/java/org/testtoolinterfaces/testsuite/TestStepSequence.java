@@ -37,7 +37,6 @@ public class TestStepSequence implements Collection<TestStep>
 		mySteps = new ArrayList<TestStep>( aSize );
 	}
 	
-	@Override
 	public int size()
 	{
 		return mySteps.size();
@@ -72,7 +71,6 @@ public class TestStepSequence implements Collection<TestStep>
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
 	public boolean addAll(Collection<? extends TestStep> aTestStepList)
 	{
 		boolean rc = false;
@@ -88,61 +86,52 @@ public class TestStepSequence implements Collection<TestStep>
 		return rc;
 	}
 
-	@Override
 	public void clear()
 	{
 		mySteps.clear();
 	}
 
-	@Override
 	public boolean contains(Object anObject)
 	{
 		return mySteps.contains(anObject);
 	}
 
-	@Override
 	public boolean containsAll(Collection<?> anObjects)
 	{
 		return mySteps.containsAll(anObjects);
 	}
 
-	@Override
 	public boolean isEmpty()
 	{
 		return mySteps.isEmpty();
 	}
-	@Override
+
 	public Iterator<TestStep> iterator()
 	{
 		return mySteps.iterator();
 	}
 
-	@Override
 	public boolean remove(Object anObject)
 	{
 		return mySteps.remove(anObject);
 	}
 
-	@Override
 	public boolean removeAll(Collection<?> aTestSteps)
 	{
 		return mySteps.removeAll(aTestSteps);
 	}
 
-	@Override
 	public boolean retainAll(Collection<?> aTestSteps)
 	{
 		return mySteps.retainAll(aTestSteps);
 	}
 
-	@Override
 	public TestStep[] toArray()
 	{
 		TestStep[] array = new TestStep[ mySteps.size() ];
 		return mySteps.toArray( array );
 	}
 
-	@Override
 	public <T> T[] toArray(T[] aTestStepArray)
 	{
 		return mySteps.toArray(aTestStepArray);

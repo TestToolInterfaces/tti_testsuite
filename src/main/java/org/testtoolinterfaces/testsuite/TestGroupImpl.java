@@ -181,31 +181,26 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 		      new Hashtable<String, String>() );
 	}
 
-	@Override
 	public TestStepSequence getPrepareSteps()
 	{
 		return myInitializationSteps;
 	}
 
-	@Override
 	public TestEntrySequence getExecutionEntries()
 	{
 		return myExecutionEntries;
 	}
 
-	@Override
 	public TestStepSequence getRestoreSteps()
 	{
 		return myRestoreSteps;
 	}
 
-	@Override
 	public ArrayList<String> getRequirements()
 	{
 		return myRequirementIds;
 	}
 
-	@Override
 	public boolean hasGroupId(String aGroupId)
 	{
 		if ( this.getId().equals(aGroupId) )
