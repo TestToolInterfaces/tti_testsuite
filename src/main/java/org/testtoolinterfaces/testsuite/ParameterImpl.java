@@ -136,18 +136,18 @@ public class ParameterImpl extends Parameter
 	public <Type> Type getValueAs(Class<Type> aType)
 	{
 		Type varOfType = null;
-		if ( aType == Boolean.class )
+		if ( Boolean.class.isAssignableFrom(aType) )
 		{
 			varOfType = (Type) Boolean.FALSE;
 		}
 
-		if ( aType == Integer.class )
+		if ( Integer.class.isAssignableFrom(aType) )
 		{
 			varOfType = (Type) new Integer( 0 );
 		}
 
 		Object value = this.getValue();
-		if ( value != null && aType.isInstance(value) )
+		if ( value != null && aType.isAssignableFrom(value.getClass()) )
 		{
 			varOfType = (Type) value;
 		}
