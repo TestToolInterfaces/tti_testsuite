@@ -55,4 +55,9 @@ public interface TestInterface
 	                                  String aType,
 	                                  String aValue )
 			throws TestSuiteException;
+
+	/**
+	 * Destroys the interfaces. Gives the opportunity for the interface to e.g. close connections or clean-up. 
+	 */
+	public void destroy();
 }
