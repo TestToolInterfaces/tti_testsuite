@@ -59,7 +59,7 @@ public class TestStepCommand extends TestStep
 		myCommand = aCommand;
 		myInterface = anInterface;
 		
-		this.setDisplayName( myInterface.getInterfaceName() + "->" + myCommand );
+		this.setDisplayName( myInterface.getInterfaceName() + ":" + myCommand );
 	}
 
 	/**
