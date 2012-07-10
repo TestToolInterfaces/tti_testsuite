@@ -13,8 +13,8 @@ public class TestStepSelectionTester extends TestCase
 {
 	private static final String IF_THEN_ELSE_DISPLAY = "if - then - else";
 	private static final String IF_THEN_DISPLAY = "if - then";
-	private static final String IF_THEN_ELSE_STRING = "if (interface1->commandA) then {3 TestStep(s)} else {2 TestStep(s)}";
-	private static final String IF_THEN_STRING = "if (interface1->commandA) then {3 TestStep(s)}";
+	private static final String IF_THEN_ELSE_STRING = "if (interface1:commandA) then {3 TestStep(s)} else {2 TestStep(s)}";
+	private static final String IF_THEN_STRING = "if (interface1:commandA) then {3 TestStep(s)}";
 	private TestInterface_stub myIface = null;
 	private TestStepCommand myTsIf = null;
 	private TestStepSequence myTsThen = null;

@@ -60,7 +60,7 @@ public class TestStepCommandTester extends TestCase
 
 		Assert.assertEquals("Incorrect Command", "commandA", testStep.getCommand());
 		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface().getInterfaceName());
-		Assert.assertEquals("Incorrect Display Name", "interface1->commandA", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1:commandA", testStep.getDisplayName());
 		Assert.assertEquals("Incorrect toString", testStep.getDisplayName(), testStep.toString());
 
 		Assert.assertEquals("Incorrect Any Attributes size", 2, testStep.getAnyAttributes().size());
@@ -95,7 +95,7 @@ public class TestStepCommandTester extends TestCase
 
 		Assert.assertEquals("Incorrect Command", "commandA", testStep.getCommand());
 		Assert.assertEquals("Incorrect Interface", "interface1", testStep.getInterface().getInterfaceName());
-		Assert.assertEquals("Incorrect Display Name", "interface1->commandA", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1:commandA", testStep.getDisplayName());
 		Assert.assertEquals("Incorrect toString", testStep.getDisplayName(), testStep.toString());
 
 		Assert.assertTrue(  "Any Attributes not empty", testStep.getAnyAttributes().isEmpty());
@@ -120,7 +120,7 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
-		Assert.assertEquals("Incorrect Display Name", "interface1->commandB", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1:commandB", testStep.getDisplayName());
 
 		Assert.assertTrue(  "Any Attributes not empty", testStep.getAnyAttributes().isEmpty());
 		Assert.assertTrue(  "Any Elements not empty", testStep.getAnyElements().isEmpty());
@@ -150,7 +150,7 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "f-parameter", ((ParameterImpl) testStep.getParameters().get("-f")).getValue());
-		Assert.assertEquals("Incorrect Display Name", "interface1->commandC", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1:commandC", testStep.getDisplayName());
 	}
 
 	/**
@@ -170,7 +170,7 @@ public class TestStepCommandTester extends TestCase
 		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
-		Assert.assertEquals("Incorrect Display Name", "interface1->commandD", testStep.getDisplayName());
+		Assert.assertEquals("Incorrect Display Name", "interface1:commandD", testStep.getDisplayName());
 	}
 
 	/**
