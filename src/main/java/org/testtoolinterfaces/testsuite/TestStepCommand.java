@@ -19,8 +19,8 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestStepCommand extends TestStep
 {
-	private String myCommand;
-	private TestInterface myInterface;
+	private final String myCommand;
+	private final TestInterface myInterface;
 
 	/**
 	 * Creates a TestStepCommand
@@ -58,6 +58,8 @@ public class TestStepCommand extends TestStep
 
 		myCommand = aCommand;
 		myInterface = anInterface;
+		
+		this.setDisplayName( myInterface.getInterfaceName() + "->" + myCommand );
 	}
 
 	/**
@@ -166,11 +168,5 @@ public class TestStepCommand extends TestStep
 	public TestInterface getInterface()
 	{
 		return myInterface;
-	}
-
-	@Override
-	public String getDisplayName()
-	{
-		return myInterface.getInterfaceName() + "->" + myCommand;
 	}
 }

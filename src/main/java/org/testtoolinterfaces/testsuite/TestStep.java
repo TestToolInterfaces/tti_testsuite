@@ -16,11 +16,8 @@ public abstract class TestStep implements TestEntry
 	private ParameterArrayList myParameters;
 	private Hashtable<String, String> myAnyAttributes;
 	private Hashtable<String, String> myAnyElements;
-
-	/**
-	 * Returns the Name of this step e.g. to be displayed in the result list
-	 */
-	abstract public String getDisplayName();
+	
+	private String myDisplayName = "";
 
 	/**
 	 * Creates a TestStep
@@ -68,6 +65,14 @@ public abstract class TestStep implements TestEntry
 		return null; // Steps do not have unique IDs
 	}
 
+	/**
+	 * Returns the Name of this step e.g. to be displayed in the result list
+	 */
+	public String getDisplayName()
+	{
+		return myDisplayName;
+	}
+
 	public TYPE getType()
 	{
 		return TYPE.Step;
@@ -76,6 +81,15 @@ public abstract class TestStep implements TestEntry
 	public void setDescription(String aDescription)
 	{
 		myDescription = aDescription;
+	}
+
+	/**
+	 * Sets the way this step is to be displayed
+	 * @param aDisplayName
+	 */
+	public void setDisplayName( String aDisplayName )
+	{
+		myDisplayName = aDisplayName;
 	}
 
 	@Override

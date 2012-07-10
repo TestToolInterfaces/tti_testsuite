@@ -56,6 +56,8 @@ public class TestStepScript extends TestStep
 
 		myScript = aScript;
 		myScriptType = aScriptType;
+		
+		this.setDisplayName(aScript);
 	}
 
 	/**
@@ -164,11 +166,5 @@ public class TestStepScript extends TestStep
 	public String getScriptType()
 	{
 		return myScriptType;
-	}
-
-	@Override
-	public String getDisplayName()
-	{
-		return myScript;
 	}
 }

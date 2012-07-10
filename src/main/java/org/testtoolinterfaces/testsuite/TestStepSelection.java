@@ -61,6 +61,8 @@ public class TestStepSelection extends TestStep
 		myIfStep    = anIfStep;
 		myThenSteps = aThenSteps;
 		myElseSteps = anElseSteps;
+		
+		this.setDisplayName("if - then" + (myElseSteps.isEmpty() ? "" : " - else"));
 	}
 
 	/**
@@ -185,11 +187,5 @@ public class TestStepSelection extends TestStep
 	{
 		return "if (" + myIfStep.toString() + ") then {" + myThenSteps.toString()
 					  + (myElseSteps.isEmpty() ? "" : "} else {" + myElseSteps.toString()) + "}";
-	}
-
-	@Override
-	public String getDisplayName()
-	{
-		return "if - then" + (myElseSteps.isEmpty() ? "" : " - else");
 	}
 }
