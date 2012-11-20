@@ -43,6 +43,11 @@ public interface TestEntry
 	public int getSequenceNr();
 
 	/**
+	 * @param aSequenceNr the sequenceNr
+	 */
+	public void setSequenceNr( int aSequenceNr);
+
+	/**
 	 * 
 	 * @param aDescription the new description
 	 */

@@ -75,6 +75,11 @@ abstract class TestEntryImpl implements TestEntry
 		return mySequenceNr;
 	}
 
+	public void setSequenceNr(int aSequenceNr)
+	{
+		mySequenceNr = aSequenceNr;
+	}
+
 	public void setDescription(String aDescription)
 	{
 		myDescription = aDescription;

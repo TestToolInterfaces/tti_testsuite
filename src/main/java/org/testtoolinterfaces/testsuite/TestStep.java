@@ -55,6 +55,11 @@ public abstract class TestStep implements TestEntry
 		return mySequenceNr;
 	}
 
+	public void setSequenceNr(int aSequenceNr)
+	{
+		mySequenceNr = aSequenceNr;
+	}
+
 	public String getDescription()
 	{
 		return myDescription;
