@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.testtoolinterfaces</groupId>
   <artifactId>testsuite</artifactId>
-  <version>0.3.3</version>
+  <version>0.3.3-SNAPSHOT</version>
   <name>Test Tool Interfaces - Test Suite</name>
   <description>Test Suite classes for Test Tool Interfaces</description>
   <url>http://www.testtoolinterfaces.org/</url>
@@ -23,9 +23,9 @@
   </licenses>
 
   <scm>
-    <connection>scm:git:ssh://ttinterfaces.git.sourceforge.net/gitroot/ttinterfaces/java-testsuite</connection>
-    <developerConnection>scm:git:ssh://ttinterfaces.git.sourceforge.net/gitroot/ttinterfaces/java-testsuite</developerConnection>
-    <url>ssh://ttinterfaces.git.sourceforge.net/gitroot/ttinterfaces/java-testsuite</url>
+    <connection>scm:git:git@github.com:ArjanKranenburg/tti_testsuite.git</connection>
+    <developerConnection>scm:git:git@github.com:ArjanKranenburg/tti_testsuite.git</developerConnection>
+    <url>git@github.com:ArjanKranenburg/tti_testsuite.git</url>
   </scm>
  
   <developers>
