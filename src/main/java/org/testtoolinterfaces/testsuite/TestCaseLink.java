@@ -201,7 +201,12 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		if ( ! myLink.getFile().isAbsolute() )
 		{
-			myLink = new TestLinkImpl( aLinkDir, myLink.getPath(), myLink.getType() );
+			String myCurrentParent = myLink.getParent();
+			File newParentDir = aLinkDir;
+			if (myCurrentParent != null) {
+				newParentDir = new File( aLinkDir, myLink.getParent() );
+			}
+			myLink = new TestLinkImpl( newParentDir, myLink.getName(), myLink.getType() );
 		}
 	}
 }
