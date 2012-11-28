@@ -183,6 +183,14 @@ public class TestGroupLink extends TestEntryImpl
 	}
 
 	/**
+	 * @param aLink	The TC Link.
+	 */
+	public void setLink(TestLink aLink)
+	{
+		myLink = aLink;
+	}
+
+	/**
 	 * @return the type of the Test Group File
 	 */
 	public String getLinkType()

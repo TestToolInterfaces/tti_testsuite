@@ -182,6 +182,14 @@ public class TestCaseLink extends TestEntryImpl
 	}
 
 	/**
+	 * @param aLink	The TC Link.
+	 */
+	public void setLink(TestLink aLink)
+	{
+		myLink = aLink;
+	}
+
+	/**
 	 * @return the type of the Test Case File
 	 */
 	public String getLinkType()
@@ -201,12 +209,7 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		if ( ! myLink.getFile().isAbsolute() )
 		{
-			String myCurrentParent = myLink.getParent();
-			File newParentDir = aLinkDir;
-			if (myCurrentParent != null) {
-				newParentDir = new File( aLinkDir, myLink.getParent() );
-			}
-			myLink = new TestLinkImpl( newParentDir, myLink.getName(), myLink.getType() );
+			myLink = new TestLinkImpl( aLinkDir, myLink.getName(), myLink.getType() );
 		}
 	}
 }
