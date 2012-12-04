@@ -209,7 +209,7 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		if ( ! myLink.getFile().isAbsolute() )
 		{
-			myLink = new TestLinkImpl( aLinkDir, myLink.getName(), myLink.getType() );
+			myLink = new TestLinkImpl( aLinkDir, myLink.getPath(), myLink.getType() );
 		}
 	}
 }
