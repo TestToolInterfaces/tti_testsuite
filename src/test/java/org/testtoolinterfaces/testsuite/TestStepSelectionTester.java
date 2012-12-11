@@ -78,6 +78,7 @@ public class TestStepSelectionTester extends TestCase
 				0,
 				"An extensive description",
 				myTsIf,
+				false,
 				myTsThen,
 				myTsElse,
 				anyParams,
@@ -135,6 +136,7 @@ public class TestStepSelectionTester extends TestCase
 		TestStepSelection testStep = new TestStepSelection(
 		                                   				0,
 		                                   				myTsIf,
+		                                   				false,
 		                                   				myTsThen,
 		                                   				myTsElse );
 
@@ -189,6 +191,7 @@ public class TestStepSelectionTester extends TestCase
 		TestStepSelection testStep = new TestStepSelection(
 		                                   				0,
 		                                   				myTsIf,
+		                                   				false,
 		                                   				myTsThen );
 
    		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());

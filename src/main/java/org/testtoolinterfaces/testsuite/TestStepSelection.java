@@ -21,6 +21,7 @@ import org.testtoolinterfaces.utils.Trace;
 public class TestStepSelection extends TestStep
 {
 	private TestStep myIfStep;
+	private boolean myNegator;
 	private TestStepSequence myThenSteps;
 	private TestStepSequence myElseSteps;
 
@@ -30,6 +31,7 @@ public class TestStepSelection extends TestStep
 	 * @param aSequenceNr		Sequence number, to be used in a list
 	 * @param aDescription		Description
 	 * @param anIfStep			The if-step, evaluated before the decision
+	 * @param aNegator			If true, it negates the if-evaluation
 	 * @param aThenSteps		The sequence of then-steps, executed when the if-step evaluates to PASS
 	 * @param anElseSteps		The sequence of else-steps, executed when the if-step does not evaluate to PASS
 	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
@@ -39,6 +41,7 @@ public class TestStepSelection extends TestStep
 			 			 int aSequenceNr,
 						 String aDescription,
 						 TestStep anIfStep,
+						 boolean aNegator,
 						 TestStepSequence aThenSteps,
 						 TestStepSequence anElseSteps,
 	                     Hashtable<String, String> anAnyAttributes,
@@ -54,15 +57,45 @@ public class TestStepSelection extends TestStep
 	   									+ aSequenceNr + ", "
 	   									+ aDescription + ", "
 					   					+ anIfStep.toString() + ", "
+					   					+ aNegator + ", "
 					   					+ aThenSteps.toString() + ", "
 					   					+ ( anElseSteps.isEmpty() ? "<no else>" : anElseSteps.toString() ) + " )",
 				   	   true );
 
 		myIfStep    = anIfStep;
+		myNegator		= aNegator;
 		myThenSteps = aThenSteps;
 		myElseSteps = anElseSteps;
 		
-		this.setDisplayName("if - then" + (myElseSteps.isEmpty() ? "" : " - else"));
+		this.setDisplayName("if " + (myNegator ? "not " : "") + "- then" + (myElseSteps.isEmpty() ? "" : " - else"));
+	}
+
+	/**
+	 * Creates a TestStepSelection without unknown attributes and elements
+	 * 
+	 * @param aSequenceNr	Sequence number, to be used in a list
+	 * @param aDescription	Description
+	 * @param anIfStep		The if-step, evaluated before the decision
+	 * @param aNegator		If true, it negates the if-evaluation
+	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
+	 * @param anElseSteps	The sequence of else-steps, executed when the if-step does not evaluate to PASS
+	 */
+	public TestStepSelection(
+			 			 int aSequenceNr,
+						 String aDescription,
+						 TestStep anIfStep,
+						 boolean aNegator,
+						 TestStepSequence aThenSteps,
+						 TestStepSequence anElseSteps )
+	{
+		this( aSequenceNr,
+		      aDescription,
+		      anIfStep,
+		      aNegator,
+		      aThenSteps,
+		      anElseSteps, 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
 	}
 
 	/**
@@ -84,8 +117,36 @@ public class TestStepSelection extends TestStep
 		this( aSequenceNr,
 		      aDescription,
 		      anIfStep,
+		      false,
 		      aThenSteps,
 		      anElseSteps, 
+		      new Hashtable<String, String>(),
+		      new Hashtable<String, String>() );
+	}
+
+	/**
+	 * Creates a TestStepSelection without an else-step and unknown attributes and elements.
+	 * If the if-steps does not evaluate to PASS, nothing else is done in this step.
+	 * 
+	 * @param aSequenceNr	Sequence number, to be used in a list
+	 * @param aDescription	Description
+	 * @param anIfStep		The if-step, evaluated before the decision
+	 * @param aNegator		If true, it negates the if-evaluation
+	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
+	 */
+	public TestStepSelection(
+			 			 int aSequenceNr,
+						 String aDescription,
+						 TestStep anIfStep,
+						 boolean aNegator,
+						 TestStepSequence aThenSteps )
+	{
+		this( aSequenceNr,
+		      aDescription,
+		      anIfStep,
+		      aNegator,
+		      aThenSteps,
+		      new TestStepSequence(), 
 		      new Hashtable<String, String>(),
 		      new Hashtable<String, String>() );
 	}
@@ -108,6 +169,7 @@ public class TestStepSelection extends TestStep
 		this( aSequenceNr,
 		      aDescription,
 		      anIfStep,
+		      false,
 		      aThenSteps,
 		      new TestStepSequence(), 
 		      new Hashtable<String, String>(),
@@ -119,18 +181,21 @@ public class TestStepSelection extends TestStep
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param anIfStep		The if-step, evaluated before the decision
+	 * @param aNegator		If true, it negates the if-evaluation
 	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
 	 * @param anElseSteps	The sequence of else-steps, executed when the if-step does not evaluate to PASS
 	 */
 	public TestStepSelection(
 			 			 int aSequenceNr,
 						 TestStep anIfStep,
+						 boolean aNegator,
 						 TestStepSequence aThenSteps,
 						 TestStepSequence anElseSteps )
 	{
 		this( aSequenceNr,
 		      "",
 		      anIfStep,
+		      aNegator,
 		      aThenSteps,
 		      anElseSteps, 
 		      new Hashtable<String, String>(),
@@ -142,16 +207,19 @@ public class TestStepSelection extends TestStep
 	 * 
 	 * @param aSequenceNr	Sequence number, to be used in a list
 	 * @param anIfStep		The if-step, evaluated before the decision
+	 * @param aNegator		If true, it negates the if-evaluation
 	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
 	 */
 	public TestStepSelection(
 			 			 int aSequenceNr,
 						 TestStep anIfStep,
+						 boolean aNegator,
 						 TestStepSequence aThenSteps )
 	{
 		this( aSequenceNr,
 		      "",
 		      anIfStep,
+		      aNegator,
 		      aThenSteps,
 		      new TestStepSequence(), 
 		      new Hashtable<String, String>(),
@@ -164,6 +232,14 @@ public class TestStepSelection extends TestStep
 	public TestStep getIfStep()
 	{
 		return myIfStep;
+	}
+
+	/**
+	 * @return the negator flag
+	 */
+	public boolean getNegator()
+	{
+		return myNegator;
 	}
 
 	/**
