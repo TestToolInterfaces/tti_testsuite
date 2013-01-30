@@ -23,6 +23,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	private TestEntrySequence myExecutionEntries;
     private TestStepSequence myRestoreSteps;
     
+	@Deprecated // Use constructor without anyAttributes and anyElements
 	/**
 	 * Constructor
 	 * 
@@ -49,9 +50,10 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 		super( aTestGroupId,
 		       TestEntry.TYPE.Group,
 		       aDescription,
-		       aSequenceNr,
-		       anAnyAttributes,
-		       anAnyElements );
+		       aSequenceNr );
+//		,
+//		       anAnyAttributes,
+//		       anAnyElements );
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestGroupImpl( " + aTestGroupId + ", "
 					   					 + aDescription + ", "
@@ -67,6 +69,9 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 		myInitializationSteps = aPrepareSteps;
 		myExecutionEntries = aTestEntries;
 		myRestoreSteps = aRestoreSteps;
+		
+		this.setAnyAttributes(anAnyAttributes);
+		this.setAnyElements(anAnyElements);
 	}
 
 	/**

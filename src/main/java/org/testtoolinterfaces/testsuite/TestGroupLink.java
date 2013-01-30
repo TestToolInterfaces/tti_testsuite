@@ -19,6 +19,7 @@ public class TestGroupLink extends TestEntryImpl
 
 	private TestLink myLink;
 	
+	@Deprecated // Use constructor without anyAttributes and anyElements
 	/**
 	 * Constructor
 	 * 
@@ -34,7 +35,7 @@ public class TestGroupLink extends TestEntryImpl
 	                      Hashtable<String, String> anAnyAttributes,
 	                      Hashtable<String, String> anAnyElements )
 	{
-		super(aTestGroupId, TestEntry.TYPE.GroupLink, "", aSequenceNr, anAnyAttributes, anAnyElements );
+		super(aTestGroupId, TestEntry.TYPE.GroupLink, "", aSequenceNr );
 
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestGroupLinkImpl( " + aTestGroupId + ", " 
@@ -45,8 +46,11 @@ public class TestGroupLink extends TestEntryImpl
 					   true );
 		
 		myLink = aTgLink;
+		this.setAnyAttributes(anAnyAttributes);
+		this.setAnyElements(anAnyElements);
 	}
 
+	@Deprecated // Use constructor without anyAttributes and anyElements
 	/**
 	 * Constructor
 	 * 

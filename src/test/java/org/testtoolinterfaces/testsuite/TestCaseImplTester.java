@@ -42,9 +42,10 @@ public class TestCaseImplTester extends TestCase
 				new ArrayList<String>(),
 				new TestStepSequence(),
 				new TestStepSequence(),
-				new TestStepSequence(),
-				anyParams,
-				anyElems );
+				new TestStepSequence() );
+
+		testCase.setAnyAttributes(anyParams);
+		testCase.setAnyElements(anyElems);
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());

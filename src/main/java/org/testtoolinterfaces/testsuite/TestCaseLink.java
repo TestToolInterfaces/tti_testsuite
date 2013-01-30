@@ -19,6 +19,26 @@ public class TestCaseLink extends TestEntryImpl
 	private TestLink myLink;
 
 	/**
+	 * Constructor for type 'tti'
+	 * 
+	 * @param aTestCaseId		TC Identifier
+	 * @param aSequenceNr		Sequence Number
+	 * @param aTestCaseLink		Test Case File
+	 */
+	public TestCaseLink(String aTestCaseId, int aSequenceNr, TestLink aTcLink) {
+		super(aTestCaseId, TestEntry.TYPE.CaseLink, "", aSequenceNr );
+
+		Trace.println( Trace.CONSTRUCTOR,
+					   "TestCaseLink( " + aTestCaseId + ", " 
+					                    + aSequenceNr + ", "
+					                    + aTcLink.getPath() + " )",
+					   true );
+
+		myLink = aTcLink;
+	}
+
+	@Deprecated // Use constructor without anyAttributes and anyElements
+	/**
 	 * Constructor
 	 * 
 	 * @param aTestCaseId		TC Identifier
@@ -33,8 +53,7 @@ public class TestCaseLink extends TestEntryImpl
 	                     Hashtable<String, String> anAnyAttributes,
 						 Hashtable<String, String> anAnyElements )
 	{
-		super(aTestCaseId, TestEntry.TYPE.CaseLink, "", aSequenceNr, anAnyAttributes, anAnyElements );
-
+		this( aTestCaseId, aSequenceNr, aTcLink );
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestCaseLink( " + aTestCaseId + ", " 
 					                    + aSequenceNr + ", "
@@ -43,9 +62,11 @@ public class TestCaseLink extends TestEntryImpl
 					                    + anAnyElements.size() + " )",
 					   true );
 
-		myLink = aTcLink;
+		this.setAnyAttributes(anAnyAttributes);
+		this.setAnyElements(anAnyElements);
 	}
 
+	@Deprecated // Use constructor without anyAttributes and anyElements
 	/**
 	 * Constructor
 	 * 
@@ -65,13 +86,14 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		this( aTestCaseId,
 		      aSequenceNr,
-		      new TestLinkImpl( aTcLinkName, aType ),
-		      anAnyAttributes,
-		      anAnyElements );
+		      (TestLink) new TestLinkImpl( aTcLinkName, aType ) );
+
+		this.setAnyAttributes(anAnyAttributes);
+		this.setAnyElements(anAnyElements);
 	}
 
 	/**
-	 * Constructor without unknown attributes or elements
+	 * Constructor
 	 * 
 	 * @param aTestCaseId		TC Identifier
 	 * @param aSequenceNr		Sequence Number
@@ -85,13 +107,11 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		this( aTestCaseId,
 		      aSequenceNr,
-		      new TestLinkImpl( aTcLinkName, aType ),
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      (TestLink) new TestLinkImpl(aTcLinkName, aType) );
 	}
 
 	/**
-	 * Constructor for default type and without unknown attributes or elements
+	 * Constructor for default type
 	 * 
 	 * @param aTestCaseId		TC Identifier
 	 * @param aSequenceNr		Sequence Number
@@ -103,9 +123,7 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		this( aTestCaseId,
 		      aSequenceNr,
-		      new TestLinkImpl( aTcLinkName, TYPE_TTI ),
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      (TestLink) new TestLinkImpl( aTcLinkName, TYPE_TTI ) );
 	}
 
 	/**
@@ -128,13 +146,14 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		this( aTestCaseId,
 		      aSequenceNr,
-		      new TestLinkImpl( aTestCaseLink.getPath(), aType ),
-		      anAnyAttributes,
-		      anAnyElements );
+		      (TestLink) new TestLinkImpl( aTestCaseLink.getPath(), aType ) );
+
+		this.setAnyAttributes(anAnyAttributes);
+		this.setAnyElements(anAnyElements);
 	}
 
 	/**
-	 * Constructor without unknown attributes or elements
+	 * Constructor
 	 * 
 	 * @param aTestCaseId		TC Identifier
 	 * @param aSequenceNr		Sequence Number
@@ -149,13 +168,11 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		this( aTestCaseId,
 		      aSequenceNr,
-		      new TestLinkImpl( aTestCaseLink.getPath(), aType ),
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      (TestLink) new TestLinkImpl( aTestCaseLink.getPath(), aType ) );
 	}
 
 	/**
-	 * Constructor for type 'tti' without unknown attributes or elements
+	 * Constructor for type 'tti'
 	 * 
 	 * @param aTestCaseId		TC Identifier
 	 * @param aSequenceNr		Sequence Number
@@ -168,9 +185,7 @@ public class TestCaseLink extends TestEntryImpl
 	{
 		this( aTestCaseId,
 		      aSequenceNr,
-		      new TestLinkImpl( aTestCaseLink.getPath(), TYPE_TTI ),
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      (TestLink) new TestLinkImpl( aTestCaseLink.getPath(), TYPE_TTI ) );
 	}
 
 	/**

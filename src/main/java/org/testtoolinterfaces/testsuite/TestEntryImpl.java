@@ -35,9 +35,7 @@ abstract class TestEntryImpl implements TestEntry
 	public TestEntryImpl( String anId,
 	                      TYPE aType,
 	                      String aDescription,
-	                      int aSequenceNr,
-	                      Hashtable<String, String> anAnyAttributes,
-	                      Hashtable<String, String> anAnyElements )
+	                      int aSequenceNr )
 	{
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestEntryImpl(" + anId + ", "
@@ -51,8 +49,8 @@ abstract class TestEntryImpl implements TestEntry
 		myDescription = aDescription;
 		mySequenceNr = aSequenceNr;
 		
-		myAnyAttributes = anAnyAttributes;
-		myAnyElements = anAnyElements;
+		myAnyAttributes = new Hashtable<String, String>();
+		myAnyElements = new Hashtable<String, String>();
 	}
 
 	public String getId()
@@ -96,8 +94,22 @@ abstract class TestEntryImpl implements TestEntry
 		return myAnyAttributes;
 	}
 
+	/**
+	 * @param anAnyAttributes the AnyAttributes to set
+	 */
+	public void setAnyAttributes(Hashtable<String, String> anAnyAttributes) {
+		myAnyAttributes = anAnyAttributes;
+	}
+
 	public Hashtable<String, String> getAnyElements()
 	{
 		return myAnyElements;
+	}
+
+	/**
+	 * @param anAnyElements the AnyElements to set
+	 */
+	public void setAnyElements(Hashtable<String, String> anAnyElements) {
+		myAnyElements = anAnyElements;
 	}
 }

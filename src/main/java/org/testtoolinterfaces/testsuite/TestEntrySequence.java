@@ -32,6 +32,11 @@ public class TestEntrySequence implements Collection<TestEntry>
 		myEntries = new ArrayList<TestEntry>( aSize );
 	}
 
+	public TestEntrySequence( Collection<? extends TestEntry> aTestEntryList )
+	{
+		myEntries = new ArrayList<TestEntry>( aTestEntryList );
+	}
+
 	public int size()
 	{
 		return myEntries.size();
