@@ -63,11 +63,11 @@ public class TestStepSelection extends TestStep
 				   	   true );
 
 		myIfStep    = anIfStep;
-		myNegator		= aNegator;
+		myNegator	= aNegator;
 		myThenSteps = aThenSteps;
 		myElseSteps = anElseSteps;
 		
-		this.setDisplayName("if " + (myNegator ? "not " : "") + "- then" + (myElseSteps.isEmpty() ? "" : " - else"));
+		this.setDisplayName("if " + (myNegator ? "not " : "") + anIfStep.getDisplayName() + " then" + (myElseSteps.isEmpty() ? "" : " - else"));
 	}
 
 	/**
