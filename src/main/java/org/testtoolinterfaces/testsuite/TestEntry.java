@@ -22,11 +22,6 @@ public interface TestEntry
 	public enum TYPE { Group, GroupLink, Case, CaseLink, Step };
 	
 	/**
-	 * @return the ID
-	 */
-	public String getId();
-
-	/**
 	 * @return the Test Entry Type
 	 */
 	public TYPE getType();
@@ -64,7 +59,17 @@ public interface TestEntry
 	public Hashtable<String, String> getAnyAttributes();
 
 	/**
+	 * @param anAnyAttributes the AnyAttributes to set
+	 */
+	public void setAnyAttributes(Hashtable<String, String> anAnyAttributes);
+	
+	/**
 	 * @return all other elements
 	 */
 	public Hashtable<String, String> getAnyElements();
+
+	/**
+	 * @param anAnyElements the AnyElements to set
+	 */
+	public void setAnyElements(Hashtable<String, String> anAnyElements);
 }

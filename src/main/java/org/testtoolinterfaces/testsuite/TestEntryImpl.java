@@ -13,9 +13,8 @@ import org.testtoolinterfaces.utils.Trace;
  * @author Arjan Kranenburg
  *
  */
-abstract class TestEntryImpl implements TestEntry
+public abstract class TestEntryImpl implements TestEntry
 {
-	private String myId;
 	private TYPE myType;
 	private String myDescription;
 	private int mySequenceNr = 0;
@@ -32,30 +31,22 @@ abstract class TestEntryImpl implements TestEntry
 	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
 	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
-	public TestEntryImpl( String anId,
-	                      TYPE aType,
+	public TestEntryImpl( TYPE aType,
 	                      String aDescription,
 	                      int aSequenceNr )
 	{
 		Trace.println( Trace.CONSTRUCTOR,
-					   "TestEntryImpl(" + anId + ", "
-					   					+ aType + ", "
+					   "TestEntryImpl(" + aType + ", "
 					   					+ aDescription + ", "
 					   					+ aSequenceNr + " )",
 					   true );
 		
-		myId = anId;
 		myType = aType;
 		myDescription = aDescription;
 		mySequenceNr = aSequenceNr;
 		
 		myAnyAttributes = new Hashtable<String, String>();
 		myAnyElements = new Hashtable<String, String>();
-	}
-
-	public String getId()
-	{
-		return myId;
 	}
 
 	public TYPE getType()
@@ -81,12 +72,6 @@ abstract class TestEntryImpl implements TestEntry
 	public void setDescription(String aDescription)
 	{
 		myDescription = aDescription;
-	}
-
-	@Override
-	public String toString()
-	{
-		return myId;
 	}
 
 	public Hashtable<String, String> getAnyAttributes()

@@ -11,8 +11,8 @@ import org.testtoolinterfaces.testsuite.TestEntry;
 
 public class TestStepSelectionTester extends TestCase
 {
-	private static final String IF_THEN_ELSE_DISPLAY = "if - then - else";
-	private static final String IF_THEN_DISPLAY = "if - then";
+	private static final String IF_THEN_ELSE_DISPLAY = "if interface1:commandA then - else";
+	private static final String IF_THEN_DISPLAY = "if interface1:commandA then";
 	private static final String IF_THEN_ELSE_STRING = "if (interface1:commandA) then {3 TestStep(s)} else {2 TestStep(s)}";
 	private static final String IF_THEN_STRING = "if (interface1:commandA) then {3 TestStep(s)}";
 	private TestInterface_stub myIface = null;
@@ -80,12 +80,12 @@ public class TestStepSelectionTester extends TestCase
 				myTsIf,
 				false,
 				myTsThen,
-				myTsElse,
-				anyParams,
-				anyElems );
+				myTsElse );
+
+		testStep.setAnyAttributes(anyParams);
+		testStep.setAnyElements(anyElems);
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
@@ -113,7 +113,6 @@ public class TestStepSelectionTester extends TestCase
 		                                   				myTsElse );
 
    		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-   		Assert.assertNull(  "Step has an ID", testStep.getId());
    		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
    		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
@@ -141,7 +140,6 @@ public class TestStepSelectionTester extends TestCase
 		                                   				myTsElse );
 
    		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-   		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
    		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
@@ -168,7 +166,6 @@ public class TestStepSelectionTester extends TestCase
 		                                   				myTsThen );
 
    		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-   		Assert.assertNull(  "Step has an ID", testStep.getId());
    		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
    		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
@@ -195,7 +192,6 @@ public class TestStepSelectionTester extends TestCase
 		                                   				myTsThen );
 
    		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-   		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
    		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 

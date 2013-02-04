@@ -49,12 +49,11 @@ public class TestStepCommandTester extends TestCase
 				"An extensive description",
 				"commandA",
 				iface,
-				paramTable,
-				anyParams,
-				anyElems );
+				paramTable );
+		testStep.setAnyAttributes(anyParams);
+		testStep.setAnyElements(anyElems);
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
@@ -89,7 +88,6 @@ public class TestStepCommandTester extends TestCase
 				paramTable );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
@@ -117,7 +115,6 @@ public class TestStepCommandTester extends TestCase
 				iface );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 		Assert.assertEquals("Incorrect Display Name", "interface1:commandB", testStep.getDisplayName());
@@ -147,7 +144,6 @@ public class TestStepCommandTester extends TestCase
 				paramTable );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "f-parameter", ((ParameterImpl) testStep.getParameters().get("-f")).getValue());
 		Assert.assertEquals("Incorrect Display Name", "interface1:commandC", testStep.getDisplayName());
@@ -167,7 +163,6 @@ public class TestStepCommandTester extends TestCase
 				iface );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 		Assert.assertEquals("Incorrect Display Name", "interface1:commandD", testStep.getDisplayName());

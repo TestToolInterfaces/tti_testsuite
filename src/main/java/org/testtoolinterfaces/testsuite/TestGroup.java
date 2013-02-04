@@ -1,35 +1,18 @@
 package org.testtoolinterfaces.testsuite;
 
-import java.util.ArrayList;
-
 /**
  * Interface for TestGroups.
  * 
  * @author Arjan Kranenburg
  *
  */
-public interface TestGroup extends TestEntry
+public interface TestGroup extends TestExecItem
 {
-	/**
-	 * @return the Requirement IDs
-	 */
-	public ArrayList<String> getRequirements();
-
-	/**
-	 * @return the Preparation Steps
-	 */
-	public TestStepSequence getPrepareSteps();
-
 	/**
 	 * @return the Execution Entries
 	 */
 	public TestEntrySequence getExecutionEntries();
 
-	/**
-	 * @return the Restore Steps
-	 */
-	public TestStepSequence getRestoreSteps();
-	
 	/**
 	 * @return if this group's id or one of the sub-group's id is equal to the requested id
 	 * 

@@ -18,7 +18,7 @@ import org.testtoolinterfaces.utils.Trace;
  * @author Arjan Kranenburg
  *
  */
-public class TestStepSelection extends TestStep
+public class TestStepSelection extends TestStepImpl
 {
 	private TestStep myIfStep;
 	private boolean myNegator;
@@ -34,8 +34,6 @@ public class TestStepSelection extends TestStep
 	 * @param aNegator			If true, it negates the if-evaluation
 	 * @param aThenSteps		The sequence of then-steps, executed when the if-step evaluates to PASS
 	 * @param anElseSteps		The sequence of else-steps, executed when the if-step does not evaluate to PASS
-	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
-	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
 	public TestStepSelection(
 			 			 int aSequenceNr,
@@ -43,15 +41,11 @@ public class TestStepSelection extends TestStep
 						 TestStep anIfStep,
 						 boolean aNegator,
 						 TestStepSequence aThenSteps,
-						 TestStepSequence anElseSteps,
-	                     Hashtable<String, String> anAnyAttributes,
-	                     Hashtable<String, String> anAnyElements )
+						 TestStepSequence anElseSteps )
 	{
 		super( aSequenceNr,
 		       aDescription,
-		       new ParameterArrayList(),
-		       anAnyAttributes,
-		       anAnyElements );
+		       new ParameterArrayList() );
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestStepImpl( "
 	   									+ aSequenceNr + ", "
@@ -70,32 +64,39 @@ public class TestStepSelection extends TestStep
 		this.setDisplayName("if " + (myNegator ? "not " : "") + anIfStep.getDisplayName() + " then" + (myElseSteps.isEmpty() ? "" : " - else"));
 	}
 
+
 	/**
-	 * Creates a TestStepSelection without unknown attributes and elements
+	 * Creates a TestStepSelection
 	 * 
-	 * @param aSequenceNr	Sequence number, to be used in a list
-	 * @param aDescription	Description
-	 * @param anIfStep		The if-step, evaluated before the decision
-	 * @param aNegator		If true, it negates the if-evaluation
-	 * @param aThenSteps	The sequence of then-steps, executed when the if-step evaluates to PASS
-	 * @param anElseSteps	The sequence of else-steps, executed when the if-step does not evaluate to PASS
+	 * @param aSequenceNr		Sequence number, to be used in a list
+	 * @param aDescription		Description
+	 * @param anIfStep			The if-step, evaluated before the decision
+	 * @param aNegator			If true, it negates the if-evaluation
+	 * @param aThenSteps		The sequence of then-steps, executed when the if-step evaluates to PASS
+	 * @param anElseSteps		The sequence of else-steps, executed when the if-step does not evaluate to PASS
+	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
+	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
+	@Deprecated
 	public TestStepSelection(
 			 			 int aSequenceNr,
 						 String aDescription,
 						 TestStep anIfStep,
 						 boolean aNegator,
 						 TestStepSequence aThenSteps,
-						 TestStepSequence anElseSteps )
+						 TestStepSequence anElseSteps,
+	                     Hashtable<String, String> anAnyAttributes,
+	                     Hashtable<String, String> anAnyElements )
 	{
 		this( aSequenceNr,
-		      aDescription,
-		      anIfStep,
-		      aNegator,
-		      aThenSteps,
-		      anElseSteps, 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+			      aDescription,
+			      anIfStep,
+			      aNegator,
+			      aThenSteps,
+			      new TestStepSequence() );
+		
+		this.setAnyAttributes(anAnyAttributes);
+		this.setAnyElements(anAnyElements);
 	}
 
 	/**
@@ -119,9 +120,7 @@ public class TestStepSelection extends TestStep
 		      anIfStep,
 		      false,
 		      aThenSteps,
-		      anElseSteps, 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      anElseSteps );
 	}
 
 	/**
@@ -146,9 +145,7 @@ public class TestStepSelection extends TestStep
 		      anIfStep,
 		      aNegator,
 		      aThenSteps,
-		      new TestStepSequence(), 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      new TestStepSequence() );
 	}
 
 	/**
@@ -171,9 +168,7 @@ public class TestStepSelection extends TestStep
 		      anIfStep,
 		      false,
 		      aThenSteps,
-		      new TestStepSequence(), 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      new TestStepSequence() );
 	}
 
 	/**
@@ -197,9 +192,7 @@ public class TestStepSelection extends TestStep
 		      anIfStep,
 		      aNegator,
 		      aThenSteps,
-		      anElseSteps, 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      anElseSteps );
 	}
 
 	/**
@@ -221,9 +214,7 @@ public class TestStepSelection extends TestStep
 		      anIfStep,
 		      aNegator,
 		      aThenSteps,
-		      new TestStepSequence(), 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      new TestStepSequence() );
 	}
 
 	/**

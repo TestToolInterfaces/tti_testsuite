@@ -16,13 +16,9 @@ import org.testtoolinterfaces.utils.Trace;
  * @author Arjan Kranenburg
  *
  */
-public class TestCaseImpl extends TestEntryImpl implements TestCase
+public class TestCaseImpl extends TestExecItemImpl implements TestCase
 {
-    private ArrayList<String> myRequirementIds;
-
-    private TestStepSequence myPrepareSteps;
     private TestStepSequence myExecutionSteps;
-    private TestStepSequence myRestoreSteps;
 
 	/**
 	 * Constructor
@@ -44,18 +40,10 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 			ArrayList<String> aRequirementIds,
 			TestStepSequence aPrepareSteps,
 			TestStepSequence anExecutionSteps,
-			TestStepSequence aRestoreSteps )
-//			,
-//            Hashtable<String, String> anAnyAttributes,
-//			Hashtable<String, String> anAnyElements )
-	{
-		super( aTestCaseId,
-		       TestEntry.TYPE.Case,
-		       aDescription,
-		       aSequenceNr );
-//		,
-//		       anAnyAttributes,
-//		       anAnyElements );
+			TestStepSequence aRestoreSteps ) {
+
+		super( aTestCaseId, TestEntry.TYPE.Case, aDescription, aSequenceNr,
+				aRequirementIds, aPrepareSteps, aRestoreSteps );
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestCaseImpl( " + aTestCaseId + ", "
 										+ aDescription + ", "
@@ -66,47 +54,9 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 										+ aRestoreSteps + " )",
 						true );
 
-		myRequirementIds = aRequirementIds;
-
-		myPrepareSteps = aPrepareSteps;
 		myExecutionSteps = anExecutionSteps;
-		myRestoreSteps = aRestoreSteps;
-	
-//		this.setAnyAttributes(anAnyAttributes);
-//		this.setAnyElements(anAnyElements);
 	}
 
-//	/**
-//	 * Constructor without unknown attributes or elements
-//	 * 
-//	 * @param aTestCaseId		TC Identifier
-//	 * @param aDescription		Description
-//	 * @param aSequenceNr		Sequence Number
-//	 * @param aRequirementIds	List of Requirements
-//	 * @param aPrepareSteps		Collection of preparation steps
-//	 * @param anExecutionSteps	Collection of execution steps
-//	 * @param aRestoreSteps		Collection of Restore steps
-//	 */
-//	public TestCaseImpl(
-//			String aTestCaseId,
-//			String aDescription,
-//			int aSequenceNr,
-//			ArrayList<String> aRequirementIds,
-//			TestStepSequence aPrepareSteps,
-//			TestStepSequence anExecutionSteps,
-//			TestStepSequence aRestoreSteps )
-//	{
-//		this( aTestCaseId,
-//		      aDescription,
-//		      aSequenceNr,
-//		      aRequirementIds,
-//		      aPrepareSteps,
-//		      anExecutionSteps,
-//		      aRestoreSteps,
-//		      new Hashtable<String, String>(),
-//		      new Hashtable<String, String>() );
-//	}
-//
 	/**
 	 * Constructor without description and unknown attributes or elements
 	 * 
@@ -132,9 +82,6 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 		      aPrepareSteps,
 		      anExecutionSteps,
 		      aRestoreSteps );
-//		      ,
-//		      new Hashtable<String, String>(),
-//		      new Hashtable<String, String>() );
 	}
 
 	/**
@@ -162,9 +109,6 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 		      aPrepareSteps,
 		      anExecutionSteps,
 		      aRestoreSteps );
-//		,
-//		      new Hashtable<String, String>(),
-//		      new Hashtable<String, String>() );
 	}
 
 	/**
@@ -190,28 +134,10 @@ public class TestCaseImpl extends TestEntryImpl implements TestCase
 		      aPrepareSteps,
 		      anExecutionSteps,
 		      aRestoreSteps);
-//		,
-//		      new Hashtable<String, String>(),
-//		      new Hashtable<String, String>() );
-	}
-
-	public TestStepSequence getPrepareSteps()
-	{
-		return myPrepareSteps;
 	}
 
 	public TestStepSequence getExecutionSteps()
 	{
 		return myExecutionSteps;
-	}
-
-	public ArrayList<String> getRequirements()
-	{
-		return myRequirementIds;
-	}
-
-	public TestStepSequence getRestoreSteps()
-	{
-		return myRestoreSteps;
 	}
 }

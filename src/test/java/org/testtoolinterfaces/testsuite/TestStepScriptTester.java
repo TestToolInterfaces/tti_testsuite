@@ -52,12 +52,12 @@ public class TestStepScriptTester extends TestCase
 				"An extensive description",
 				"script",
 				"bash",
-				myParamTable,
-				anyParams,
-				anyElems );
+				myParamTable );
 
+		testStep.setAnyAttributes(anyParams);
+		testStep.setAnyElements(anyElems);
+		
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
@@ -83,7 +83,6 @@ public class TestStepScriptTester extends TestCase
 				myParamTable );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
@@ -108,7 +107,6 @@ public class TestStepScriptTester extends TestCase
 				"bash" );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
@@ -132,7 +130,6 @@ public class TestStepScriptTester extends TestCase
 				myParamTable );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
@@ -152,7 +149,6 @@ public class TestStepScriptTester extends TestCase
 				"bash" );
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
-		Assert.assertNull(  "Step has an ID", testStep.getId());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 

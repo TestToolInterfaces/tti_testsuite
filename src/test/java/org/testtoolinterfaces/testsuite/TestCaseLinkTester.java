@@ -38,9 +38,10 @@ public class TestCaseLinkTester extends TestCase
 				"tcLinkId",
 				2,
 				"fileName",
-				"perl",
-				anyParams,
-				anyElems );
+				"perl" );
+		
+		tcLink.setAnyAttributes(anyParams);
+		tcLink.setAnyElements(anyElems);
 
 		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
 		Assert.assertEquals("Incorrect ID", "tcLinkId", tcLink.getId());
@@ -52,27 +53,6 @@ public class TestCaseLinkTester extends TestCase
 
 		Assert.assertEquals("Incorrect Any Attributes size", 2, tcLink.getAnyAttributes().size());
 		Assert.assertEquals("Incorrect Any Elements size", 3, tcLink.getAnyElements().size());
-	}
-
-	/**
-	 * Test Cases
-	 */
-	@SuppressWarnings("deprecation")
-	public void testCase_constructor0b()
-	{
-		TestCaseLink tcLink = new TestCaseLink(
-				"tcLinkId_b",
-				2,
-				new File( "fileName" ),
-				"perl",
-				new Hashtable<String, String>(),
-				new Hashtable<String, String>() );
-
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
-		Assert.assertEquals("Incorrect ID", "tcLinkId_b", tcLink.getId());
-
-		Assert.assertEquals("TC File incorrect", "fileName", tcLink.getLink().getPath());
-		Assert.assertEquals("Incorrect TC Link Type", "perl", tcLink.getLinkType());
 	}
 
 	/**
@@ -101,25 +81,6 @@ public class TestCaseLinkTester extends TestCase
 	/**
 	 * Test Cases
 	 */
-	@SuppressWarnings("deprecation")
-	public void testCase_constructor1b()
-	{
-		TestCaseLink tcLink = new TestCaseLink(
-				"tcLinkId_b",
-				4,
-				new File( "fileName" ),
-				"shell" );
-
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
-		Assert.assertEquals("Incorrect ID", "tcLinkId_b", tcLink.getId());
-
-		Assert.assertEquals("TC File incorrect", "fileName", tcLink.getLink().getPath());
-		Assert.assertEquals("Incorrect TC Link Type", "shell", tcLink.getLinkType());
-	}
-
-	/**
-	 * Test Cases
-	 */
 	public void testCase_constructor2()
 	{
 		TestCaseLink tcLink = new TestCaseLink(
@@ -137,24 +98,6 @@ public class TestCaseLinkTester extends TestCase
 
 		Assert.assertTrue(  "Any Attributes not empty", tcLink.getAnyAttributes().isEmpty());
 		Assert.assertTrue(  "Any Elements not empty", tcLink.getAnyElements().isEmpty());
-	}
-
-	/**
-	 * Test Cases
-	 */
-	@SuppressWarnings("deprecation")
-	public void testCase_constructor2b()
-	{
-		TestCaseLink tcLink = new TestCaseLink(
-				"tcLinkId_b",
-				5,
-				new File( "fileName2" ) );
-
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
-		Assert.assertEquals("Incorrect ID", "tcLinkId_b", tcLink.getId());
-
-		Assert.assertEquals("TC File incorrect", "fileName2", tcLink.getLink().getPath());
-		Assert.assertEquals("Incorrect TC Link Type", "tti", tcLink.getLinkType());
 	}
 
 	/**

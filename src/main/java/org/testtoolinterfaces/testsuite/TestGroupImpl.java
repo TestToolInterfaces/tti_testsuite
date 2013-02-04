@@ -15,14 +15,50 @@ import org.testtoolinterfaces.utils.Trace;
  * @author Arjan Kranenburg
  *
  */
-public class TestGroupImpl extends TestEntryImpl implements TestGroup
+public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 {
-    private ArrayList<String> myRequirementIds;
-
-	private TestStepSequence myInitializationSteps;
 	private TestEntrySequence myExecutionEntries;
-    private TestStepSequence myRestoreSteps;
     
+	/**
+	 * Constructor
+	 * 
+	 * @param aTestGroupId		TG Identifier
+	 * @param aDescription		Description
+	 * @param aSequenceNr		Sequence Number
+	 * @param aRequirementIds	List of Requirements
+	 * @param aPrepareSteps		Collection of preparation steps
+	 * @param aTestEntries		Collection of test entries
+	 * @param aRestoreSteps		Collection of Restore steps
+	 */
+	public TestGroupImpl( String aTestGroupId,
+	                      String aDescription,
+	                      int aSequenceNr,
+	                      ArrayList<String> aRequirementIds,
+	                      TestStepSequence aPrepareSteps,
+	                      TestEntrySequence aTestEntries,
+	                      TestStepSequence aRestoreSteps )
+	{
+		super( aTestGroupId,
+			       TestEntry.TYPE.Group,
+			       aDescription,
+			       aSequenceNr,
+			       aRequirementIds,
+			       aPrepareSteps,
+			       aRestoreSteps );
+
+			Trace.println( Trace.CONSTRUCTOR,
+						   "TestGroupImpl( " + aTestGroupId + ", "
+						   					 + aDescription + ", "
+						   					 + aSequenceNr + ", "
+						   					 + aRequirementIds.hashCode() + ", "
+						   					 + aPrepareSteps + ", "
+						   					 + aTestEntries + ", "
+						   					 + aRestoreSteps + " )",
+							true );
+
+			myExecutionEntries = aTestEntries;
+	}
+
 	@Deprecated // Use constructor without anyAttributes and anyElements
 	/**
 	 * Constructor
@@ -47,61 +83,16 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 	                      Hashtable<String, String> anAnyAttributes,
 	                      Hashtable<String, String> anAnyElements )
 	{
-		super( aTestGroupId,
-		       TestEntry.TYPE.Group,
+		this( aTestGroupId,
 		       aDescription,
-		       aSequenceNr );
-//		,
-//		       anAnyAttributes,
-//		       anAnyElements );
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestGroupImpl( " + aTestGroupId + ", "
-					   					 + aDescription + ", "
-					   					 + aSequenceNr + ", "
-					   					 + aRequirementIds.hashCode() + ", "
-					   					 + aPrepareSteps + ", "
-					   					 + aTestEntries + ", "
-					   					 + aRestoreSteps + " )",
-						true );
+		       aSequenceNr,
+		       aRequirementIds,
+		       aPrepareSteps,
+		       aTestEntries,
+		       aRestoreSteps );
 
-		myRequirementIds = aRequirementIds;
-
-		myInitializationSteps = aPrepareSteps;
-		myExecutionEntries = aTestEntries;
-		myRestoreSteps = aRestoreSteps;
-		
 		this.setAnyAttributes(anAnyAttributes);
 		this.setAnyElements(anAnyElements);
-	}
-
-	/**
-	 * Constructor without unknown attributes or elements
-	 * 
-	 * @param aTestGroupId		TG Identifier
-	 * @param aDescription		Description
-	 * @param aSequenceNr		Sequence Number
-	 * @param aRequirementIds	List of Requirements
-	 * @param aPrepareSteps		Collection of preparation steps
-	 * @param aTestEntries		Collection of test entries
-	 * @param aRestoreSteps		Collection of Restore steps
-	 */
-	public TestGroupImpl( String aTestGroupId,
-	                      String aDescription,
-	                      int aSequenceNr,
-	                      ArrayList<String> aRequirementIds,
-	                      TestStepSequence aPrepareSteps,
-	                      TestEntrySequence aTestEntries,
-	                      TestStepSequence aRestoreSteps )
-	{
-		this( aTestGroupId,
-		      aDescription,
-		      aSequenceNr,
-		      aRequirementIds,
-		      aPrepareSteps,
-		      aTestEntries,
-		      aRestoreSteps,
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
 	}
 
 	/**
@@ -127,9 +118,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 		      aRequirementIds,
 		      aPrepareSteps,
 		      aTestEntries,
-		      aRestoreSteps,
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      aRestoreSteps );
 	}
 
 	/**
@@ -155,9 +144,7 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 		      new ArrayList<String>(),
 		      aPrepareSteps,
 		      aTestEntries,
-		      aRestoreSteps,
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      aRestoreSteps );
 	}
 
 	/**
@@ -181,53 +168,29 @@ public class TestGroupImpl extends TestEntryImpl implements TestGroup
 		      new ArrayList<String>(),
 		      aPrepareSteps,
 		      aTestEntries,
-		      aRestoreSteps,
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      aRestoreSteps );
 	}
 
-	public TestStepSequence getPrepareSteps()
-	{
-		return myInitializationSteps;
-	}
-
-	public TestEntrySequence getExecutionEntries()
-	{
+	public TestEntrySequence getExecutionEntries() {
 		return myExecutionEntries;
 	}
 
-	public TestStepSequence getRestoreSteps()
-	{
-		return myRestoreSteps;
-	}
-
-	public ArrayList<String> getRequirements()
-	{
-		return myRequirementIds;
-	}
-
-	public boolean hasGroupId(String aGroupId)
-	{
-		if ( this.getId().equals(aGroupId) )
-		{
+	public boolean hasGroupId(String aGroupId) {
+		if ( this.getId().equals(aGroupId) ) {
 			return true;
 		}
 
 		Iterator<TestEntry> itr = (Iterator<TestEntry>) myExecutionEntries.iterator();
-		while(itr.hasNext())
-		{
+		while(itr.hasNext()) {
 			TestEntry entry = itr.next();
-			if ( entry.getType() == TestEntry.TYPE.Group )
-			{
-				if ( ((TestGroup) entry).hasGroupId(aGroupId) )
-				{
+
+			if ( entry instanceof TestGroup ) {
+				if ( ((TestGroup) entry).hasGroupId(aGroupId) )	{
 					return true;
 				}
 			}
-			else if ( entry.getType() == TestEntry.TYPE.GroupLink )
-			{
-				if ( entry.getId().equals( aGroupId ) )
-				{
+			else if ( entry instanceof TestGroupLink ) {
+				if ( ((TestGroupLink) entry).getId().equals(aGroupId) ) {
 					return true;
 				}
 			}

@@ -3,8 +3,6 @@
  */
 package org.testtoolinterfaces.testsuite;
 
-import java.util.Hashtable;
-
 import org.testtoolinterfaces.utils.Trace;
 
 /**
@@ -15,7 +13,7 @@ import org.testtoolinterfaces.utils.Trace;
  * @author Arjan Kranenburg
  *
  */
-public class TestStepScript extends TestStep
+public class TestStepScript extends TestStepImpl
 {
 	private String myScript;
 	private String myScriptType;
@@ -36,15 +34,11 @@ public class TestStepScript extends TestStep
 			 			   String aDescription,
 			 			   String aScript,
 			 			   String aScriptType,
-			 			   ParameterArrayList aParameters,
-			 			   Hashtable<String, String> anAnyAttributes,
-			 			   Hashtable<String, String> anAnyElements )
+			 			   ParameterArrayList aParameters )
 	{
 		super( aSequenceNr,
 		       aDescription,
-		       aParameters,
-		       anAnyAttributes,
-		       anAnyElements );
+		       aParameters );
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestStepScript( "
 	   									+ aSequenceNr + ", "
@@ -58,31 +52,6 @@ public class TestStepScript extends TestStep
 		myScriptType = aScriptType;
 		
 		this.setDisplayName(aScript);
-	}
-
-	/**
-	 * Creates a TestStepScript without unknown attributes and elements
-	 * 
-	 * @param aSequenceNr	Sequence number, to be used in a list
-	 * @param aDescription	Description
-	 * @param aScript		Test Step Script
-	 * @param aScriptType	Type of the Script
-	 * @param aParameters	List of parameters
-	 */
-	public TestStepScript( 
-			 			   int aSequenceNr,
-			 			   String aDescription,
-			 			   String aScript,
-			 			   String aScriptType,
-			 			   ParameterArrayList aParameters )
-	{
-		this( aSequenceNr,
-		      aDescription,
-		      aScript,
-		      aScriptType,
-		      aParameters, 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
 	}
 
 	/**
@@ -103,9 +72,7 @@ public class TestStepScript extends TestStep
 		      aDescription,
 		      aScript,
 		      aScriptType,
-		      new ParameterArrayList(), 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      new ParameterArrayList() );
 	}
 
 	/**
@@ -126,9 +93,7 @@ public class TestStepScript extends TestStep
 		      "",
 		      aScript,
 		      aScriptType,
-		      aParameters, 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      aParameters );
 	}
 
 	/**
@@ -147,9 +112,7 @@ public class TestStepScript extends TestStep
 		      "",
 		      aScript,
 		      aScriptType,
-		      new ParameterArrayList(), 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      new ParameterArrayList() );
 	}
 
 	/**

@@ -3,8 +3,6 @@
  */
 package org.testtoolinterfaces.testsuite;
 
-import java.util.Hashtable;
-
 import org.testtoolinterfaces.utils.Trace;
 
 /**
@@ -17,53 +15,13 @@ import org.testtoolinterfaces.utils.Trace;
  * @author Arjan Kranenburg
  *
  */
-public class TestStepCommand extends TestStep
+public class TestStepCommand extends TestStepImpl
 {
 	private final String myCommand;
 	private final TestInterface myInterface;
 
 	/**
 	 * Creates a TestStepCommand
-	 * 
-	 * @param aSequenceNr		Sequence number, to be used in a list
-	 * @param aDescription		Description
-	 * @param aCommand			Command to execute
-	 * @param anInterface		Interface towards which the command is directed
-	 * @param aParameters		List of parameters
-	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
-	 * @param anAnyElements		Elements that were not recognized, but kept anyway
-	 */
-	public TestStepCommand(
-			 			 int aSequenceNr,
-						 String aDescription,
-						 String aCommand,
-						 TestInterface anInterface,
-						 ParameterArrayList aParameters,
-	                     Hashtable<String, String> anAnyAttributes,
-	                     Hashtable<String, String> anAnyElements )
-	{
-		super( aSequenceNr,
-		       aDescription,
-		       aParameters,
-		       anAnyAttributes,
-		       anAnyElements );
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestStepImpl( "
-	   									+ aSequenceNr + ", "
-	   									+ aDescription + ", "
-					   					+ aCommand + ", "
-					   					+ anInterface.getInterfaceName() + ", "
-					   					+ "aParameters )",
-				   	   true );
-
-		myCommand = aCommand;
-		myInterface = anInterface;
-		
-		this.setDisplayName( myInterface.getInterfaceName() + ":" + myCommand );
-	}
-
-	/**
-	 * Creates a TestStepCommand without unknown attributes and elements
 	 * 
 	 * @param aSequenceNr		Sequence number, to be used in a list
 	 * @param aDescription		Description
@@ -78,13 +36,22 @@ public class TestStepCommand extends TestStep
 						 TestInterface anInterface,
 						 ParameterArrayList aParameters )
 	{
-		this( aSequenceNr,
-		      aDescription,
-		      aCommand,
-		      anInterface,
-		      aParameters, 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		super( aSequenceNr,
+		       aDescription,
+		       aParameters );
+		Trace.println( Trace.CONSTRUCTOR,
+					   "TestStepImpl( "
+	   									+ aSequenceNr + ", "
+	   									+ aDescription + ", "
+					   					+ aCommand + ", "
+					   					+ anInterface.getInterfaceName() + ", "
+					   					+ "aParameters )",
+				   	   true );
+
+		myCommand = aCommand;
+		myInterface = anInterface;
+		
+		this.setDisplayName( myInterface.getInterfaceName() + ":" + myCommand );
 	}
 
 	/**
@@ -105,9 +72,7 @@ public class TestStepCommand extends TestStep
 		      aDescription,
 		      aCommand,
 		      anInterface,
-		      new ParameterArrayList(), 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      new ParameterArrayList() );
 	}
 
 	/**
@@ -128,9 +93,7 @@ public class TestStepCommand extends TestStep
 		      "",
 		      aCommand,
 		      anInterface,
-		      aParameters, 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      aParameters );
 	}
 
 	/**
@@ -149,9 +112,7 @@ public class TestStepCommand extends TestStep
 		      "",
 		      aCommand,
 		      anInterface,
-		      new ParameterArrayList(), 
-		      new Hashtable<String, String>(),
-		      new Hashtable<String, String>() );
+		      new ParameterArrayList() );
 	}
 
 	/**

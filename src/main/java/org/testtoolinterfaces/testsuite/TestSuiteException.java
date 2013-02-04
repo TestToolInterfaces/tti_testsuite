@@ -48,7 +48,7 @@ public class TestSuiteException extends TTIException
 	 */
 	public TestSuiteException(String aMessage, TestEntry aTestEntry)
 	{
-		super( aMessage, aTestEntry.getId(), aTestEntry.getSequenceNr() );
+		super( aMessage, aTestEntry.toString(), aTestEntry.getSequenceNr() );
 		myTestEntry = aTestEntry;
 	}
 
@@ -90,7 +90,7 @@ public class TestSuiteException extends TTIException
 	 */
 	public TestSuiteException(String aMessage, TestEntry aTestEntry, Exception anException)
 	{
-		super( aMessage, aTestEntry.getId(), aTestEntry.getSequenceNr(), anException );
+		super( aMessage, aTestEntry.toString(), aTestEntry.getSequenceNr(), anException );
 		myTestEntry = aTestEntry;
 	}
 
