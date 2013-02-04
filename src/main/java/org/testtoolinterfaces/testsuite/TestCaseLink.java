@@ -18,11 +18,22 @@ public class TestCaseLink extends TestExecItemLinkImpl
 	 * @param aType				Type of the TC File
 	 */
 	public TestCaseLink(String aTestCaseId, int aSequenceNr,
-			String aTcLinkName, String aType) {
-		super( TYPE.CaseLink, aTestCaseId, aSequenceNr,
-				new TestLinkImpl( aTcLinkName, aType ));
+			TestLink aTcLink) {
+		super( TYPE.CaseLink, aTestCaseId, aSequenceNr, aTcLink);
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param aTestCaseId		TC Identifier
+	 * @param aSequenceNr		Sequence Number
+	 * @param aTcLinkName		Test Case File Name
+	 * @param aType				Type of the TC File
+	 */
+	public TestCaseLink(String aTestCaseId, int aSequenceNr,
+			String aTcLinkName, String aType) {
+		this( aTestCaseId, aSequenceNr, new TestLinkImpl(aTcLinkName, aType) );
+	}
 
 	/**
 	 * Constructor
@@ -35,8 +46,7 @@ public class TestCaseLink extends TestExecItemLinkImpl
 	                     int aSequenceNr,
 	                     String aTcLinkName )
 	{
-		this( aTestCaseId,
-		      aSequenceNr,
-		      aTcLinkName, TYPE_TTI);
+		this( aTestCaseId, aSequenceNr, aTcLinkName, TYPE_TTI);
 	}
+
 }
