@@ -14,27 +14,27 @@ import java.util.ListIterator;
  * @author Arjan Kranenburg
  *
  */
-public class TestEntrySequence implements Collection<TestEntry>
+public class TestGroupEntrySequence implements Collection<TestGroupEntry>
 {
-	private ArrayList<TestEntry> myEntries;
+	private ArrayList<TestGroupEntry> myEntries;
 
 	/**
 	 * Creates a TestEntryCollection
 	 * 
 	 */
-	public TestEntrySequence()
+	public TestGroupEntrySequence()
 	{
-		myEntries = new ArrayList<TestEntry>();
+		myEntries = new ArrayList<TestGroupEntry>();
 	}
 	
-	public TestEntrySequence( int aSize )
+	public TestGroupEntrySequence( int aSize )
 	{
-		myEntries = new ArrayList<TestEntry>( aSize );
+		myEntries = new ArrayList<TestGroupEntry>( aSize );
 	}
 
-	public TestEntrySequence( Collection<? extends TestEntry> aTestEntryList )
+	public TestGroupEntrySequence( Collection<? extends TestGroupEntry> aTestEntryList )
 	{
-		myEntries = new ArrayList<TestEntry>( aTestEntryList );
+		myEntries = new ArrayList<TestGroupEntry>( aTestEntryList );
 	}
 
 	public int size()
@@ -51,14 +51,14 @@ public class TestEntrySequence implements Collection<TestEntry>
 	/* (non-Javadoc)
 	 * @see java.util.Collection#add(java.lang.Object)
 	 */
-	public boolean add( TestEntry anEntry )
+	public boolean add( TestGroupEntry anEntry )
 	{
 		 // We start at the end, since in most cases entries will be added already in order.
-		ListIterator<TestEntry> entriesIter = myEntries.listIterator( myEntries.size() );
+		ListIterator<TestGroupEntry> entriesIter = myEntries.listIterator( myEntries.size() );
 		
 		while ( entriesIter.hasPrevious() )
 		{
-			TestEntry entry = entriesIter.previous();
+			TestGroupEntry entry = entriesIter.previous();
 			if (entry.getSequenceNr() < anEntry.getSequenceNr())
 			{
 				entriesIter.next(); // We were 1 too far
@@ -71,10 +71,10 @@ public class TestEntrySequence implements Collection<TestEntry>
 	}
 
 	@SuppressWarnings("unchecked")
-	public boolean addAll(Collection<? extends TestEntry> aTestEntryList)
+	public boolean addAll(Collection<? extends TestGroupEntry> aTestEntryList)
 	{
 		boolean rc = false;
-		Iterator<TestEntry> itr = (Iterator<TestEntry>) aTestEntryList.iterator();
+		Iterator<TestGroupEntry> itr = (Iterator<TestGroupEntry>) aTestEntryList.iterator();
 		while(itr.hasNext())
 		{
 			if ( this.add(itr.next()) )
@@ -106,7 +106,7 @@ public class TestEntrySequence implements Collection<TestEntry>
 		return myEntries.isEmpty();
 	}
 
-	public Iterator<TestEntry> iterator()
+	public Iterator<TestGroupEntry> iterator()
 	{
 		return myEntries.iterator();
 	}
@@ -126,9 +126,9 @@ public class TestEntrySequence implements Collection<TestEntry>
 		return myEntries.retainAll(aTestEntries);
 	}
 
-	public TestEntry[] toArray()
+	public TestGroupEntry[] toArray()
 	{
-		TestEntry[] array = new TestEntry[ myEntries.size() ];
+		TestGroupEntry[] array = new TestGroupEntry[ myEntries.size() ];
 		return myEntries.toArray( array );
 	}
 

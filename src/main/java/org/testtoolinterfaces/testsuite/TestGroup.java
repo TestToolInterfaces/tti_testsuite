@@ -11,7 +11,7 @@ public interface TestGroup extends TestExecItem
 	/**
 	 * @return the Execution Entries
 	 */
-	public TestEntrySequence getExecutionEntries();
+	public TestGroupEntrySequence getExecutionEntries();
 
 	/**
 	 * @return if this group's id or one of the sub-group's id is equal to the requested id

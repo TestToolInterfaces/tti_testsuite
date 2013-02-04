@@ -7,29 +7,23 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.ParameterArrayList;
-import org.testtoolinterfaces.testsuite.TestCaseImpl;
-import org.testtoolinterfaces.testsuite.TestEntrySequence;
-import org.testtoolinterfaces.testsuite.TestGroupImpl;
-import org.testtoolinterfaces.testsuite.TestStep;
 
 
-public class TestEntrySequenceTester extends TestCase
+public class TestGroupEntrySequenceTester extends TestCase
 {
-	TestStep myTestStep = null;
 	TestCaseImpl myTestCase = null;
 	TestCaseLink myTestCase2 = null;
 	TestGroup myTestGroup = null;
 	
-	TestEntrySequence myTestEntryList = null;
+	TestGroupEntrySequence myTestEntryList = null;
 
-	private void assertOrder( TestEntrySequence atsList )
+	private void assertOrder( TestGroupEntrySequence atsList )
 	{
-		Iterator<TestEntry> itr = atsList.iterator();
+		Iterator<TestGroupEntry> itr = atsList.iterator();
 		int curSequence = 0;
 		while(itr.hasNext())
 		{
-			TestEntry entry = itr.next();
+			TestGroupEntry entry = itr.next();
 			Assert.assertTrue("Not ordered " + entry.toString(), curSequence <= entry.getSequenceNr());
 			curSequence = entry.getSequenceNr();
 		}		
@@ -44,22 +38,11 @@ public class TestEntrySequenceTester extends TestCase
 		System.out.println("==========================================================================");
 		System.out.println(this.getName() + ":");
 
-		if ( myTestStep == null )
-		{
-	   		TestInterface_stub iface = new TestInterface_stub( "interface" );
-	   		myTestStep = new TestStepCommand(
-	   		                                 2,
-	   		                                 "description2",
-	   		                                 "command2",
-	   		                                 iface,
-	   		                                 new ParameterArrayList() );
-		}
-
 		if ( myTestCase == null )
 		{
 			myTestCase = new TestCaseImpl( "tcId",
 			                               "An extensive description",
-			                               3,
+			                               2,
 			                               new TestStepSequence(),
 			                               new TestStepSequence(),
 			                               new TestStepSequence() );
@@ -68,7 +51,7 @@ public class TestEntrySequenceTester extends TestCase
 		if ( myTestCase2 == null )
 		{
 			myTestCase2 = new TestCaseLink( "tcId",
-			                               4,
+			                               3,
 			                              "link" );
 		}
 
@@ -79,15 +62,14 @@ public class TestEntrySequenceTester extends TestCase
 			                                 1,
 			                                 new ArrayList<String>(),
 			                                 new TestStepSequence(),
-			                                 new TestEntrySequence(),
+			                                 new TestGroupEntrySequence(),
 			                                 new TestStepSequence() );
 		}
 
 		if ( myTestEntryList == null )
 		{
-			myTestEntryList = new TestEntrySequence();
+			myTestEntryList = new TestGroupEntrySequence();
 			myTestEntryList.add(myTestCase);
-			myTestEntryList.add(myTestStep);
 			myTestEntryList.add(myTestGroup);
 			
 		}
@@ -98,7 +80,7 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_constructor()
 	{
-		TestEntrySequence teArray = new TestEntrySequence();
+		TestGroupEntrySequence teArray = new TestGroupEntrySequence();
 
 		Assert.assertEquals("Incorrect Size", 0, teArray.size());
 		Assert.assertTrue(  "Incorrect isEmpty", teArray.isEmpty());
@@ -109,13 +91,12 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_add()
 	{
-		TestEntrySequence teArray = new TestEntrySequence();
+		TestGroupEntrySequence teArray = new TestGroupEntrySequence();
 
 		Assert.assertTrue("Add not OK", teArray.add(myTestCase) );
-		Assert.assertTrue("Add not OK", teArray.add(myTestStep) );
 		Assert.assertTrue("Add not OK", teArray.add(myTestGroup) );
 
-		Assert.assertEquals("Incorrect Size", 3, teArray.size());
+		Assert.assertEquals("Incorrect Size", 2, teArray.size());
 		assertOrder( teArray );
 	}
 
@@ -124,11 +105,11 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_iterator()
 	{
-		Iterator<TestEntry> itr = myTestEntryList.iterator();
+		Iterator<TestGroupEntry> itr = myTestEntryList.iterator();
 		int i = 0;
 		while(itr.hasNext())
 		{
-		    TestEntry entry = itr.next();
+		    TestGroupEntry entry = itr.next();
 			Assert.assertEquals("Incorrect SeqNr " + entry.toString(), ++i, entry.getSequenceNr());
 		} 
 
@@ -140,12 +121,11 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_clear()
 	{
-		TestEntrySequence teArray = new TestEntrySequence(0);
+		TestGroupEntrySequence teArray = new TestGroupEntrySequence(0);
 		teArray.add(myTestCase);
-		teArray.add(myTestStep);
 		teArray.add(myTestGroup);
 
-		Assert.assertEquals("Incorrect Size", 3, teArray.size());
+		Assert.assertEquals("Incorrect Size", 2, teArray.size());
 		teArray.clear();
 		Assert.assertEquals("Incorrect Size", 0, teArray.size());
 
@@ -157,19 +137,10 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_remove()
 	{
-		TestEntrySequence teArray = new TestEntrySequence(0);
+		TestGroupEntrySequence teArray = new TestGroupEntrySequence(0);
 		teArray.add(myTestCase);
-		teArray.add(myTestStep);
 		teArray.add(myTestGroup);
-		Assert.assertEquals("Incorrect Size", 3, teArray.size());
-
-		Assert.assertTrue("Remove not OK", teArray.remove(myTestStep) );
 		Assert.assertEquals("Incorrect Size", 2, teArray.size());
-		assertOrder(teArray);
-
-		Assert.assertFalse("Remove OK, should not", teArray.remove(myTestStep) ); //again
-		Assert.assertEquals("Incorrect Size", 2, teArray.size());
-		assertOrder(teArray);
 
 		Assert.assertTrue("Remove not OK", teArray.remove(myTestCase) );
 		Assert.assertEquals("Incorrect Size", 1, teArray.size());
@@ -187,16 +158,16 @@ public class TestEntrySequenceTester extends TestCase
 		Assert.assertEquals("Incorrect Size", 1, teArray.size());
 		assertOrder(teArray);
 
-		teArray.add(myTestStep);
-		teArray.add(myTestStep); // Duplicates are possible
+		teArray.add(myTestGroup);
+		teArray.add(myTestGroup); // Duplicates are possible
 		Assert.assertEquals("Incorrect Size", 3, teArray.size());
 		assertOrder(teArray);
 
-		Assert.assertTrue("Remove not OK", teArray.remove(myTestStep) ); // Removes one
+		Assert.assertTrue("Remove not OK", teArray.remove(myTestGroup) ); // Removes one
 		Assert.assertEquals("Incorrect Size", 2, teArray.size());
 		assertOrder(teArray);
 
-		Assert.assertTrue("Remove not OK", teArray.remove(myTestStep) ); // Removes other
+		Assert.assertTrue("Remove not OK", teArray.remove(myTestGroup) ); // Removes other
 		Assert.assertEquals("Incorrect Size", 1, teArray.size());
 		assertOrder(teArray);
 
@@ -210,29 +181,27 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_removeAll()
 	{
-		TestEntrySequence teArray1 = new TestEntrySequence(0);
+		TestGroupEntrySequence teArray1 = new TestGroupEntrySequence(0);
 		teArray1.add(myTestCase);
-		teArray1.add(myTestStep);
 		teArray1.add(myTestGroup);
 		teArray1.add(myTestCase); // Duplicates are possible
 		teArray1.add(myTestCase2);
 
-		TestEntrySequence teArray2 = new TestEntrySequence(0);
+		TestGroupEntrySequence teArray2 = new TestGroupEntrySequence(0);
 		teArray2.add(myTestCase);
 		teArray2.add(myTestGroup);
 
-		TestEntrySequence teArray3 = new TestEntrySequence(0);
-		teArray3.add(myTestStep);
+		TestGroupEntrySequence teArray3 = new TestGroupEntrySequence(0);
 		teArray3.add(myTestGroup);
 
-		Assert.assertEquals("Incorrect Size", 5, teArray1.size());
+		Assert.assertEquals("Incorrect Size", 4, teArray1.size());
 		assertOrder(teArray1);
 
 		teArray1.removeAll(teArray2); // all of teArray2 match
-		Assert.assertEquals("Incorrect Size", 2, teArray1.size()); // Also both entry3 are removed
+		Assert.assertEquals("Incorrect Size", 1, teArray1.size()); // Also both entry3 are removed
 		assertOrder(teArray1);
 
-		teArray1.removeAll(teArray3); // some match
+		teArray1.removeAll(teArray3); // no match
 		Assert.assertEquals("Incorrect Size", 1, teArray1.size());
 		assertOrder(teArray1);
 	}
@@ -242,31 +211,28 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_retainAll()
 	{
-		TestEntrySequence teArray1 = new TestEntrySequence(0);
+		TestGroupEntrySequence teArray1 = new TestGroupEntrySequence(0);
 		teArray1.add(myTestCase);
-		teArray1.add(myTestStep);
 		teArray1.add(myTestGroup);
-		teArray1.add(myTestStep); // Duplicates are possible
 		teArray1.add(myTestCase2);
 
-		TestEntrySequence teArray2 = new TestEntrySequence(1);
-		teArray2.add(myTestStep);
+		TestGroupEntrySequence teArray2 = new TestGroupEntrySequence(1);
 		teArray2.add(myTestGroup);
 
-		TestEntrySequence teArray3 = new TestEntrySequence(2);
+		TestGroupEntrySequence teArray3 = new TestGroupEntrySequence(2);
 		teArray3.add(myTestGroup);
 		teArray3.add(myTestCase2);
 
-		TestEntrySequence teArray4 = new TestEntrySequence(3);
+		TestGroupEntrySequence teArray4 = new TestGroupEntrySequence(3);
 		teArray4.add(myTestGroup);
 
-		Assert.assertEquals("Incorrect Size", 5, teArray1.size());
+		Assert.assertEquals("Incorrect Size", 3, teArray1.size());
 
 		Assert.assertTrue( "List not changed", teArray1.retainAll(teArray2) );
-		Assert.assertEquals("Incorrect Size", 3, teArray1.size()); // Also both entry3 are retained
+		Assert.assertEquals("Incorrect Size", 1, teArray1.size()); // Also both entry3 are retained
 		assertOrder(teArray1);
 
-		Assert.assertTrue( "List not changed", teArray1.retainAll(teArray3) ); // some match
+		Assert.assertFalse( "List changed, should not", teArray1.retainAll(teArray3) ); // some match
 		Assert.assertEquals("Incorrect Size", 1, teArray1.size());
 		assertOrder(teArray1);
 
@@ -280,25 +246,18 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_containsAll()
 	{
-		TestEntrySequence teArray1 = new TestEntrySequence();
+		TestGroupEntrySequence teArray1 = new TestGroupEntrySequence();
 		teArray1.add(myTestCase);
-		teArray1.add(myTestStep);
 		
-		TestEntrySequence teArray2 = new TestEntrySequence(1);
+		TestGroupEntrySequence teArray2 = new TestGroupEntrySequence(1);
 		teArray2.add(myTestCase);
-		teArray2.add(myTestStep);
 		teArray2.add(myTestGroup);
-		teArray2.add(myTestStep);
 		teArray2.add(myTestGroup);
 
-		TestEntrySequence teArray3 = new TestEntrySequence(2);
-		teArray3.add(myTestStep);
+		TestGroupEntrySequence teArray3 = new TestGroupEntrySequence(2);
 		teArray3.add(myTestCase2);
-		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));
-		teArray3.add(testStep7);
 
-		TestEntrySequence teArray4 = new TestEntrySequence(3);
-		teArray4.add(myTestStep);
+		TestGroupEntrySequence teArray4 = new TestGroupEntrySequence(3);
 		teArray4.add(myTestCase);
 		teArray4.add(myTestCase);
 
@@ -312,9 +271,9 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_toArray()
 	{
-		TestEntry[] teArray = myTestEntryList.toArray();
+		TestGroupEntry[] teArray = myTestEntryList.toArray();
 
-		Assert.assertEquals("Incorrect size", 3, teArray.length );
+		Assert.assertEquals("Incorrect size", 2, teArray.length );
 	}
 
 	/**
@@ -322,18 +281,18 @@ public class TestEntrySequenceTester extends TestCase
 	 */
 	public void testCase_toArray_Array()
 	{
-		TestEntry[] array_small = new TestEntry[ 2 ];
-		TestEntry[] teArray1 = myTestEntryList.toArray( array_small );
-		Assert.assertNotSame("Same array returned", array_small, teArray1);
-		Assert.assertEquals( "Incorrect size", 3, teArray1.length );
+		TestGroupEntry[] array_small = new TestGroupEntry[ 2 ];
+		TestGroupEntry[] teArray1 = myTestEntryList.toArray( array_small );
+		Assert.assertSame("Same array returned", array_small, teArray1);
+		Assert.assertEquals( "Incorrect size", 2, teArray1.length );
 
-		TestEntry[] array_ok = new TestEntry[ 3 ];
-		TestEntry[] teArray2 = myTestEntryList.toArray( array_ok );
+		TestGroupEntry[] array_ok = new TestGroupEntry[ 3 ];
+		TestGroupEntry[] teArray2 = myTestEntryList.toArray( array_ok );
 		Assert.assertSame("New array returned", array_ok, teArray2);
 		Assert.assertEquals( "Incorrect size", 3, teArray2.length );
 
-		TestEntry[] array_large = new TestEntry[ 5 ];
-		TestEntry[] teArray3 = myTestEntryList.toArray( array_large );
+		TestGroupEntry[] array_large = new TestGroupEntry[ 5 ];
+		TestGroupEntry[] teArray3 = myTestEntryList.toArray( array_large );
 		Assert.assertSame("New array returned", array_large, teArray3);
 		Assert.assertEquals( "Incorrect size", 5, teArray3.length );
 	}
@@ -344,21 +303,23 @@ public class TestEntrySequenceTester extends TestCase
 	public void testCase_addAll_Collection()
 	{
 		// order of steps: 2 7 5 8
-		TestEntrySequence teArray = new TestEntrySequence(0);
-		teArray.add(myTestStep);
+		TestGroupEntrySequence teArray = new TestGroupEntrySequence(0);
 		teArray.add(myTestCase);
-		TestStepCommand testStep7 = new TestStepCommand(4, "command7", new TestInterface_stub( "interface1" ));
-		teArray.add(testStep7);
-		TestStepCommand testStep8 = new TestStepCommand(7, "command8", new TestInterface_stub( "interface1" ));
-		teArray.add(testStep8);
+		TestCaseImpl testCase7 = new TestCaseImpl( "tc7", "An extensive description", 4,
+				new TestStepSequence(), new TestStepSequence(), new TestStepSequence() );
+		teArray.add(testCase7);
+
+		TestCaseImpl testCase8 = new TestCaseImpl( "tc8", "An extensive description", 7,
+				new TestStepSequence(), new TestStepSequence(), new TestStepSequence() );
+		teArray.add(testCase8);
 
 		Assert.assertTrue("No steps were added", teArray.addAll(myTestEntryList) );
-		Assert.assertEquals("Incorrect size", 7, teArray.size());
-		Assert.assertEquals("Incorrect size", 3, myTestEntryList.size()); // unchanged
+		Assert.assertEquals("Incorrect size", 5, teArray.size());
+		Assert.assertEquals("Incorrect size", 2, myTestEntryList.size()); // unchanged
 		assertOrder(teArray);
 
 		Assert.assertTrue("No steps were added", teArray.addAll(myTestEntryList) );
-		Assert.assertEquals("Incorrect size", 10, teArray.size());
+		Assert.assertEquals("Incorrect size", 7, teArray.size());
 		assertOrder(teArray);
 	}
 }

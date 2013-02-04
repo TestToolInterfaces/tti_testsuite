@@ -17,7 +17,7 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 {
-	private TestEntrySequence myExecutionEntries;
+	private TestGroupEntrySequence myExecutionEntries;
     
 	/**
 	 * Constructor
@@ -35,7 +35,7 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntrySequence aTestEntries,
+	                      TestGroupEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps )
 	{
 		super( aTestGroupId,
@@ -78,7 +78,7 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntrySequence aTestEntries,
+	                      TestGroupEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps,
 	                      Hashtable<String, String> anAnyAttributes,
 	                      Hashtable<String, String> anAnyElements )
@@ -109,7 +109,7 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntrySequence aTestEntries,
+	                      TestGroupEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -135,7 +135,7 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 	                      String aDescription,
 	                      int aSequenceNr,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntrySequence aTestEntries,
+	                      TestGroupEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -159,7 +159,7 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 	public TestGroupImpl( String aTestGroupId,
 	                      int aSequenceNr,
 	                      TestStepSequence aPrepareSteps,
-	                      TestEntrySequence aTestEntries,
+	                      TestGroupEntrySequence aTestEntries,
 	                      TestStepSequence aRestoreSteps )
 	{
 		this( aTestGroupId,
@@ -171,7 +171,7 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 		      aRestoreSteps );
 	}
 
-	public TestEntrySequence getExecutionEntries() {
+	public TestGroupEntrySequence getExecutionEntries() {
 		return myExecutionEntries;
 	}
 
@@ -180,9 +180,9 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 			return true;
 		}
 
-		Iterator<TestEntry> itr = (Iterator<TestEntry>) myExecutionEntries.iterator();
+		Iterator<TestGroupEntry> itr = (Iterator<TestGroupEntry>) myExecutionEntries.iterator();
 		while(itr.hasNext()) {
-			TestEntry entry = itr.next();
+			TestGroupEntry entry = itr.next();
 
 			if ( entry instanceof TestGroup ) {
 				if ( ((TestGroup) entry).hasGroupId(aGroupId) )	{
