@@ -14,8 +14,7 @@ public class TestCaseLink extends TestExecItemLinkImpl
 	 * 
 	 * @param aTestCaseId		TC Identifier
 	 * @param aSequenceNr		Sequence Number
-	 * @param aTcLinkName		Test Case File Name
-	 * @param aType				Type of the TC File
+	 * @param aTcLink			Test Case Link
 	 */
 	public TestCaseLink(String aTestCaseId, int aSequenceNr,
 			TestLink aTcLink) {

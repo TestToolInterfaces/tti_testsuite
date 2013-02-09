@@ -14,6 +14,20 @@ public class TestGroupLink extends TestExecItemLinkImpl
 	 * 
 	 * @param aTestGroupId		TG Identifier
 	 * @param aSequenceNr		Sequence Number
+	 * @param aTgLink			Test Group Link
+	 */
+	public TestGroupLink( String aTestGroupId,
+	                      int aSequenceNr,
+	          			TestLink aTgLink) {
+		super( TYPE.GroupLink, aTestGroupId,
+		      aSequenceNr, aTgLink );
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * @param aTestGroupId		TG Identifier
+	 * @param aSequenceNr		Sequence Number
 	 * @param aTgLinkName		Test Group File Name
 	 * @param aType				Type of the TG File
 	 */

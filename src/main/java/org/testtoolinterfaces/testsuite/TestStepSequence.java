@@ -37,6 +37,10 @@ public class TestStepSequence implements Collection<TestStep>
 		mySteps = new ArrayList<TestStep>( aSize );
 	}
 	
+	public TestStepSequence(Collection<? extends TestStep> sequence) {
+		mySteps = new ArrayList<TestStep>( sequence );
+	}
+
 	public int size()
 	{
 		return mySteps.size();

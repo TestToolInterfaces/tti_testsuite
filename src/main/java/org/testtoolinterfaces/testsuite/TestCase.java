@@ -6,7 +6,7 @@ package org.testtoolinterfaces.testsuite;
  * @author Arjan Kranenburg
  *
  */
-public interface TestCase extends TestEntry
+public interface TestCase extends TestExecItem
 {
 	/**
 	 * @return the Execution Steps
