@@ -19,8 +19,7 @@ public class TestGroupLink extends TestExecItemLinkImpl
 	public TestGroupLink( String aTestGroupId,
 	                      int aSequenceNr,
 	          			TestLink aTgLink) {
-		super( TYPE.GroupLink, aTestGroupId,
-		      aSequenceNr, aTgLink );
+		super( aTestGroupId, aSequenceNr, aTgLink );
 	}
 
 	/**
@@ -36,8 +35,7 @@ public class TestGroupLink extends TestExecItemLinkImpl
 	                      String aTgLinkName,
 	                      String aType )
 	{
-		super( TYPE.GroupLink, aTestGroupId,
-		      aSequenceNr,
+		super( aTestGroupId, aSequenceNr,
 		      new TestLinkImpl( aTgLinkName, aType ) );
 	}
 

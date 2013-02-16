@@ -30,8 +30,6 @@ public class TestCaseImpl extends TestExecItemImpl implements TestCase
 	 * @param aPrepareSteps		Collection of preparation steps
 	 * @param anExecutionSteps	Collection of execution steps
 	 * @param aRestoreSteps		Collection of Restore steps
-	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
-	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
 	public TestCaseImpl(
 			String aTestCaseId,
@@ -42,7 +40,7 @@ public class TestCaseImpl extends TestExecItemImpl implements TestCase
 			TestStepSequence anExecutionSteps,
 			TestStepSequence aRestoreSteps ) {
 
-		super( aTestCaseId, TestEntry.TYPE.Case, aDescription, aSequenceNr,
+		super( aTestCaseId, aDescription, aSequenceNr,
 				aRequirementIds, aPrepareSteps, aRestoreSteps );
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestCaseImpl( " + aTestCaseId + ", "

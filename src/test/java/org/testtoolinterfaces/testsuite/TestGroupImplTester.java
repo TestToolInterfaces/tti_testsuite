@@ -6,9 +6,6 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.TestEntry;
-import org.testtoolinterfaces.testsuite.TestGroupEntrySequence;
-import org.testtoolinterfaces.testsuite.TestGroupImpl;
 
 
 public class TestGroupImplTester extends TestCase
@@ -36,7 +33,6 @@ public class TestGroupImplTester extends TestCase
 		                                             new TestGroupEntrySequence(),
 		                                             new TestStepSequence() );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
 		Assert.assertEquals("Incorrect ID", "ID", testGroup.getId());
 		Assert.assertEquals("Incorrect Description", "A Description", testGroup.getDescription());
 
@@ -64,7 +60,6 @@ public class TestGroupImplTester extends TestCase
 		                                             new TestGroupEntrySequence(),
 		                                             new TestStepSequence() );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
 		Assert.assertEquals("Incorrect ID", "ID", testGroup.getId());
 		Assert.assertEquals("Incorrect Description", "A Description", testGroup.getDescription());
 
@@ -84,7 +79,6 @@ public class TestGroupImplTester extends TestCase
 		                                             new TestGroupEntrySequence(),
 		                                             new TestStepSequence() );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
 		Assert.assertEquals("Incorrect ID", "ID", testGroup.getId());
 		Assert.assertEquals("Incorrect Description", "", testGroup.getDescription());
 	}
@@ -101,7 +95,6 @@ public class TestGroupImplTester extends TestCase
 		                                             new TestGroupEntrySequence(),
 		                                             new TestStepSequence() );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
 		Assert.assertEquals("Incorrect ID", "ID", testGroup.getId());
 		Assert.assertEquals("Incorrect Description", "A Description", testGroup.getDescription());
 		Assert.assertTrue(  "Requirements not empty", testGroup.getRequirements().isEmpty());
@@ -118,7 +111,6 @@ public class TestGroupImplTester extends TestCase
 		                                             new TestGroupEntrySequence(),
 		                                             new TestStepSequence() );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Group, testGroup.getType());
 		Assert.assertEquals("Incorrect ID", "ID", testGroup.getId());
 		Assert.assertEquals("Incorrect Description", "", testGroup.getDescription());
 		Assert.assertTrue(  "Requirements not empty", testGroup.getRequirements().isEmpty());

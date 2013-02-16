@@ -31,7 +31,7 @@ public class TestGroupEntryIteration extends TestGroupEntryImpl
 	        String aListName,
     		Collection<TestGroupEntry> myDoEntries )
 	{
-		super("Foreach " + anItemName, TYPE.Group, aDescription, aSequenceNr);
+		super("Foreach " + anItemName, aDescription, aSequenceNr);
 		Trace.println( Trace.CONSTRUCTOR,
 			"TestEntryWithIdIteration(" + aDescription + ", " + aSequenceNr + ", "
 					+ anItemName + ", " + aListName + " )", true );

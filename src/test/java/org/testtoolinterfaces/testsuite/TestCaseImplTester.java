@@ -8,7 +8,6 @@ import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.testtoolinterfaces.testsuite.TestCaseImpl;
-import org.testtoolinterfaces.testsuite.TestEntry;
 
 public class TestCaseImplTester extends TestCase
 {
@@ -47,7 +46,6 @@ public class TestCaseImplTester extends TestCase
 		testCase.setAnyAttributes(anyParams);
 		testCase.setAnyElements(anyElems);
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testCase.getDescription());
 		Assert.assertEquals("Incorrect Sequence Number", 3, testCase.getSequenceNr());
@@ -75,7 +73,6 @@ public class TestCaseImplTester extends TestCase
 				new TestStepSequence(0),
 				new TestStepSequence(0) );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testCase.getDescription());
 	}
@@ -93,7 +90,6 @@ public class TestCaseImplTester extends TestCase
 				new TestStepSequence(0),
 				new TestStepSequence(0) );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
 		Assert.assertEquals("Incorrect Description", "", testCase.getDescription());
 	}
@@ -111,7 +107,6 @@ public class TestCaseImplTester extends TestCase
 				new TestStepSequence(0),
 				new TestStepSequence(0) );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testCase.getDescription());
 	}
@@ -128,7 +123,6 @@ public class TestCaseImplTester extends TestCase
 				new TestStepSequence(0),
 				new TestStepSequence(0) );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Case, testCase.getType());
 		Assert.assertEquals("Incorrect ID", "tcId", testCase.getId());
 		Assert.assertEquals("Incorrect Description", "", testCase.getDescription());
 	}

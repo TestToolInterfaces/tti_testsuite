@@ -7,7 +7,6 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.TestEntry;
 
 public class TestCaseLinkTester extends TestCase
 {
@@ -43,7 +42,6 @@ public class TestCaseLinkTester extends TestCase
 		tcLink.setAnyAttributes(anyParams);
 		tcLink.setAnyElements(anyElems);
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
 		Assert.assertEquals("Incorrect ID", "tcLinkId", tcLink.getId());
 		Assert.assertEquals("Incorrect Description", "", tcLink.getDescription());
 		Assert.assertEquals("Incorrect Sequence Number", 2, tcLink.getSequenceNr());
@@ -66,7 +64,6 @@ public class TestCaseLinkTester extends TestCase
 				"fileName",
 				"shell" );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
 		Assert.assertEquals("Incorrect ID", "tcLinkId", tcLink.getId());
 		Assert.assertEquals("Incorrect Description", "", tcLink.getDescription());
 		Assert.assertEquals("Incorrect Sequence Number", 4, tcLink.getSequenceNr());
@@ -88,7 +85,6 @@ public class TestCaseLinkTester extends TestCase
 				5,
 				"fileName2" );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.CaseLink, tcLink.getType());
 		Assert.assertEquals("Incorrect ID", "tcLinkId", tcLink.getId());
 		Assert.assertEquals("Incorrect Description", "", tcLink.getDescription());
 		Assert.assertEquals("Incorrect Sequence Number", 5, tcLink.getSequenceNr());

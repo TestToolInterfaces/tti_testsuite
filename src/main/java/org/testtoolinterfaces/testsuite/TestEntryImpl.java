@@ -15,7 +15,7 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public abstract class TestEntryImpl implements TestEntry
 {
-	private TYPE myType;
+//	private TYPE myType;
 	private String myDescription;
 	private int mySequenceNr = 0;
 	private Hashtable<String, String> myAnyAttributes;
@@ -25,23 +25,21 @@ public abstract class TestEntryImpl implements TestEntry
      * Creates a TestEntry
      * 
 	 * @param anId			Identifier
-	 * @param aType			Type of TestEntry
 	 * @param aDescription	Description
 	 * @param aSequenceNr	Sequence number, to be used in a collection
 	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
 	 * @param anAnyElements		Elements that were not recognized, but kept anyway
 	 */
-	public TestEntryImpl( TYPE aType,
+	public TestEntryImpl( 
 	                      String aDescription,
 	                      int aSequenceNr )
 	{
 		Trace.println( Trace.CONSTRUCTOR,
-					   "TestEntryImpl(" + aType + ", "
+					   "TestEntryImpl(" 
 					   					+ aDescription + ", "
 					   					+ aSequenceNr + " )",
 					   true );
 		
-		myType = aType;
 		myDescription = aDescription;
 		mySequenceNr = aSequenceNr;
 		
@@ -49,11 +47,11 @@ public abstract class TestEntryImpl implements TestEntry
 		myAnyElements = new Hashtable<String, String>();
 	}
 
-	public TYPE getType()
-	{
-		return myType;
-	}
-
+//	public TYPE getType()
+//	{
+//		return myType;
+//	}
+//
 	public String getDescription()
 	{
 		return myDescription;

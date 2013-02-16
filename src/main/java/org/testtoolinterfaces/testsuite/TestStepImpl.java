@@ -24,7 +24,7 @@ public abstract class TestStepImpl extends TestEntryImpl implements TestStep
 	                 String aDescription,
 	                 ParameterArrayList aParameters )
 	{
-		super( TYPE.Step, aDescription, aSequenceNr );
+		super( aDescription, aSequenceNr );
 		myParameters = aParameters;
 	}
 

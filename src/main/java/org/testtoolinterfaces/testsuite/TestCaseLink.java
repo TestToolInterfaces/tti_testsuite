@@ -18,7 +18,7 @@ public class TestCaseLink extends TestExecItemLinkImpl
 	 */
 	public TestCaseLink(String aTestCaseId, int aSequenceNr,
 			TestLink aTcLink) {
-		super( TYPE.CaseLink, aTestCaseId, aSequenceNr, aTcLink);
+		super( aTestCaseId, aSequenceNr, aTcLink);
 	}
 
 	/**

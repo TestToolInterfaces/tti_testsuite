@@ -7,8 +7,6 @@ import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.testtoolinterfaces.testsuite.ParameterArrayList;
-import org.testtoolinterfaces.testsuite.TestEntry;
 
 public class TestStepScriptTester extends TestCase
 {
@@ -57,7 +55,6 @@ public class TestStepScriptTester extends TestCase
 		testStep.setAnyAttributes(anyParams);
 		testStep.setAnyElements(anyElems);
 		
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
@@ -82,7 +79,6 @@ public class TestStepScriptTester extends TestCase
 				"bash",
 				myParamTable );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
@@ -106,7 +102,6 @@ public class TestStepScriptTester extends TestCase
 				"script",
 				"bash" );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description", "An extensive description", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
@@ -129,7 +124,6 @@ public class TestStepScriptTester extends TestCase
 				"bash",
 				myParamTable );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertEquals("Incorrect Parameters", "e-parameter", ((ParameterImpl) testStep.getParameters().get("-e")).getValue());
 
@@ -148,7 +142,6 @@ public class TestStepScriptTester extends TestCase
 				"script",
 				"bash" );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description", "", testStep.getDescription());
 		Assert.assertTrue(  "Incorrect Parameters", testStep.getParameters().isEmpty());
 
@@ -168,7 +161,6 @@ public class TestStepScriptTester extends TestCase
 		                             				"script",
 		                             				"bash" );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.Step, testStep.getType());
 		Assert.assertEquals("Incorrect Description (1)", "An extensive description", testStep.getDescription());
 
 		testStep.setDescription( "new description" );

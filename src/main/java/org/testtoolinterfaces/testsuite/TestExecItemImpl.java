@@ -24,24 +24,22 @@ public class TestExecItemImpl extends TestGroupEntryImpl implements TestExecItem
      * Creates a TestExecutionItem
      * 
 	 * @param anId			Identifier
-	 * @param aType			Type of TestEntry
 	 * @param aDescription	Description
 	 * @param aSequenceNr	Sequence number, to be used in a collection
-	 * @param anAnyAttributes	Attributes that were not recognized, but kept anyway
-	 * @param anAnyElements		Elements that were not recognized, but kept anyway
+	 * @param aRequirementIds	List of RequirementIds
+	 * @param aPrepareSteps		Sequence of Test Steps for preparation
+	 * @param aRestoreSteps		Sequence of Test Steps for restoration
 	 */
 	public TestExecItemImpl( String anId,
-	                      TYPE aType,
 	                      String aDescription,
 	                      int aSequenceNr,
 	                      ArrayList<String> aRequirementIds,
 	                      TestStepSequence aPrepareSteps,
 	                      TestStepSequence aRestoreSteps )
 	{
-		super(anId, aType, aDescription, aSequenceNr);
+		super(anId, aDescription, aSequenceNr);
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestEntryImpl(" + anId + ", "
-					   					+ aType + ", "
 					   					+ aDescription + ", "
 					   					+ aSequenceNr + ", "
 					   					 + aRequirementIds.hashCode() + ", "

@@ -42,7 +42,6 @@ public class TestGroupLinkTester extends TestCase
 		tgLink.setAnyAttributes(anyParams);
 		tgLink.setAnyElements(anyElems);
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
 		Assert.assertEquals("Incorrect ID", "ID0", tgLink.getId());
 		Assert.assertEquals("Incorrect Sequence Number", 8, tgLink.getSequenceNr());
 		Assert.assertTrue(  "Incorrect Description", tgLink.getDescription().isEmpty());
@@ -64,7 +63,6 @@ public class TestGroupLinkTester extends TestCase
 		                                          "link",
 												  "aType" );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
 		Assert.assertEquals("Incorrect ID", "ID1", tgLink.getId());
 		Assert.assertEquals("Incorrect Sequence Number", 5, tgLink.getSequenceNr());
 
@@ -84,7 +82,6 @@ public class TestGroupLinkTester extends TestCase
 		                                          3,
 		                                          "link" );
 
-		Assert.assertEquals("Incorrect Type", TestEntry.TYPE.GroupLink, tgLink.getType());
 		Assert.assertEquals("Incorrect ID", "ID2", tgLink.getId());
 		Assert.assertEquals("Incorrect Sequence Number", 3, tgLink.getSequenceNr());
 

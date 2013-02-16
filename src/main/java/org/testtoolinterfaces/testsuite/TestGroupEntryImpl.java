@@ -17,19 +17,16 @@ public class TestGroupEntryImpl extends TestEntryImpl
      * Creates a TestExecutionItem
      * 
 	 * @param anId			Identifier
-	 * @param aType			Type of TestEntry
 	 * @param aDescription	Description
 	 * @param aSequenceNr	Sequence number, to be used in a collection
 	 */
 	public TestGroupEntryImpl( String anId,
-	                      TYPE aType,
 	                      String aDescription,
 	                      int aSequenceNr )
 	{
-		super(aType, aDescription, aSequenceNr);
+		super(aDescription, aSequenceNr);
 		Trace.println( Trace.CONSTRUCTOR,
 					   "TestEntryImpl(" + anId + ", "
-					   					+ aType + ", "
 					   					+ aDescription + ", "
 					   					+ aSequenceNr + " )",
 					   true );

@@ -21,11 +21,11 @@ public abstract class TestExecItemLinkImpl extends TestGroupEntryImpl
 	 * @param aSequenceNr		Sequence Number
 	 * @param aTestLink			Test Item Link
 	 */
-	public TestExecItemLinkImpl( TYPE aType, String aTestLinkId,
+	public TestExecItemLinkImpl( String aTestLinkId,
 	                      int aSequenceNr,
 	                      TestLink aTestLink )
 	{
-		super( aTestLinkId, aType, "", aSequenceNr );
+		super( aTestLinkId, "", aSequenceNr );
 		
 		this.myLink = aTestLink;
 	}

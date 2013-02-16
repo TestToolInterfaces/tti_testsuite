@@ -39,7 +39,6 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 	                      TestStepSequence aRestoreSteps )
 	{
 		super( aTestGroupId,
-			       TestEntry.TYPE.Group,
 			       aDescription,
 			       aSequenceNr,
 			       aRequirementIds,
