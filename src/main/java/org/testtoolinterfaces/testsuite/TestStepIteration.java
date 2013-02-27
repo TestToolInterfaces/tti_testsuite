@@ -15,6 +15,7 @@ public class TestStepIteration extends TestStepImpl
 	private String itemName;
 	private String listName;
 	private Collection<TestStep> sequence;
+	private TestStep untilStep;
 
     /**
      * Creates a TestStepIteration
@@ -24,21 +25,21 @@ public class TestStepIteration extends TestStepImpl
 	 * @param anItemName	Name that is given to the item when iterating over the list
 	 * @param aListName		Name of the list
 	 * @param aSequence		The sequence of {@link TestStep} to do in every iteration
+	 * @param anUntilStep		The untilStep to provide a possibility to break out of the loop
 	 */
 	public TestStepIteration( String aDescription,
-	        int aSequenceNr,
-	        String anItemName,
-	        String aListName,
-    		Collection<TestStep> aSequence )
+	        int aSequenceNr, String anItemName, String aListName,
+    		Collection<TestStep> aSequence, TestStep anUntilStep )
 	{
 		super(aSequenceNr, aDescription, new ParameterArrayList());
 		Trace.println( Trace.CONSTRUCTOR,
 			"TestStepIteration(" + aDescription + ", " + aSequenceNr + ", "
-					+ anItemName + ", " + aListName + " )", true );
+					+ anItemName + ", " + aListName + ", " + anUntilStep + " )", true );
 		
 		this.itemName = anItemName;
 		this.listName = aListName;
 		this.sequence = aSequence;
+		this.untilStep = anUntilStep;
 	}
 
 	/**
@@ -60,5 +61,12 @@ public class TestStepIteration extends TestStepImpl
 	 */
 	public Collection<TestStep> getSequence() {
 		return sequence;
+	}
+
+	/**
+	 * @return the until-step
+	 */
+	public TestStep getUntilStep() {
+		return untilStep;
 	}
 }

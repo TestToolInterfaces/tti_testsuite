@@ -24,4 +24,9 @@ public interface TestEntryIteration<E extends TestEntry>
 	 * @return the sequence
 	 */
 	public Collection<E> getSequence();
+
+	/**
+	 * @return the until-step
+	 */
+	public TestStep getUntilStep();
 }

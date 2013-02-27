@@ -15,6 +15,7 @@ public class TestGroupEntryIteration extends TestGroupEntryImpl
 	private String itemName;
 	private String listName;
 	private Collection<TestGroupEntry> sequence;
+	private TestStep untilStep;
 
     /**
      * Creates a TestEntryIteration
@@ -23,13 +24,12 @@ public class TestGroupEntryIteration extends TestGroupEntryImpl
 	 * @param aSequenceNr	Sequence number, to be used in a collection
 	 * @param anItemName	Name that is given to the item when iterating over the list
 	 * @param aListName		Name of the list
-	 * @param myDoEntries	The sequence of {@link TestEntryImpl} to do in every iteration
+	 * @param doEntries		The sequence of {@link TestEntryImpl} to do in every iteration
+	 * @param anUntilStep	The untilStep to provide a possibility to break out of the loop
 	 */
 	public TestGroupEntryIteration( String aDescription,
-	        int aSequenceNr,
-	        String anItemName,
-	        String aListName,
-    		Collection<TestGroupEntry> myDoEntries )
+	        int aSequenceNr, String anItemName, String aListName,
+    		Collection<TestGroupEntry> aDoEntries, TestStep anUntilStep )
 	{
 		super("Foreach " + anItemName, aDescription, aSequenceNr);
 		Trace.println( Trace.CONSTRUCTOR,
@@ -38,7 +38,8 @@ public class TestGroupEntryIteration extends TestGroupEntryImpl
 		
 		this.itemName = anItemName;
 		this.listName = aListName;
-		this.sequence = myDoEntries;
+		this.sequence = aDoEntries;
+		this.untilStep = anUntilStep;
 	}
 
 	/**
@@ -60,5 +61,12 @@ public class TestGroupEntryIteration extends TestGroupEntryImpl
 	 */
 	public Collection<TestGroupEntry> getSequence() {
 		return sequence;
+	}
+
+	/**
+	 * @return the until-step
+	 */
+	public TestStep getUntilStep() {
+		return untilStep;
 	}
 }
