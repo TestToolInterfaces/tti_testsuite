@@ -54,7 +54,7 @@ public abstract class TestStepImpl extends TestEntryImpl implements TestStep
 	 * Sets the way this step is to be displayed
 	 * @param aDisplayName
 	 */
-	public void setDisplayName( String aDisplayName )
+	protected void setDisplayName( String aDisplayName )
 	{
 		myDisplayName = aDisplayName;
 	}

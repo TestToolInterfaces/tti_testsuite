@@ -18,10 +18,4 @@ public interface TestStep extends TestEntry
 	 */
 	public String getDisplayName();
 
-	/**
-	 * Sets the way this step is to be displayed
-	 * @param aDisplayName
-	 */
-	public void setDisplayName( String aDisplayName );
-
 }
