@@ -40,6 +40,8 @@ public class TestStepIteration extends TestStepImpl
 		this.listName = aListName;
 		this.sequence = aSequence;
 		this.untilStep = anUntilStep;
+
+		this.setDisplayName("Foreach " + itemName + " in " + listName);
 	}
 
 	/**
