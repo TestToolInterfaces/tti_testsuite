@@ -5,7 +5,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.Hashtable;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Class for Test Steps that consist of a Decision and Consequences (aka if-then-else).
@@ -20,7 +22,9 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestStepSelection extends TestStepImpl
 {
-	private TestStep myIfStep;
+    private static final Logger LOG = LoggerFactory.getLogger(TestStepSelection.class);
+
+    private TestStep myIfStep;
 	private boolean myNegator;
 	private TestStepSequence myThenSteps;
 	private TestStepSequence myElseSteps;
@@ -43,18 +47,10 @@ public class TestStepSelection extends TestStepImpl
 						 TestStepSequence aThenSteps,
 						 TestStepSequence anElseSteps )
 	{
-		super( aSequenceNr,
-		       aDescription,
-		       new ParameterArrayList() );
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestStepImpl( "
-	   									+ aSequenceNr + ", "
-	   									+ aDescription + ", "
-					   					+ anIfStep.toString() + ", "
-					   					+ aNegator + ", "
-					   					+ aThenSteps.toString() + ", "
-					   					+ ( anElseSteps.isEmpty() ? "<no else>" : anElseSteps.toString() ) + " )",
-				   	   true );
+		super( aSequenceNr, aDescription, new ParameterArrayList() );
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}",
+				aSequenceNr, aDescription,
+				anIfStep, aNegator, aThenSteps, anElseSteps);
 
 		myIfStep    = anIfStep;
 		myNegator	= aNegator;

@@ -2,7 +2,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Abstract Class to hold a TestExecutionItem.
@@ -15,6 +17,8 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestExecItemImpl extends TestGroupEntryImpl implements TestExecItem
 {
+    private static final Logger LOG = LoggerFactory.getLogger(TestExecItemImpl.class);
+
     private ArrayList<String> myRequirementIds;
 
 	private TestStepSequence myInitializationSteps;
@@ -38,14 +42,9 @@ public class TestExecItemImpl extends TestGroupEntryImpl implements TestExecItem
 	                      TestStepSequence aRestoreSteps )
 	{
 		super(anId, aDescription, aSequenceNr);
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestEntryImpl(" + anId + ", "
-					   					+ aDescription + ", "
-					   					+ aSequenceNr + ", "
-					   					 + aRequirementIds.hashCode() + ", "
-					   					 + aPrepareSteps + ", "
-					   					 + aRestoreSteps + " )",
-					   true );
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}, {}",
+				anId, aDescription, aSequenceNr, aRequirementIds,
+				aPrepareSteps, aRestoreSteps);
 		
 		myRequirementIds = aRequirementIds;
 

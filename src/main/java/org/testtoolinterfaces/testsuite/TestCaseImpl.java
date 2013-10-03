@@ -5,7 +5,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Class for Default (i.e. TTI) Test Cases.
@@ -18,6 +20,8 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestCaseImpl extends TestExecItemImpl implements TestCase
 {
+    private static final Logger LOG = LoggerFactory.getLogger(TestCaseImpl.class);
+
     private TestStepSequence myExecutionSteps;
 
 	/**
@@ -42,15 +46,9 @@ public class TestCaseImpl extends TestExecItemImpl implements TestCase
 
 		super( aTestCaseId, aDescription, aSequenceNr,
 				aRequirementIds, aPrepareSteps, aRestoreSteps );
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestCaseImpl( " + aTestCaseId + ", "
-										+ aDescription + ", "
-										+ aSequenceNr + ", "
-										+ aRequirementIds.hashCode() + ", "
-										+ aPrepareSteps + ", "
-										+ anExecutionSteps + ", "
-										+ aRestoreSteps + " )",
-						true );
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}, {}, {}",
+				aTestCaseId, aDescription, aSequenceNr, aRequirementIds,
+				aPrepareSteps, anExecutionSteps, aRestoreSteps);
 
 		myExecutionSteps = anExecutionSteps;
 	}

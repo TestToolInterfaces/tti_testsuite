@@ -2,7 +2,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.Hashtable;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Abstract Class to hold a Parameter.
@@ -17,7 +19,9 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public abstract class Parameter
 {
-	public static final int DEFAULT_INDEX = 99;
+    private static final Logger LOG = LoggerFactory.getLogger(Parameter.class);
+
+    public static final int DEFAULT_INDEX = 99;
 
 	private String myParameter;
 	private int myIndex;
@@ -40,8 +44,8 @@ public abstract class Parameter
 	                  Hashtable<String, String> anAnyAttributes,
 	     			  Hashtable<String, String> anAnyElements )
 	{
-		Trace.println(Trace.CONSTRUCTOR, "Parameter( " + aParameter + ", " 
-													   + anIndex + " )", true);
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}",
+				aParameter, anIndex, anAnyAttributes, anAnyElements);
 	    myIndex = anIndex;
 	    myParameter = aParameter;
 
@@ -54,7 +58,7 @@ public abstract class Parameter
 	 */
 	public String getName()
 	{
-		Trace.println(Trace.GETTER);
+		LOG.trace(Mark.GETTER, "");
 	    return myParameter;
 	}
 
@@ -66,7 +70,7 @@ public abstract class Parameter
 	 */
 	public int getIndex()
 	{
-		Trace.println(Trace.GETTER);
+		LOG.trace(Mark.GETTER, "");
 	    return myIndex;
 	}
 
@@ -79,7 +83,7 @@ public abstract class Parameter
 	 */
 	public void setIndex(int anIndex)
 	{
-		Trace.println(Trace.SETTER, "setValue( " + anIndex + " )", true);
+		LOG.trace(Mark.SETTER, "{}", anIndex);
 	    myIndex = anIndex;
 	}
 

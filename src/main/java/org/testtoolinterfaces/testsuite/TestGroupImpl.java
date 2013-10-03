@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Class for Default (i.e. TTI) Test Groups.
@@ -17,7 +19,9 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 {
-	private TestGroupEntrySequence myExecutionEntries;
+    private static final Logger LOG = LoggerFactory.getLogger(TestGroupImpl.class);
+
+    private TestGroupEntrySequence myExecutionEntries;
     
 	/**
 	 * Constructor
@@ -45,15 +49,9 @@ public class TestGroupImpl extends TestExecItemImpl implements TestGroup
 			       aPrepareSteps,
 			       aRestoreSteps );
 
-			Trace.println( Trace.CONSTRUCTOR,
-						   "TestGroupImpl( " + aTestGroupId + ", "
-						   					 + aDescription + ", "
-						   					 + aSequenceNr + ", "
-						   					 + aRequirementIds.hashCode() + ", "
-						   					 + aPrepareSteps + ", "
-						   					 + aTestEntries + ", "
-						   					 + aRestoreSteps + " )",
-							true );
+			LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}, {}",
+					aTestGroupId, aDescription, aSequenceNr, aRequirementIds,
+					aPrepareSteps, aRestoreSteps);
 
 			myExecutionEntries = aTestEntries;
 	}

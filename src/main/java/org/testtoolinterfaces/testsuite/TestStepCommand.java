@@ -3,7 +3,9 @@
  */
 package org.testtoolinterfaces.testsuite;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Class for Test Steps that consist of a single command.
@@ -17,7 +19,9 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestStepCommand extends TestStepImpl
 {
-	private final String myCommand;
+    private static final Logger LOG = LoggerFactory.getLogger(TestStepCommand.class);
+
+    private final String myCommand;
 	private final TestInterface myInterface;
 
 	/**
@@ -36,17 +40,10 @@ public class TestStepCommand extends TestStepImpl
 						 TestInterface anInterface,
 						 ParameterArrayList aParameters )
 	{
-		super( aSequenceNr,
-		       aDescription,
-		       aParameters );
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestStepImpl( "
-	   									+ aSequenceNr + ", "
-	   									+ aDescription + ", "
-					   					+ aCommand + ", "
-					   					+ anInterface.getInterfaceName() + ", "
-					   					+ "aParameters )",
-				   	   true );
+		super( aSequenceNr, aDescription, aParameters );
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}",
+				aSequenceNr, aDescription,
+				aCommand, anInterface, aParameters);
 
 		myCommand = aCommand;
 		myInterface = anInterface;

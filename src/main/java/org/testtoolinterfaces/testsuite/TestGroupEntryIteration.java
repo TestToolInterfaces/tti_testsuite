@@ -2,7 +2,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.Collection;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Class to hold a TestEntryIteration (a for each of test groups and cases).
@@ -12,6 +14,8 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestGroupEntryIteration extends TestGroupEntryImpl
 				implements TestEntryIteration<TestGroupEntry> {
+    private static final Logger LOG = LoggerFactory.getLogger(TestGroupEntryIteration.class);
+
 	private String itemName;
 	private String listName;
 	private Collection<TestGroupEntry> sequence;
@@ -32,9 +36,9 @@ public class TestGroupEntryIteration extends TestGroupEntryImpl
     		Collection<TestGroupEntry> aDoEntries, TestStep anUntilStep )
 	{
 		super("Foreach " + anItemName, aDescription, aSequenceNr);
-		Trace.println( Trace.CONSTRUCTOR,
-			"TestEntryWithIdIteration(" + aDescription + ", " + aSequenceNr + ", "
-					+ anItemName + ", " + aListName + " )", true );
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}, {}",
+				aDescription, aSequenceNr,
+				anItemName, aListName, aDoEntries, anUntilStep);
 		
 		this.itemName = anItemName;
 		this.listName = aListName;

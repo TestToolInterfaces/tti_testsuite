@@ -2,7 +2,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.Hashtable;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Class to hold an Hash of parameters.
@@ -12,7 +14,9 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class ParameterHash extends Parameter
 {
-	ParameterArrayList myParams;
+    private static final Logger LOG = LoggerFactory.getLogger(ParameterHash.class);
+
+    ParameterArrayList myParams;
 
 	/**
 	 * Creates a parameter hash
@@ -29,16 +33,14 @@ public class ParameterHash extends Parameter
 	                      ParameterArrayList aParamList,
 	                      int anIndex,
 	                      Hashtable<String, String> anAnyAttributes,
-	                      Hashtable<String, String> anAnyElements )
-	{
+	                      Hashtable<String, String> anAnyElements ) {
 		super( aParameter,
 		       anIndex,
 		       anAnyAttributes,
 		       anAnyElements );
 
-		Trace.println(Trace.CONSTRUCTOR, "ParameterHash( " + aParameter + ", " 
-						   + aParamList.toString() + ", "
-						   + anIndex + " )", true);
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}",
+				aParameter, anIndex, anAnyAttributes, anAnyElements);
 
 		myParams = aParamList;
 	}

@@ -2,7 +2,10 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.Hashtable;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
+
 
 /**
  * Class to hold a Parameter.
@@ -16,7 +19,9 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class ParameterImpl extends Parameter
 {
-	private Class<? extends Object> myType;
+    private static final Logger LOG = LoggerFactory.getLogger(ParameterImpl.class);
+
+    private Class<? extends Object> myType;
 	private Object myValue;
 	
 	/**
@@ -41,9 +46,8 @@ public class ParameterImpl extends Parameter
 		       anIndex,
 		       anAnyAttributes,
 		       anAnyElements );
-		Trace.println(Trace.CONSTRUCTOR, "ParameterImpl( " + aParameter + ", " 
-		              									   + aValue.toString() + ", "
-		              									   + anIndex + " )", true);
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}",
+				aParameter, aValue, anIndex, anAnyAttributes, anAnyElements);
 
 	    myType = aValue.getClass();
 	    myValue = aValue;
@@ -111,7 +115,7 @@ public class ParameterImpl extends Parameter
 	 */
 	public Class<? extends Object> getValueType()
 	{
-		Trace.println(Trace.GETTER);
+		LOG.trace(Mark.GETTER, "");
 	    return myType;
 	}
 
@@ -120,7 +124,7 @@ public class ParameterImpl extends Parameter
 	 */
 	public Object getValue()
 	{
-		Trace.println(Trace.GETTER);
+		LOG.trace(Mark.GETTER, "");
 		return myValue;
 	}
 
@@ -178,7 +182,7 @@ public class ParameterImpl extends Parameter
 	 */
 	public void setValue(Object aValue)
 	{
-		Trace.println(Trace.SETTER, "setValue( " + aValue.toString() + " )", true);
+		LOG.trace(Mark.SETTER, "{}", aValue);
 		myValue = aValue;
 	}
 }

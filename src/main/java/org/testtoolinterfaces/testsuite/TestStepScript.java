@@ -3,7 +3,9 @@
  */
 package org.testtoolinterfaces.testsuite;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Class for Test Steps that consist of an (execution) script 
@@ -15,7 +17,9 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class TestStepScript extends TestStepImpl
 {
-	private String myScript;
+    private static final Logger LOG = LoggerFactory.getLogger(TestStepScript.class);
+
+    private String myScript;
 	private String myScriptType;
 
 	/**
@@ -36,17 +40,10 @@ public class TestStepScript extends TestStepImpl
 			 			   String aScriptType,
 			 			   ParameterArrayList aParameters )
 	{
-		super( aSequenceNr,
-		       aDescription,
-		       aParameters );
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestStepScript( "
-	   									+ aSequenceNr + ", "
-	   									+ aDescription + ", "
-					   					+ aScript + ", "
-					   					+ aScriptType + ", "
-					   					+ "aParameters )",
-				   	   true );
+		super( aSequenceNr, aDescription, aParameters );
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}",
+				aSequenceNr, aDescription,
+				aScript, aScriptType, aParameters);
 
 		myScript = aScript;
 		myScriptType = aScriptType;

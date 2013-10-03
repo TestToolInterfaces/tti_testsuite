@@ -2,7 +2,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.Hashtable;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Class to hold a variable name as parameter.
@@ -15,7 +17,9 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public class ParameterVariable extends Parameter
 {
-	String myVariableName;
+    private static final Logger LOG = LoggerFactory.getLogger(ParameterVariable.class);
+
+    String myVariableName;
 	
 	/**
 	 * Creates a parameter variable
@@ -39,9 +43,8 @@ public class ParameterVariable extends Parameter
 		       anAnyAttributes,
 		       anAnyElements);
 
-		Trace.println(Trace.CONSTRUCTOR, "ParameterVariable( " + aParameter + ", " 
-					   + aVariableName + ", "
-					   + anIndex + " )", true);
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}, {}, {}",
+				aParameter, aVariableName, anIndex, anAnyAttributes, anAnyElements);
 
 		myVariableName = aVariableName;
 	}
@@ -107,7 +110,7 @@ public class ParameterVariable extends Parameter
 	 */
 	public String getVariableName()
 	{
-		Trace.println(Trace.GETTER);
+		LOG.trace(Mark.GETTER, "");
 		return myVariableName;
 	}
 
@@ -117,7 +120,7 @@ public class ParameterVariable extends Parameter
 	 */
 	public void setVariableName(String aVariableName)
 	{
-		Trace.println(Trace.SETTER, "setVariableName( " + aVariableName + " )", true);
+		LOG.trace(Mark.SETTER, "{}", aVariableName);
 		myVariableName = aVariableName;
 	}
 }

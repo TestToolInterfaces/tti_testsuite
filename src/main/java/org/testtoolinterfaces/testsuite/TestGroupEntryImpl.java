@@ -1,6 +1,8 @@
 package org.testtoolinterfaces.testsuite;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Abstract Class to hold a TestEntryWithId.
@@ -11,7 +13,9 @@ import org.testtoolinterfaces.utils.Trace;
 public class TestGroupEntryImpl extends TestEntryImpl
 				implements TestGroupEntry
 {
-	private String myId;
+    private static final Logger LOG = LoggerFactory.getLogger(TestGroupEntryImpl.class);
+
+    private String myId;
 
     /**
      * Creates a TestExecutionItem
@@ -25,11 +29,8 @@ public class TestGroupEntryImpl extends TestEntryImpl
 	                      int aSequenceNr )
 	{
 		super(aDescription, aSequenceNr);
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestEntryImpl(" + anId + ", "
-					   					+ aDescription + ", "
-					   					+ aSequenceNr + " )",
-					   true );
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}, {}",
+				anId, aDescription, aSequenceNr);
 		
 		myId = anId;
 	}

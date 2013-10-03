@@ -2,7 +2,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.ArrayList;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 import org.testtoolinterfaces.utils.Warning;
 
 
@@ -15,7 +17,9 @@ import org.testtoolinterfaces.utils.Warning;
  */
 public class ParameterArrayList extends ArrayList<Parameter>
 {
-	private static final long	serialVersionUID	= -6149383369436247558L;
+    private static final Logger LOG = LoggerFactory.getLogger(ParameterArrayList.class);
+
+    private static final long	serialVersionUID	= -6149383369436247558L;
 
 	/**
 	 * @see java.util.ArrayList#ArrayList()
@@ -60,10 +64,9 @@ public class ParameterArrayList extends ArrayList<Parameter>
 	 * 
 	 * Note: the old ParameterArrayList remains unchanged
 	 */
-	public ParameterArrayList sort()
-	{
-		Trace.println(Trace.UTIL);
-		Trace.println(Trace.ALL, "Array size is " + this.size());
+	public ParameterArrayList sort() {
+		LOG.trace(Mark.UTIL, "");
+		LOG.debug("Array size is ", this.size());
 
 		ParameterArrayList newParams = new ParameterArrayList(this.size());
 		for (int old_i = 0; old_i < this.size(); old_i++)
@@ -74,7 +77,7 @@ public class ParameterArrayList extends ArrayList<Parameter>
 			{
 				new_i++;
 			}
-    		Trace.println(Trace.ALL, "inserting " + this.get(old_i).getName() + " at location " + new_i);
+    		LOG.debug("Inserting {} at location {}", this.get(old_i).getName(), new_i);
     		newParams.add(new_i, this.get(old_i));
 
 			if (new_i>0 && 
@@ -87,7 +90,7 @@ public class ParameterArrayList extends ArrayList<Parameter>
 			}
 	    }
 	    
-		Trace.println(Trace.ALL, "New Array size is " + newParams.size());
+		LOG.debug("New Array size is {}", newParams.size());
 		return newParams;
 	}
 }

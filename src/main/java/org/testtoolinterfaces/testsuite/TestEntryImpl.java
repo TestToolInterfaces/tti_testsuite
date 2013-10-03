@@ -2,7 +2,9 @@ package org.testtoolinterfaces.testsuite;
 
 import java.util.Hashtable;
 
-import org.testtoolinterfaces.utils.Trace;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.utils.Mark;
 
 /**
  * Abstract Class to hold a TestEntry.
@@ -15,6 +17,8 @@ import org.testtoolinterfaces.utils.Trace;
  */
 public abstract class TestEntryImpl implements TestEntry
 {
+    private static final Logger LOG = LoggerFactory.getLogger(TestEntryImpl.class);
+
 //	private TYPE myType;
 	private String myDescription;
 	private int mySequenceNr = 0;
@@ -34,11 +38,7 @@ public abstract class TestEntryImpl implements TestEntry
 	                      String aDescription,
 	                      int aSequenceNr )
 	{
-		Trace.println( Trace.CONSTRUCTOR,
-					   "TestEntryImpl(" 
-					   					+ aDescription + ", "
-					   					+ aSequenceNr + " )",
-					   true );
+		LOG.trace(Mark.CONSTRUCTOR, "{}, {}", aDescription, aSequenceNr);
 		
 		myDescription = aDescription;
 		mySequenceNr = aSequenceNr;
