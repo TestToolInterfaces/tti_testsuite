@@ -3,7 +3,7 @@ package org.testtoolinterfaces.testsuite;
 import java.util.Collection;
 
 /**
- * Interface for a TestItemIteration (a for each).
+ * Interface for a TestItemIteration (a "for-each").
  * 
  * @author Arjan Kranenburg
  *

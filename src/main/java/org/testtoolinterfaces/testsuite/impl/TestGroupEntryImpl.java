@@ -1,7 +1,10 @@
-package org.testtoolinterfaces.testsuite;
+package org.testtoolinterfaces.testsuite.impl;
+
+import javax.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.testsuite.TestGroupEntry;
 import org.testtoolinterfaces.utils.Mark;
 
 /**
@@ -15,7 +18,7 @@ public class TestGroupEntryImpl extends TestEntryImpl
 {
     private static final Logger LOG = LoggerFactory.getLogger(TestGroupEntryImpl.class);
 
-    private String myId;
+    private @NotNull String myId;
 
     /**
      * Creates a TestExecutionItem
@@ -24,8 +27,8 @@ public class TestGroupEntryImpl extends TestEntryImpl
 	 * @param aDescription	Description
 	 * @param aSequenceNr	Sequence number, to be used in a collection
 	 */
-	public TestGroupEntryImpl( String anId,
-	                      String aDescription,
+	public TestGroupEntryImpl( @NotNull String anId,
+			@NotNull String aDescription,
 	                      int aSequenceNr )
 	{
 		super(aDescription, aSequenceNr);

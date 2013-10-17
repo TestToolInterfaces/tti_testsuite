@@ -7,7 +7,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
-import org.testtoolinterfaces.testsuite.TestCaseImpl;
+import org.testtoolinterfaces.testsuite.impl.TestCaseImpl;
 
 public class TestCaseImplTester extends TestCase
 {

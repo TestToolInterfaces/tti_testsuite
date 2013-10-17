@@ -1,10 +1,14 @@
 /**
  * 
  */
-package org.testtoolinterfaces.testsuite;
+package org.testtoolinterfaces.testsuite.impl;
+
+import javax.validation.constraints.NotNull;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.testsuite.ParameterArrayList;
+import org.testtoolinterfaces.testsuite.TestInterface;
 import org.testtoolinterfaces.utils.Mark;
 
 /**
@@ -37,7 +41,7 @@ public class TestStepCommand extends TestStepImpl
 			 			 int aSequenceNr,
 						 String aDescription,
 						 String aCommand,
-						 TestInterface anInterface,
+						 @NotNull TestInterface anInterface,
 						 ParameterArrayList aParameters )
 	{
 		super( aSequenceNr, aDescription, aParameters );
@@ -63,7 +67,7 @@ public class TestStepCommand extends TestStepImpl
 			 			 int aSequenceNr,
 						 String aDescription,
 						 String aCommand,
-						 TestInterface anInterface )
+						 @NotNull TestInterface anInterface )
 	{
 		this( aSequenceNr,
 		      aDescription,
@@ -83,7 +87,7 @@ public class TestStepCommand extends TestStepImpl
 	public TestStepCommand(
 			 			 int aSequenceNr,
 						 String aCommand,
-						 TestInterface anInterface,
+						 @NotNull TestInterface anInterface,
 						 ParameterArrayList aParameters )
 	{
 		this( aSequenceNr,
@@ -103,7 +107,7 @@ public class TestStepCommand extends TestStepImpl
 	public TestStepCommand(
 			 			 int aSequenceNr,
 						 String aCommand,
-						 TestInterface anInterface )
+						 @NotNull TestInterface anInterface )
 	{
 		this( aSequenceNr,
 		      "",
@@ -123,6 +127,7 @@ public class TestStepCommand extends TestStepImpl
 	/**
 	 * @return the TestInterface
 	 */
+	@NotNull
 	public TestInterface getInterface()
 	{
 		return myInterface;

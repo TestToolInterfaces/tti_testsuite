@@ -1,12 +1,14 @@
 /**
  * 
  */
-package org.testtoolinterfaces.testsuite;
+package org.testtoolinterfaces.testsuite.impl;
 
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.testsuite.TestCase;
+import org.testtoolinterfaces.testsuite.TestStepSequence;
 import org.testtoolinterfaces.utils.Mark;
 
 /**

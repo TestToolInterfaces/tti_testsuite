@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.testtoolinterfaces.testsuite.impl.TestStepScript;
 
 public class TestStepScriptTester extends TestCase
 {
@@ -32,7 +33,7 @@ public class TestStepScriptTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepScript#TestStepScript()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepScript#TestStepScript()}.
 	 */
 	@Test
 	public void testConstructor0()
@@ -67,7 +68,7 @@ public class TestStepScriptTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepScript#TestStepScript()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepScript#TestStepScript()}.
 	 */
 	@Test
 	public void testConstructor1()
@@ -91,7 +92,7 @@ public class TestStepScriptTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepScript#TestStepScript()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepScript#TestStepScript()}.
 	 */
 	@Test
 	public void testConstructor2()
@@ -113,7 +114,7 @@ public class TestStepScriptTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepScript#TestStepScript()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepScript#TestStepScript()}.
 	 */
 	@Test
 	public void testConstructor3()
@@ -132,7 +133,7 @@ public class TestStepScriptTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepScript#TestStepScript()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepScript#TestStepScript()}.
 	 */
 	@Test
 	public void testConstructor4()

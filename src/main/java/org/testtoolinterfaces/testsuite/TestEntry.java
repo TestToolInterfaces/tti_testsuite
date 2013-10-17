@@ -19,13 +19,7 @@ public interface TestEntry
 	 * CaseLink		for a link to a TestCase, e.g. in a seperate file
 	 * Step			for a Test Step
 	 */
-//	public enum TYPE { Group, GroupLink, Case, CaseLink, Step };
 	
-	/**
-	 * @return the Test Entry Type
-	 */
-//	public TYPE getType();
-
 	/**
 	 * @return the Description
 	 */

@@ -7,6 +7,8 @@ import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.testtoolinterfaces.testsuite.impl.TestStepCommand;
+import org.testtoolinterfaces.testsuite.impl.TestStepSelection;
 
 public class TestStepSelectionTester extends TestCase
 {
@@ -60,7 +62,7 @@ public class TestStepSelectionTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepSelection#TestStepSelection()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepSelection#TestStepSelection()}.
 	 */
 	@Test
 	public void testConstructor1()
@@ -98,7 +100,7 @@ public class TestStepSelectionTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepSelection#TestStepSelection()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepSelection#TestStepSelection()}.
 	 */
 	@Test
 	public void testConstructor2()
@@ -124,7 +126,7 @@ public class TestStepSelectionTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepSelection#TestStepSelection()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepSelection#TestStepSelection()}.
 	 */
 	@Test
 	public void testConstructor3()
@@ -150,7 +152,7 @@ public class TestStepSelectionTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepSelection#TestStepSelection()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepSelection#TestStepSelection()}.
 	 */
 	@Test
 	public void testConstructor4()
@@ -175,7 +177,7 @@ public class TestStepSelectionTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepSelection#TestStepSelection()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepSelection#TestStepSelection()}.
 	 */
 	@Test
 	public void testConstructor5()

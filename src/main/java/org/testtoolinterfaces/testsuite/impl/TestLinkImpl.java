@@ -1,6 +1,8 @@
-package org.testtoolinterfaces.testsuite;
+package org.testtoolinterfaces.testsuite.impl;
 
 import java.io.File;
+
+import org.testtoolinterfaces.testsuite.TestLink;
 
 /**
  * Class for links to Test Groups or Test Case files.

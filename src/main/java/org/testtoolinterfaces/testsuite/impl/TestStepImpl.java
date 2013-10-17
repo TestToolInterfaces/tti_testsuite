@@ -1,4 +1,7 @@
-package org.testtoolinterfaces.testsuite;
+package org.testtoolinterfaces.testsuite.impl;
+
+import org.testtoolinterfaces.testsuite.ParameterArrayList;
+import org.testtoolinterfaces.testsuite.TestStep;
 
 /**
  * Abstract Class to hold a TestStep.

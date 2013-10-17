@@ -5,6 +5,7 @@ package org.testtoolinterfaces.testsuite;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testtoolinterfaces.testsuite.impl.TestGroupEntryImpl;
 import org.testtoolinterfaces.utils.Mark;
 
 /**

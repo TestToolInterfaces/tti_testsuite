@@ -1,6 +1,9 @@
-package org.testtoolinterfaces.testsuite;
+package org.testtoolinterfaces.testsuite.impl;
 
 import java.io.File;
+
+import org.testtoolinterfaces.testsuite.TestExecItemLink;
+import org.testtoolinterfaces.testsuite.TestLink;
 
 /**
  * Class for a link to a TestExecutionItemLink.

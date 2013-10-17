@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.testtoolinterfaces.testsuite.impl.TestStepCommand;
 
 public class TestStepCommandTester extends TestCase
 {
@@ -21,7 +22,7 @@ public class TestStepCommandTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepCommand#TestStepCommand()}.
 	 */
 	@Test
 	public void testConstructor0()
@@ -64,7 +65,7 @@ public class TestStepCommandTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepCommand#TestStepCommand()}.
 	 */
 	@Test
 	public void testConstructor1()
@@ -97,7 +98,7 @@ public class TestStepCommandTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepCommand#TestStepCommand()}.
 	 */
 	@Test
 	public void testConstructor2()
@@ -119,7 +120,7 @@ public class TestStepCommandTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepCommand#TestStepCommand()}.
 	 */
 	@Test
 	public void testConstructor3()
@@ -144,7 +145,7 @@ public class TestStepCommandTester extends TestCase
 	}
 
 	/**
-	 * Test method for {@link org.testtoolinterfaces.testsuite.TestStepCommand#TestStepCommand()}.
+	 * Test method for {@link org.testtoolinterfaces.testsuite.impl.TestStepCommand#TestStepCommand()}.
 	 */
 	@Test
 	public void testConstructor4()

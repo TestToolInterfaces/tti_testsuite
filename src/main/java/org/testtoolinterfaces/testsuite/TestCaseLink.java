@@ -1,5 +1,8 @@
 package org.testtoolinterfaces.testsuite;
 
+import org.testtoolinterfaces.testsuite.impl.TestExecItemLinkImpl;
+import org.testtoolinterfaces.testsuite.impl.TestLinkImpl;
+
 /**
  * Class for a link to a Test Case.
  * TestCaseLinks all have an Id, a Type, a sequenceNr, and a link to a File.

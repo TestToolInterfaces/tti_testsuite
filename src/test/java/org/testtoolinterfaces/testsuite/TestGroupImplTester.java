@@ -6,6 +6,8 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.junit.Before;
+import org.testtoolinterfaces.testsuite.impl.TestCaseImpl;
+import org.testtoolinterfaces.testsuite.impl.TestGroupImpl;
 
 
 public class TestGroupImplTester extends TestCase

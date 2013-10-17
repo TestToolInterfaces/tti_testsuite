@@ -7,6 +7,7 @@ import junit.framework.TestCase;
 
 import org.junit.Before;
 import org.testtoolinterfaces.testsuite.TestStep;
+import org.testtoolinterfaces.testsuite.impl.TestStepCommand;
 
 /**
  * 
